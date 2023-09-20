@@ -2,6 +2,35 @@ import streamlit as st
 from trubrics_utils import trubrics_config, trubrics_successful_feedback
 
 from trubrics.integrations.streamlit import FeedbackCollector
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+
+model_name_or_path = "TheBloke/WizardLM-13B-V1.2-GPTQ"
+#model_name_or_path = 'togethercomputer/LLaMA-2-7B-32K'
+#model_name_or_path = 'TheBloke/Yarn-Llama-2-13B-128K-GPTQ'
+# To use a different branch, change revision
+# For example: revision="main"
+model = AutoModelForCausalLM.from_pretrained(model_name_or_path,
+                                             device_map="auto",
+                                             trust_remote_code=False,
+                                             revision="main")
+
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
+
+# Inference can also be done using transformers' pipeline
+
+print("*** Pipeline:")
+pipe = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    max_new_tokens=512,
+    do_sample=True,
+    temperature=0.1,
+    top_p=0.95,
+    top_k=40,
+    repetition_penalty=1.1
+)
+
 
 if "response" not in st.session_state:
     st.session_state.response = ""
@@ -42,10 +71,15 @@ model = st.selectbox(
 
 prompt = st.text_area(label="Prompt", label_visibility="collapsed", placeholder="What would you like to know?")
 button = st.button(f"Ask {model}")
+prompt_template=f'''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: {prompt} ASSISTANT:
+
+'''
+
+print("\n\n*** Generate:")
 
 if button:
-    response = openai.ChatCompletion.create(model=model, messages=[{"role": "user", "content": prompt}])
-    response_text = response.choices[0].message["content"]
+    response = pipe(prompt_template)
+    response_text = response[0]["generated_text"]
     st.session_state.logged_prompt = collector.log_prompt(
         config_model={"model": model}, prompt=prompt, generation=response_text, tags=["llm_app.py"], user_id=email
     )
