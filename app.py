@@ -1,4 +1,3 @@
-import openai
 import streamlit as st
 from trubrics_utils import trubrics_config, trubrics_successful_feedback
 
@@ -29,17 +28,17 @@ else:
     )
     st.stop()
 
-models = ("gpt-3.5-turbo",)
+models = ("llama2-13b","gpt-3.5-turbo",)
 model = st.selectbox(
-    "Choose your GPT-3.5 LLM",
+    "Choose your LLM",
     models,
     help="Consult https://platform.openai.com/docs/models/gpt-3-5 for model info.",
 )
 
-openai.api_key = st.secrets.get("OPENAI_API_KEY")
-if openai.api_key is None:
-    st.info("Please add your OpenAI API key to continue.")
-    st.stop()
+# openai.api_key = st.secrets.get("OPENAI_API_KEY")
+# if openai.api_key is None:
+#     st.info("Please add your OpenAI API key to continue.")
+#     st.stop()
 
 prompt = st.text_area(label="Prompt", label_visibility="collapsed", placeholder="What would you like to know?")
 button = st.button(f"Ask {model}")
