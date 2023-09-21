@@ -7,3 +7,12 @@ adjustText
 langchain
 optimum 
 auto-gptq
+pypdf
+langchain
+torch
+accelerate
+bitsandbytes
+transformers
+sentence_transformers
+faiss-cpu
+ctransformers
