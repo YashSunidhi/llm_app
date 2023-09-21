@@ -1,134 +1,90 @@
+# Import necessary libraries
 import streamlit as st
-#from trubrics_utils import trubrics_config, trubrics_successful_feedback
+from streamlit_chat import message
+import tempfile
+from langchain.document_loaders.csv_loader import CSVLoader
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import FAISS
+from langchain.llms import CTransformers
+from langchain.chains import ConversationalRetrievalChain
 
-from trubrics.integrations.streamlit import FeedbackCollector
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+# Define the path for generated embeddings
+DB_FAISS_PATH = 'vectorstore/db_faiss'
 
-def trubrics_config(default_component: bool = True):
-    st.subheader("Input your Trubrics credentials:")
-    email = st.text_input(
-        label="email", placeholder="email", label_visibility="collapsed", value=st.secrets.get("TRUBRICS_EMAIL", "")
+# Load the model of choice
+def load_llm():
+    llm = CTransformers(
+        model="llama-2-7b-chat.ggmlv3.q8_0.bin",
+        model_type="llama",
+        max_new_tokens=512,
+        temperature=0.5
     )
+    return llm
 
-    password = st.text_input(
-        label="password",
-        placeholder="password",
-        label_visibility="collapsed",
-        type="password",
-        value=st.secrets.get("TRUBRICS_PASSWORD", ""),
-    )
+# Set the title for the Streamlit app
+st.title("Llama2 Chat CSV - 🦜🦙")
 
-    if default_component:
-        return email, password
+# Create a file uploader in the sidebar
+uploaded_file = st.sidebar.file_uploader("Upload File", type="csv")
 
-    feedback_component = st.text_input(
-        label="feedback_component",
-        placeholder="Feedback component name",
-        label_visibility="collapsed",
-    )
+# Handle file upload
+if uploaded_file:
+    with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+        tmp_file.write(uploaded_file.getvalue())
+        tmp_file_path = tmp_file.name
 
-    feedback_type = st.radio(
-        label="Select the component feedback type:", options=("faces", "thumbs", "textbox"), horizontal=True
-    )
+    # Load CSV data using CSVLoader
+    loader = CSVLoader(file_path=tmp_file_path, encoding="utf-8", csv_args={'delimiter': ','})
+    data = loader.load()
 
-    return email, password, feedback_component, feedback_type
+    # Create embeddings using Sentence Transformers
+    embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2', model_kwargs={'device': 'cpu'})
 
-model_name_or_path = "TheBloke/WizardLM-13B-V1.2-GPTQ"
-#model_name_or_path = 'togethercomputer/LLaMA-2-7B-32K'
-#model_name_or_path = 'TheBloke/Yarn-Llama-2-13B-128K-GPTQ'
-# To use a different branch, change revision
-# For example: revision="main"
-model = AutoModelForCausalLM.from_pretrained(model_name_or_path,
-                                             device_map="auto",
-                                             trust_remote_code=False,
-                                             revision="main")
+    # Create a FAISS vector store and save embeddings
+    db = FAISS.from_documents(data, embeddings)
+    db.save_local(DB_FAISS_PATH)
 
-tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
+    # Load the language model
+    llm = load_llm()
 
-# Inference can also be done using transformers' pipeline
+    # Create a conversational chain
+    chain = ConversationalRetrievalChain.from_llm(llm=llm, retriever=db.as_retriever())
 
-print("*** Pipeline:")
-pipe = pipeline(
-    "text-generation",
-    model=model,
-    tokenizer=tokenizer,
-    max_new_tokens=512,
-    do_sample=True,
-    temperature=0.1,
-    top_p=0.95,
-    top_k=40,
-    repetition_penalty=1.1
-)
+    # Function for conversational chat
+    def conversational_chat(query):
+        result = chain({"question": query, "chat_history": st.session_state['history']})
+        st.session_state['history'].append((query, result["answer"]))
+        return result["answer"]
 
+    # Initialize chat history
+    if 'history' not in st.session_state:
+        st.session_state['history'] = []
 
-if "response" not in st.session_state:
-    st.session_state.response = ""
-if "feedback_key" not in st.session_state:
-    st.session_state.feedback_key = 0
-if "logged_prompt" not in st.session_state:
-    st.session_state.logged_prompt = ""
+    # Initialize messages
+    if 'generated' not in st.session_state:
+        st.session_state['generated'] = ["Hello ! Ask me(LLAMA2) about " + uploaded_file.name + " 🤗"]
 
-st.title("LLM User Feedback with Trubrics")
+    if 'past' not in st.session_state:
+        st.session_state['past'] = ["Hey ! 👋"]
 
-with st.sidebar:
-    email, password = trubrics_config()
+    # Create containers for chat history and user input
+    response_container = st.container()
+    container = st.container()
 
-if email and password:
-    try:
-        collector = FeedbackCollector(email=email, password=password, project="default")
-    except Exception:
-        st.error(f"Error authenticating '{email}' with [Trubrics](https://trubrics.streamlit.app/). Please try again.")
-        st.stop()
-else:
-    st.info(
-        "To ask a question to an LLM and save your feedback to Trubrics, add your email and password in the sidebar."
-        " Don't have an account yet? Create one for free [here](https://trubrics.streamlit.app/)!"
-    )
-    st.stop()
+    # User input form
+    with container:
+        with st.form(key='my_form', clear_on_submit=True):
+            user_input = st.text_input("Query:", placeholder="Talk to csv data 👉 (:", key='input')
+            submit_button = st.form_submit_button(label='Send')
 
-models = ("llama2-13b","gpt-3.5-turbo",)
-model = st.selectbox(
-    "Choose your LLM",
-    models,
-    help="Consult https://platform.openai.com/docs/models/gpt-3-5 for model info.",
-)
+        if submit_button and user_input:
+            output = conversational_chat(user_input)
+            st.session_state['past'].append(user_input)
+            st.session_state['generated'].append(output)
 
-# openai.api_key = st.secrets.get("OPENAI_API_KEY")
-# if openai.api_key is None:
-#     st.info("Please add your OpenAI API key to continue.")
-#     st.stop()
-
-prompt = st.text_area(label="Prompt", label_visibility="collapsed", placeholder="What would you like to know?")
-button = st.button(f"Ask {model}")
-prompt_template=f'''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: {prompt} ASSISTANT:
-
-'''
-
-print("\n\n*** Generate:")
-
-if button:
-    response = pipe(prompt_template)
-    response_text = response[0]["generated_text"]
-    st.session_state.logged_prompt = collector.log_prompt(
-        config_model={"model": model}, prompt=prompt, generation=response_text, tags=["llm_app.py"], user_id=email
-    )
-    st.session_state.response = response_text
-    st.session_state.feedback_key += 1
-
-if st.session_state.response:
-    st.markdown(f"#### :violet[{st.session_state.response}]")
-
-    feedback = collector.st_feedback(
-        component="default",
-        feedback_type="thumbs",
-        open_feedback_label="[Optional] Provide additional feedback",
-        prompt_id=st.session_state.logged_prompt.id,
-        model=model,
-        align="flex-start",
-        tags=["llm_app.py"],
-        key=f"feedback_{st.session_state.feedback_key}",  # overwrite with new key
-        user_id=email,
-    )
-
-    if feedback:
-        trubrics_successful_feedback(feedback)
+    # Display chat history
+    if st.session_state['generated']:
+        with response_container:
+            for i in range(len(st.session_state['generated'])):
+                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
+                message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
