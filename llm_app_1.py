@@ -16,8 +16,7 @@ with st.sidebar:
 
 if not email or not password:
     st.info(
-        "To chat with an LLM and save your feedback to Trubrics, add your email and password in the sidebar."
-        " Don't have an account yet? Create one for free [here](https://trubrics.streamlit.app/)!"
+        "Generate, Provide Feedback and Evaluate"
     )
     st.stop()
 
