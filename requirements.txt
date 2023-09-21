@@ -10,3 +10,4 @@ torch
 sentence_transformers
 faiss-cpu
 ctransformers
+streamlit-chat
