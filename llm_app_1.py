@@ -6,7 +6,7 @@ from trubrics_utils import trubrics_config
 
 from trubrics.integrations.streamlit import FeedbackCollector
 
-st.title("💬 [Trubrics] LLM Chat with user feedback")
+st.title("💬 Content Generation Tool")
 
 
 with st.sidebar:
