@@ -11,3 +11,4 @@ sentence_transformers
 faiss-cpu
 ctransformers
 streamlit-chat
+openai
