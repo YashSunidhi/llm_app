@@ -5,7 +5,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image
 
-from sd2.generate import PIPELINE_NAMES, MODEL_VERSIONS, generate
+from generate import PIPELINE_NAMES, MODEL_VERSIONS, generate
 
 DEFAULT_PROMPT = "border collie puppy"
 DEFAULT_WIDTH, DEFAULT_HEIGHT = 512, 512
