@@ -180,7 +180,6 @@ with response_container:
                     st.write("#### Raw feedback saved to Trubrics:")
                     st.write(feedback)
 
-st.sidebar.button('Reset Chat', on_click=reset_conversation)
 
                     # Clear the Chat Messages
 
