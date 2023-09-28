@@ -117,7 +117,7 @@ if 'user_input' not in st.session_state:
 
 def submit():
     st.session_state.user_input = st.session_state.widget
-    st.session_state.widget = '
+    st.session_state.widget = ''
 
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
