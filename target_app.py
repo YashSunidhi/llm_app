@@ -43,7 +43,7 @@ with st.sidebar:
 
 #######
 # Get the input text from the user
-st.title("Prompt Design Based on User Input")
+st.title("Prompt Design")
 option1 = st.sidebar.selectbox(
 'Product',
 ('Phesgo', 'Tecentriq'))
@@ -74,12 +74,12 @@ option8 = st.sidebar.selectbox(
 'Target Audience Expectation',
 ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
 
-option7 = st.text_input('Input your prompt here',"Write an executive short email for internal purposes based on document summary?")
+option7 = st.text_input('Input your prompt here',"")
 
 default_prompt = ["Create persuasive marketing content in " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
 #prompt = st.text_input('Input your prompt here')
 prompt_design = st.write(default_prompt[0])
-
+st.title("Using Designed Prompt for Generation")
 # Generate empty lists for generated and past.
 ## generated stores AI generated responses
 if 'generated' not in st.session_state:
