@@ -140,7 +140,7 @@ with response_container:
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
 
-        st.sidebar.button('Reset Chat', on_click=reset_conversation, key=i)
+            
                 #tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
                 # try:
                 #     tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
@@ -171,6 +171,7 @@ with response_container:
                 if feedback:
                     st.write("#### Raw feedback saved to Trubrics:")
                     st.write(feedback)
+                st.sidebar.button('Reset Chat', on_click=reset_conversation, key=i)
 
                     # Clear the Chat Messages
 
