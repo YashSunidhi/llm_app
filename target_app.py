@@ -100,7 +100,7 @@ def get_text():
     return input_text
 ## Applying the user input box
 with input_container:
-    user_input = st.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?")
+    user_input = st.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
 
 # Response output
 ## Function for taking user prompt as input followed by producing AI generated responses
@@ -112,7 +112,12 @@ def generate_response(prompt):
 def reset_conversation():
     st.session_state.response = ""
 #st.session_state.chat_history = None
+if 'user_input' not in st.session_state:
+    st.session_state.user_input = ''
 
+def submit():
+    st.session_state.user_input = st.session_state.widget
+    st.session_state.widget = '
 
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
