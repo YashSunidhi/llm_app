@@ -146,6 +146,7 @@ with response_container:
                 #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
                 # )
                 st.session_state.response = response_text
+                st.session_state.response.append(response_text)
                 st.session_state.feedback_key += 1
 
             
