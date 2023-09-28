@@ -119,6 +119,8 @@ def generate_response(prompt):
 def reset_conversation():
     st.session_state.response = ""
     st.session_state.user_input = ""
+    st.session_state.generated = ""
+    st.session_state.past = ""
 st.sidebar.button('Reset Chat', on_click=reset_conversation)
 
 user_input = st.session_state.user_input
@@ -147,7 +149,6 @@ with response_container:
                 # )
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
-            st.session_state.response.append(response_text)
 
             
                 #tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
