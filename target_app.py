@@ -161,6 +161,9 @@ with response_container:
                     key=f"feedback_{st.session_state.feedback_key}",  # overwrite with new key
                     user_id=email,
                 )
+                if user_feedback:
+                    st.write("#### Raw feedback saved to Trubrics:")
+                    st.write(feedback)
 
                 # if feedback:
                 #     trubrics_successful_feedback(feedback)
