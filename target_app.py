@@ -128,9 +128,11 @@ def reset_conversation():
         st.session_state['past'] = ['Hi!']
     if 'user_input' not in st.session_state:
         st.session_state.user_input = ''
-st.sidebar.button('Reset Chat', on_click=reset_conversation)
-
-user_input = st.session_state.user_input
+reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
+if reset:
+    user_input = 'ask a question'
+else:
+    user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
     if user_input:
