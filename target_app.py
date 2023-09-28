@@ -118,6 +118,7 @@ def generate_response(prompt):
 
 def reset_conversation():
     st.session_state.response = ""
+    st.session_state.user_input = ""
 st.sidebar.button('Reset Chat', on_click=reset_conversation)
 
 user_input = st.session_state.user_input
