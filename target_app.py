@@ -178,7 +178,10 @@ with response_container:
                 if feedback:
                     st.write("#### Raw feedback saved to Trubrics:")
                     st.write(feedback)
-                st.sidebar.button('Reset Chat', on_click=reset_conversation, key=i)
+
+                with input_container:
+                    user_input = st.text_area(label="user_input",key='widget', on_change=submit)
+                st.sidebar.button('Reset Chat', on_click=reset_conversation, key=response)
 
                     # Clear the Chat Messages
 
