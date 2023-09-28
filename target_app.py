@@ -166,10 +166,10 @@ with response_container:
                     st.write(feedback)
 
                     # Clear the Chat Messages
-            def clear_chat_history():
-                st.session_state.response=[{"role":"assistant", "content": "How may I assist you today"}]
-            
-            st.sidebar.button('Clear Chat History', on_click=clear_chat_history, key='temp')
+            def reset_conversation():
+                st.session_state.response = None
+                #st.session_state.chat_history = None
+            st.button('Reset Chat', on_click=reset_conversation)
 
                 # if feedback:
                 #     trubrics_successful_feedback(feedback)
