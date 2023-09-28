@@ -88,6 +88,13 @@ if 'generated' not in st.session_state:
 if 'past' not in st.session_state:
     st.session_state['past'] = ['Hi!']
 
+if 'user_input' not in st.session_state:
+    st.session_state.user_input = ''
+
+def submit():
+    st.session_state.user_input = st.session_state.widget
+    st.session_state.widget = ''
+
 # Layout of input/response containers
 input_container = st.container()
 colored_header(label='', description='', color_name='blue-30')
@@ -112,12 +119,7 @@ def generate_response(prompt):
 def reset_conversation():
     st.session_state.response = ""
 #st.session_state.chat_history = None
-if 'user_input' not in st.session_state:
-    st.session_state.user_input = ''
 
-def submit():
-    st.session_state.user_input = st.session_state.widget
-    st.session_state.widget = ''
 
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
