@@ -120,7 +120,7 @@ def reset_conversation():
     st.session_state.response = ""
 #st.session_state.chat_history = None
 
-
+user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
     if user_input:
@@ -179,8 +179,8 @@ with response_container:
                     st.write("#### Raw feedback saved to Trubrics:")
                     st.write(feedback)
 
-                with input_container:
-                    user_input = st.text_area(label="user_input",key='widget', on_change=submit)
+                # with input_container:
+                #     user_input = st.text_area(label="user_input",key='widget', on_change=submit)
                 st.sidebar.button('Reset Chat', on_click=reset_conversation, key=response)
 
                     # Clear the Chat Messages
