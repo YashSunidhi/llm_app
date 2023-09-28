@@ -168,7 +168,7 @@ with response_container:
                 #     pass
             #st.markdown(st.session_state["generated"][i])
 
-if st.session_state.response:
+if st.session_state.generated:
     #st.markdown(f"#### :violet[{st.session_state.response}]")
 
     feedback = collector.st_feedback(
