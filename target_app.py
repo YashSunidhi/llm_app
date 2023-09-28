@@ -168,23 +168,23 @@ with response_container:
                 #     pass
             #st.markdown(st.session_state["generated"][i])
 
-        if st.session_state.response:
-            #st.markdown(f"#### :violet[{st.session_state.response}]")
+if st.session_state.response:
+    #st.markdown(f"#### :violet[{st.session_state.response}]")
 
-            feedback = collector.st_feedback(
-                component="default",
-                feedback_type="thumbs",
-                open_feedback_label="[Optional] Provide additional feedback",
-                #prompt_id=st.session_state.logged_prompt.id,
-                model=model,
-                align="flex-start",
-                tags=["llm_app.py"],
-                key=f"feedback_{st.session_state.feedback_key}",  # overwrite with new key
-                user_id=email,
-            )
-            if feedback:
-                st.write("#### Raw feedback saved to Trubrics:")
-                st.write(feedback)
+    feedback = collector.st_feedback(
+        component="default",
+        feedback_type="thumbs",
+        open_feedback_label="[Optional] Provide additional feedback",
+        #prompt_id=st.session_state.logged_prompt.id,
+        model=model,
+        align="flex-start",
+        tags=["llm_app.py"],
+        key=f"feedback_{st.session_state.feedback_key}",  # overwrite with new key
+        user_id=email,
+    )
+    if feedback:
+        st.write("#### Raw feedback saved to Trubrics:")
+        st.write(feedback)
 
 
                     # Clear the Chat Messages
