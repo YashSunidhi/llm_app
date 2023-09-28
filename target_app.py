@@ -146,8 +146,8 @@ with response_container:
                 #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
                 # )
                 st.session_state.response = response_text
-                st.session_state.response.append(response_text)
-                st.session_state.feedback_key += 1
+            st.session_state.feedback_key += 1
+            st.session_state.response.append(response_text)
 
             
                 #tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
