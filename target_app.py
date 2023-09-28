@@ -131,11 +131,11 @@ else:
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
     if user_input:
-        response1 = generate_response(user_input)
+        response = generate_response(user_input)
         # response2 = generate_response(user_input)
         # response3 = generate_response(user_input)
         st.session_state.past.append(user_input)
-        st.session_state.generated.append(response1)
+        st.session_state.generated.append(response)
         # st.session_state.generated.append(response2)
         # st.session_state.generated.append(response3)
     model =  'LLAMA2'
@@ -168,7 +168,7 @@ with response_container:
                 #     pass
             #st.markdown(st.session_state["generated"][i])
 
-if st.session_state.generated:
+if st.session_state.response:
     #st.markdown(f"#### :violet[{st.session_state.response}]")
 
     feedback = collector.st_feedback(
