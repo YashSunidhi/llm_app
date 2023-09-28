@@ -126,6 +126,9 @@ def reset_conversation():
     ## past stores User's questions
     if 'past' not in st.session_state:
         st.session_state['past'] = ['Hi!']
+
+    if 'user_input' not in st.session_state:
+        st.session_state.user_input = ''
 st.sidebar.button('Reset Chat', on_click=reset_conversation)
 
 user_input = st.session_state.user_input
