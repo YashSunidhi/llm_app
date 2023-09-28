@@ -130,7 +130,7 @@ def reset_conversation():
         st.session_state.user_input = ''
 reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
 if reset:
-    user_input = 'ask a question'
+    user_input = []
 else:
     user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
