@@ -167,7 +167,7 @@ with response_container:
 
                     # Clear the Chat Messages
             def clear_chat_history():
-                st.session_state.past=[{"role":"assistant", "content": "How may I assist you today"}]
+                st.session_state.response=[{"role":"assistant", "content": "How may I assist you today"}]
             
             st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
