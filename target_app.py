@@ -117,22 +117,17 @@ def generate_response(prompt):
     return response
 
 def reset_conversation():
-    st.session_state.response = ""
-    st.session_state.user_input = ""
-    st.session_state.generated = ""
-    st.session_state.past = ""
+    # st.session_state.response = ""
+    # st.session_state.user_input = ""
+    st.session_state.generated = ["I'm AABIChat, How may I help you?"]
+    st.session_state.past = ['Hi!']
 
 reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
 if reset:
-    if 'generated' not in st.session_state:
-        st.session_state['generated'] = ["I'm AABIChat, How may I help you?"]
-    ## past stores User's questions
-    if 'past' not in st.session_state:
-        st.session_state['past'] = ['Hi!']
     if 'user_input' not in st.session_state:
-        st.session_state.user_input = ['']
+        st.session_state.user_input = ''
 else:
-    user_input = user_input
+    user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
     if user_input:
