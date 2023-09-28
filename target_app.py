@@ -169,7 +169,7 @@ with response_container:
             def clear_chat_history():
                 st.session_state.response=[{"role":"assistant", "content": "How may I assist you today"}]
             
-            st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+            st.sidebar.button('Clear Chat History', on_click=clear_chat_history, key='temp')
 
                 # if feedback:
                 #     trubrics_successful_feedback(feedback)
