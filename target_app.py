@@ -109,6 +109,11 @@ def generate_response(prompt):
     response = chatbot.chat(prompt)
     return response
 
+def reset_conversation():
+    st.session_state.response = ""
+#st.session_state.chat_history = None
+
+
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
     if user_input:
@@ -134,6 +139,8 @@ with response_container:
                 # )
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
+
+                st.button('Reset Chat', on_click=reset_conversation)
                 #tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
                 # try:
                 #     tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
@@ -166,10 +173,7 @@ with response_container:
                     st.write(feedback)
 
                     # Clear the Chat Messages
-def reset_conversation():
-    st.session_state.response = None
-    #st.session_state.chat_history = None
-st.button('Reset Chat', on_click=reset_conversation)
+
 
                 # if feedback:
                 #     trubrics_successful_feedback(feedback)
