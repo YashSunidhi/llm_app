@@ -169,7 +169,7 @@ with response_container:
                 # )
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
-        break
+            break
                 #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                 #if on1: 
 
