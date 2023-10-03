@@ -152,7 +152,7 @@ with response_container:
                     #tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
                     #with tab1:
                 st.write(f''' translate the context in french {str('""" ')+ response_text + str(' """')} ''')
-                response1= generate_response(f''' translate the context in french {str('""" ')+ response_text + str(' """')} ''')
+                response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
                 st.markdown(response1)
                     # with tab2:
                     #     response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ response_text + str(' """')} '''))
