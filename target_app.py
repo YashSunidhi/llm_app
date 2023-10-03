@@ -169,13 +169,13 @@ with response_container:
                 # )
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
-            break
+            #break
                 #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                 #if on1: 
 
             #st.markdown(st.session_state["generated"][i])
 
-if st.session_state.response:
+if st.session_state.generated:
     #st.markdown(f"#### :violet[{st.session_state.response}]")
 
     feedback = collector.st_feedback(
