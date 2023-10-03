@@ -148,13 +148,6 @@ with response_container:
             #tab1, tab2, tab3 = st.tabs(['Generated Outcome 1','Generated Outcome 1','Generated Outcome 1' ])
             with st.spinner("Thinking..."):
                 response_text= st.markdown(st.session_state["generated"][i])
-                # st.session_state.logged_prompt = collector.log_prompt(
-                #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
-                # )
-                st.session_state.response = response_text
-                st.session_state.feedback_key += 1
-                #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
-                #if on1: 
                 try:
                     tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
                     with tab1:
@@ -168,6 +161,14 @@ with response_container:
                         st.markdown(response3)
                 except:
                     pass
+                # st.session_state.logged_prompt = collector.log_prompt(
+                #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
+                # )
+                st.session_state.response = response_text
+                st.session_state.feedback_key += 1
+                #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
+                #if on1: 
+
             #st.markdown(st.session_state["generated"][i])
 
 if st.session_state.response:
