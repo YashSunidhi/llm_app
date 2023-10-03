@@ -153,21 +153,21 @@ with response_container:
                 # )
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
-                on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
-                if on1: 
-                    try:
-                        tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
-                        with tab1:
-                            response1= tab1.write(generate_response(f''' translate the context in french {response_text} ''')['generated'])
-                            st.markdown(response1)
-                        with tab2:
-                            response2= tab2.write(generate_response(f''' translate the context in german {response_text} ''')['generated'])
-                            st.markdown(response2)
-                        with tab3:
-                            response3= tab3.write(generate_response(f''' translate the context in spanish {response_text} ''')['generated'])
-                            st.markdown(response3)
-                    except:
-                        pass
+                #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
+                #if on1: 
+                try:
+                    tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+                    with tab1:
+                        response1= tab1.write(generate_response(f''' translate the context in french {response_text} ''')['generated'])
+                        st.markdown(response1)
+                    with tab2:
+                        response2= tab2.write(generate_response(f''' translate the context in german {response_text} ''')['generated'])
+                        st.markdown(response2)
+                    with tab3:
+                        response3= tab3.write(generate_response(f''' translate the context in spanish {response_text} ''')['generated'])
+                        st.markdown(response3)
+                except:
+                    pass
             #st.markdown(st.session_state["generated"][i])
 
 if st.session_state.response:
