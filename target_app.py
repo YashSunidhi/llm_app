@@ -155,17 +155,20 @@ with response_container:
                 st.session_state.feedback_key += 1
 
             
-                #tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
-                # try:
-                #     tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
-                #     with tab1:
-                #         response1= tab1.write(st.session_state["generated"][i])
-                #     with tab2:
-                #         response2=tab2.write(st.session_state["generated"][i+1])
-                #     with tab3:
-                #         response3= tab3.write(st.session_state["generated"][i+2])
-                # except:
-                #     pass
+                tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+                try:
+                    tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
+                    with tab1:
+                        response1= tab1.write(generate_response(f''' translate the context in french {st.session_state["generated"][i+1]} ''')['generated'])
+                        st.markdown(response1)
+                    with tab2:
+                        response2= tab2.write(generate_response(f''' translate the context in german {st.session_state["generated"][i+1]} ''')['generated'])
+                        st.markdown(response2)
+                    with tab3:
+                        response3= tab3.write(generate_response(f''' translate the context in spanish {st.session_state["generated"][i+1]} ''')['generated'])
+                        st.markdown(response3)
+                except:
+                    pass
             #st.markdown(st.session_state["generated"][i])
 
 if st.session_state.response:
