@@ -167,7 +167,7 @@ with response_container:
                 # st.session_state.logged_prompt = collector.log_prompt(
                 #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
                 # )
-                st.session_state.generated = response_text
+                st.session_state.response = response_text
                 st.session_state.feedback_key += 1
             #break
                 #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
