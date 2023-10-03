@@ -11,7 +11,7 @@ import time
 from PIL import Image
 st.set_page_config(page_title="Roche Creative Generation",layout="wide")
 st.markdown("<h1 style='text-align: center; color: black;'> Conetnt Generation (Gen AI) </h1>", unsafe_allow_html=True)
-st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Drafing Suite </h6>", unsafe_allow_html=True)
+st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Drafting Suite </h6>", unsafe_allow_html=True)
 
 def context_gen():
   collector = FeedbackCollector(email='smnitrkl50@gmail.com', password='Ram@2107', project="default")
