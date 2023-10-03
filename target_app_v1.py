@@ -286,7 +286,7 @@ def image_gen():
   
       #st.header(st.session_state['name'])
       with st.spinner("Thinking..."):
-          time.sleep(15)
+          time.sleep(10)
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
           with tab1:
               tot1 = st.image("./images_generated/prompt_2.png")
@@ -329,7 +329,7 @@ def image_gen():
   if on1:
       st.warning('These informgraphics are generated for design ideation. It should not be used for any content creation.',icon="⚠️")
       with st.spinner("Thinking..."):
-          time.sleep(1)
+          time.sleep(10)
   
           #st.header(st.session_state['name'])
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
