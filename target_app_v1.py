@@ -300,7 +300,7 @@ def image_gen():
                               mime="image/png"
                           )
           with tab2:
-              tot2 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_5.png")
+              tot2 = st.image("./images_generated/prompt_5.png")
               tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
               if tot22:
                   with open("./images_generated/prompt_5.png", "rb") as file:
@@ -349,7 +349,7 @@ def image_gen():
               tot55 = st.button('Select Image 5', on_click=change_name, args=['5_image'])
                           #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
               if tot55:
-                  with open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_2.png", "rb") as file:
+                  with open("./images_generated/info_2.png", "rb") as file:
                       btn = st.download_button(
                               label="Download image",
                               data=file,
