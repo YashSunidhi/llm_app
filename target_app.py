@@ -151,14 +151,14 @@ with response_container:
                 try:
                     tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
                     with tab1:
-                        response1= tab1.write(generate_response(f''' translate the context in french {str('""" ')+ response_text + str(' """')} '''))
-                        st.markdown(response1)
-                    with tab2:
-                        response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ response_text + str(' """')} '''))
-                        st.markdown(response2)
-                    with tab3:
-                        response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ response_text + str(' """')} '''))
-                        st.markdown(response3)
+                    response1= generate_response(f''' translate the context in french {str('""" ')+ response_text + str(' """')} ''')
+                    st.markdown(response1)
+                    # with tab2:
+                    #     response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ response_text + str(' """')} '''))
+                    #     st.markdown(response2)
+                    # with tab3:
+                    #     response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ response_text + str(' """')} '''))
+                    #     st.markdown(response3)
                 except:
                     pass
                 # st.session_state.logged_prompt = collector.log_prompt(
