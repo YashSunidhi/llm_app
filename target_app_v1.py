@@ -9,7 +9,7 @@ from trubrics.integrations.streamlit import FeedbackCollector
 import os
 import time
 from PIL import Image
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Roche Creative Generation",layout="wide")
 st.markdown("<h1 style='text-align: center; color: black;'> ImageSculpt </h1>", unsafe_allow_html=True)
 st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Image Drafing Suite </h6>", unsafe_allow_html=True)
 
@@ -30,9 +30,6 @@ def context_gen():
   cookie_path_dir = "./cookies_snapshot"
   sign.saveCookiesToDir(cookie_path_dir)
   #st.set_page_config(layout="wide")
-  st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
-  st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content Drafing Suite </h6>", unsafe_allow_html=True)
-  st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
   
   # Sidebar contents
   with st.sidebar:
