@@ -373,6 +373,7 @@ page_names_to_funcs = {
     "Text Content Generation": context_gen,
     "Image Generation": image_gen,
 }
-
+with sidebar:
+  st.title('🤗💬 Roche Creator Suit (GEN-AI)')
 selected_page = st.sidebar.selectbox("# Creator Suit", page_names_to_funcs.keys())
 page_names_to_funcs[selected_page]()
