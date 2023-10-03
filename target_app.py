@@ -149,8 +149,8 @@ with response_container:
             with st.spinner("Thinking..."):
                 response_text= st.markdown(st.session_state["generated"][i])
                 try:
-                    tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
-                    with tab1:
+                    #tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+                    #with tab1:
                     response1= generate_response(f''' translate the context in french {str('""" ')+ response_text + str(' """')} ''')
                     st.markdown(response1)
                     # with tab2:
