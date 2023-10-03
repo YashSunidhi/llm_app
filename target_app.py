@@ -153,7 +153,7 @@ with response_container:
                 # )
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
-                on1 = st.toggle('Examine Translation of Generated Text', key = 'trs')
+                on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                 if on1: 
                     try:
                         tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
