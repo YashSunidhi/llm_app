@@ -292,10 +292,10 @@ def image_gen():
           time.sleep(15)
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
           with tab1:
-              tot1 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_2.png")
+              tot1 = st.image("./images_generated/prompt_2.png")
               tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
               if tot11:
-                  with open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_2.png", "rb") as file:
+                  with open("./images_generated/prompt_2.png", "rb") as file:
                       btn = st.download_button(
                               label="Download image",
                               data=file,
@@ -306,7 +306,7 @@ def image_gen():
               tot2 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_5.png")
               tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
               if tot22:
-                  with open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_5.png", "rb") as file:
+                  with open("./images_generated/prompt_5.png", "rb") as file:
                       btn = st.download_button(
                               label="Download image",
                               data=file,
@@ -314,10 +314,10 @@ def image_gen():
                               mime="image/png"
                           )
           with tab3:
-              tot3 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_4.png")
+              tot3 = st.image("./images_generated/prompt_4.png")
               tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
               if tot33:
-                  with open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/prompt_4.png", "rb") as file:
+                  with open("./images_generated/prompt_4.png", "rb") as file:
                       btn = st.download_button(
                               label="Download image",
                               data=file,
@@ -337,10 +337,10 @@ def image_gen():
           #st.header(st.session_state['name'])
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
           with tab1:
-              tot4 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_1.png")
+              tot4 = st.image("./images_generated/info_1.png")
               tot44 = st.button('Select Image 4', on_click=change_name, args=['4_image'])
               if tot44:
-                  with open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_1.png", "rb") as file:
+                  with open("./images_generated/info_1.png", "rb") as file:
                       btn = st.download_button(
                               label="Download image",
                               data=file,
@@ -348,7 +348,7 @@ def image_gen():
                               mime="image/png"
                           )
           with tab2:
-              tot5 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_2.png")
+              tot5 = st.image("./images_generated/info_2.png")
               tot55 = st.button('Select Image 5', on_click=change_name, args=['5_image'])
                           #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
               if tot55:
@@ -360,15 +360,22 @@ def image_gen():
                               mime="image/png"
                           )
           with tab3:
-              tot6 = st.image("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
+              tot6 = st.image("./images_generated/info_3.png")
               tot66 = st.button('Select Image 6', on_click=change_name, args=['6_image'])
               #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
               if tot66:
-                  with open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png", "rb") as file:
+                  with open("./images_generated/info_3.png", "rb") as file:
                       btn = st.download_button(
                               label="Download image",
                               data=file,
                               file_name="flower.png",
                               mime="image/png"
                           )
-    
+
+page_names_to_funcs = {
+    "Text Content Generation": context_gen,
+    "Image Generation": image_gen,
+}
+
+selected_page = st.sidebar.selectbox("# Creator Suit", page_names_to_funcs.keys())
+page_names_to_funcs[selected_page]()
