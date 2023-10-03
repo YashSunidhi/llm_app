@@ -154,10 +154,8 @@ with response_container:
                 st.session_state.response = response_text
                 st.session_state.feedback_key += 1
 
-            
-                tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
                 try:
-                    tab1, tab2, tab3 = st.tabs(["Generated Outcome 1","Generated Outcome 2","Generated Outcome 3"])
+                    tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
                     with tab1:
                         response1= tab1.write(generate_response(f''' translate the context in french {st.session_state["generated"][i+1]} ''')['generated'])
                         st.markdown(response1)
