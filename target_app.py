@@ -160,7 +160,7 @@ with response_container:
                 response_text= st.markdown(st.session_state["generated"][i])
                 st.warning("Referred Resources")
                 count = 0
-                if response:
+                if response_text:
                     for source in response.web_search_sources:
                         count = count+1
                         st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
