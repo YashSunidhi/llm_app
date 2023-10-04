@@ -187,7 +187,7 @@ with response_container:
                 count = count+1
                 st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
                 if st.session_state['generated']:
-                    on1 = st.toggle('Examine Translation of Generated Text', key = '_trs')
+                    on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
                     if on1:
                         with st.spinner("Thinking..."):
                             try:
