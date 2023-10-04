@@ -151,8 +151,6 @@ else:
     user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 
-tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
-
 
 with response_container:
     tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
