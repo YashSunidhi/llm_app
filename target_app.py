@@ -14,7 +14,7 @@ if "feedback_key" not in st.session_state:
 if "logged_prompt" not in st.session_state:
     st.session_state.logged_prompt = ""
 if 'name' not in st.session_state:
-st.session_state['name'] = '1_image'
+    st.session_state['name'] = '1_image'
 
 def change_name(name):
   st.session_state['name'] = name
