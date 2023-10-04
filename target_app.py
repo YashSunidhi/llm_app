@@ -153,9 +153,10 @@ else:
 
 tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
 
-with tabx1:
-    with response_container:
-        
+
+with response_container:
+    tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
+    with tabx1:
         if user_input:
             response = generate_response(user_input)
     
@@ -205,8 +206,8 @@ with tabx1:
               )
             # st.session_state.generated.append(response2)
             # st.session_state.generated.append(response3)
-    # model =  'LLAMA2'
-    # email='smnitrkl50@gmail.com'
+# model =  'LLAMA2'
+# email='smnitrkl50@gmail.com'
     with tabx2:
         if st.session_state['generated']:
             #message(st.session_state["generated"][0], key=str(0))
