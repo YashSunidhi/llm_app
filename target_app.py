@@ -113,6 +113,8 @@ with input_container:
 ## Function for taking user prompt as input followed by producing AI generated responses
 def generate_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
     #response = chatbot.chat(prompt)
     response = chatbot.query(prompt, web_search=True, return_full_text=True,truncate=4096)
     # count = 0
@@ -123,7 +125,7 @@ def generate_response(prompt):
     # id = chatbot.new_conversation()
     # chatbot.change_conversation(id)
     # # Get conversation list
-    # conversation_list = chatbot.get_conversation_list()
+    conversation_list = chatbot.get_conversation_list()
     return response
 
 def reset_conversation():
