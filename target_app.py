@@ -170,25 +170,25 @@ with response_container:
         for source in response.web_search_sources:
             count = count+1
             st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-
-        on1 = st.toggle('Examine Translation of Generated Text', key = '_trs')
-        if on1:
-            with st.spinner("Thinking..."):
-                try:
-                    tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
-                    with tab1:
-                        response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
-                        st.markdown(response1)
-                    with tab2:
-                        response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
-                        st.markdown(response2)
-                    with tab3:
-                        response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
-                        st.markdown(response3)
-                except:
-                    pass
-        st.session_state.response = response
-        st.session_state.feedback_key += 1
+        if st.session_state['generated']:
+            on1 = st.toggle('Examine Translation of Generated Text', key = '_trs')
+            if on1:
+                with st.spinner("Thinking..."):
+                    try:
+                        tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+                        with tab1:
+                            response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                            st.markdown(response1)
+                        with tab2:
+                            response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+                            st.markdown(response2)
+                        with tab3:
+                            response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+                            st.markdown(response3)
+                    except:
+                        pass
+            st.session_state.response = response
+            st.session_state.feedback_key += 1
     tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
     if tot33:
         df = pd.DaraFrame(response.text)
