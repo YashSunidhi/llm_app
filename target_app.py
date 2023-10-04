@@ -152,7 +152,7 @@ with response_container:
         # response3 = generate_response(user_input)
         st.session_state.past.append(user_input)
         st.session_state.generated.append(response)
-        st.warning("User Query",icon = ':)')
+        st.warning("User Query",icon = '💬')
         st.markdown(user_input)
         st.warning("Assistant Response",icon = '🤖')
         st.markdown(response)
