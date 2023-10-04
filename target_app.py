@@ -155,7 +155,7 @@ with response_container:
         st.title("Using Designed Prompt for Generation")
         ## Applying the user input box
         with input_container:
-            user_input = st.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
+            user_input = tabx1.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
         if user_input:
             response = generate_response(user_input)
     
