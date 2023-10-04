@@ -266,7 +266,7 @@ if st.session_state.generated:
 
     with tabx3:
         if 'name' not in st.session_state:
-        st.session_state['name'] = '1_image'
+            st.session_state['name'] = '1_image'
     
       def change_name(name):
           st.session_state['name'] = name
