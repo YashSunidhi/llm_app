@@ -81,12 +81,7 @@ option8 = st.sidebar.selectbox(
 'Target Audience Expectation',
 ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
 
-option7 = st.text_input('Input your prompt here',"")
 
-default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
-#prompt = st.text_input('Input your prompt here')
-prompt_design = st.write(default_prompt[0])
-st.title("Using Designed Prompt for Generation")
 # Generate empty lists for generated and past.
 ## generated stores AI generated responses
 if 'generated' not in st.session_state:
@@ -112,9 +107,7 @@ response_container = st.container()
 def get_text():
     input_text = st.text_input("You: ", "", key="input")
     return input_text
-## Applying the user input box
-with input_container:
-    user_input = st.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
+
 
 # Response output
 ## Function for taking user prompt as input followed by producing AI generated responses
@@ -155,6 +148,14 @@ else:
 with response_container:
     tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
     with tabx1:
+        option7 = st.text_input('Input your prompt here',"")
+        default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+        #prompt = st.text_input('Input your prompt here')
+        prompt_design = st.write(default_prompt[0])
+        st.title("Using Designed Prompt for Generation")
+        ## Applying the user input box
+        with input_container:
+            user_input = st.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
         if user_input:
             response = generate_response(user_input)
     
