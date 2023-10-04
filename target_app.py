@@ -13,7 +13,11 @@ if "feedback_key" not in st.session_state:
     st.session_state.feedback_key = 0
 if "logged_prompt" not in st.session_state:
     st.session_state.logged_prompt = ""
+if 'name' not in st.session_state:
+st.session_state['name'] = '1_image'
 
+def change_name(name):
+  st.session_state['name'] = name
 # Log in to huggingface and grant authorization to huggingchat
 sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
 cookies = sign.login()
@@ -136,7 +140,9 @@ def reset_conversation():
     # st.session_state.user_input = ""
     st.session_state.generated = ["I'm AABIChat, How may I help you?"]
     st.session_state.past = ['Hi!']
-
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+    
 reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
 if reset:
     if 'user_input' not in st.session_state:
@@ -145,6 +151,7 @@ else:
     user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 with response_container:
+    
     if user_input:
         response = generate_response(user_input)
 
@@ -156,6 +163,17 @@ with response_container:
         st.markdown(user_input)
         st.warning("Assistant Response",icon = '🤖')
         st.markdown(response)
+        tot33 = st.button('Approve Text', on_click=change_name, args=['3_image'])
+        if tot33:
+            df = pd.DaraFrame(response.text)
+            csv = convert_df(df)
+            btn = st.download_button(
+                  label="Download image",
+                  data=csv,
+                  file_name="approved.csv",
+                  mime="final/csv"
+              )
+  
         st.warning("Referred Resources",icon = '🚨')
         count = 0
         for source in response.web_search_sources:
