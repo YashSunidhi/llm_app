@@ -178,7 +178,7 @@ with response_container:
                         st.markdown(response3)
                 except:
                     pass
-        st.session_state.response = response_text
+        st.session_state.response = response
         st.session_state.feedback_key += 1
         # st.session_state.generated.append(response2)
         # st.session_state.generated.append(response3)
