@@ -142,6 +142,14 @@ else:
 with response_container:
     if user_input:
         response = generate_response(user_input)
+        st.warning("Referred Resources")
+        count = 0
+        try:
+            for source in response.web_search_sources:
+                count = count+1
+                st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
+        except:
+            pass
         # response2 = generate_response(user_input)
         # response3 = generate_response(user_input)
         st.session_state.past.append(user_input)
@@ -158,14 +166,6 @@ with response_container:
             #tab1, tab2, tab3 = st.tabs(['Generated Outcome 1','Generated Outcome 1','Generated Outcome 1' ])
             with st.spinner("Thinking..."):
                 response_text= st.markdown(st.session_state["generated"][i])
-                st.warning("Referred Resources")
-                count = 0
-                try:
-                    for source in response.web_search_sources:
-                        count = count+1
-                        st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
-                except:
-                    pass
                 if len(st.session_state["generated"])>1:
                     on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                     if on1: 
