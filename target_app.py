@@ -115,15 +115,15 @@ def generate_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     #response = chatbot.chat(prompt)
     response = chatbot.query(prompt, web_search=True, return_full_text=True,truncate=4096)
-    count = 0
-    for source in response.web_search_sources:
-      count = count+1
-      print(str(count)+ str(": "), source.title, source.link,source.hostname)
-    # Create a new conversation
-    id = chatbot.new_conversation()
-    chatbot.change_conversation(id)
-    # Get conversation list
-    conversation_list = chatbot.get_conversation_list()
+    # count = 0
+    # for source in response.web_search_sources:
+    #   count = count+1
+    #   print(str(count)+ str(": "), source.title, source.link,source.hostname)
+    # # Create a new conversation
+    # id = chatbot.new_conversation()
+    # chatbot.change_conversation(id)
+    # # Get conversation list
+    # conversation_list = chatbot.get_conversation_list()
     return response
 
 def reset_conversation():
