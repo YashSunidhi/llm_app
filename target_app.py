@@ -187,8 +187,8 @@ with response_container:
         #                     st.markdown(response3)
         #             except:
         #                 pass
-            st.session_state.response = response
-            st.session_state.feedback_key += 1
+        st.session_state.response = response
+        st.session_state.feedback_key += 1
     tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
     if tot33:
         df = pd.DaraFrame(response.text)
