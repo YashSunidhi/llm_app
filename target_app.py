@@ -137,11 +137,11 @@ def convert_df(df):
    return df.to_csv(index=False).encode('utf-8')
     
 reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
-if reset:
-    if 'user_input' not in st.session_state:
-        st.session_state.user_input = ''
-else:
-    user_input = st.session_state.user_input
+# if reset:
+#     if 'user_input' not in st.session_state:
+#         st.session_state.user_input = ''
+# else:
+#     user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 
 
@@ -157,6 +157,12 @@ with response_container:
         ## Applying the user input box
         with input_container:
             user_input = tabx1.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
+
+        if reset:
+            if 'user_input' not in st.session_state:
+                st.session_state.user_input = ''
+        else:
+            user_input = st.session_state.user_input
         if user_input:
             response = generate_response(user_input)
     
