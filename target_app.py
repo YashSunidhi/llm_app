@@ -162,7 +162,7 @@ with response_container:
             count = count+1
             st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
 
-        on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
+        on1 = st.toggle('Examine Translation of Generated Text', key = '_trs')
         if on1:
             with st.spinner("Thinking..."):
                 try:
