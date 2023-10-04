@@ -44,6 +44,9 @@ with st.sidebar:
 #######
 # Get the input text from the user
 st.title("Prompt Design")
+option0 = st.sidebar.selectbox(
+'Contemt Designer Role',
+('pharma communication', 'scientific communication', 'marketing communication'))
 option1 = st.sidebar.selectbox(
 'Product',
 ('Phesgo', 'Tecentriq'))
@@ -58,7 +61,7 @@ option3 = st.sidebar.selectbox(
 
 option4 = st.sidebar.selectbox(
 'Content Type',
-('None','Newsletter','Email', 'Executive', 'Regular Content','Blog Post' 
+('None','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
     ))
 option5 = st.sidebar.selectbox(
 'Objective',
@@ -67,8 +70,8 @@ option5 = st.sidebar.selectbox(
 
 option6 = st.sidebar.selectbox(
 'Output Language',
-('English','French', 'Spanish', 'German', 
-    'Italian'))
+('','in French', 'in Spanish', 'in German', 
+    'in Italian'))
 
 option8 = st.sidebar.selectbox(
 'Target Audience Expectation',
@@ -76,7 +79,7 @@ option8 = st.sidebar.selectbox(
 
 option7 = st.text_input('Input your prompt here',"")
 
-default_prompt = ["Create persuasive marketing content in " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
 #prompt = st.text_input('Input your prompt here')
 prompt_design = st.write(default_prompt[0])
 st.title("Using Designed Prompt for Generation")
@@ -146,12 +149,9 @@ with response_container:
         response = generate_response(user_input)
         st.warning("Referred Resources")
         count = 0
-        try:
-            for source in response.web_search_sources:
-                count = count+1
-                st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
-        except:
-            pass
+        for source in response.web_search_sources:
+            count = count+1
+            st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
         # response2 = generate_response(user_input)
         # response3 = generate_response(user_input)
         st.session_state.past.append(user_input)
