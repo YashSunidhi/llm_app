@@ -114,7 +114,7 @@ with input_container:
 def generate_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     #response = chatbot.chat(prompt)
-    response = chatbot.query(input_prompt, web_search=True, return_full_text=True,truncate=4096)
+    response = chatbot.query(prompt, web_search=True, return_full_text=True,truncate=4096)
     count = 0
     for source in response.web_search_sources:
       count = count+1
