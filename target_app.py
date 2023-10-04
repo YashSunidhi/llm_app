@@ -130,7 +130,7 @@ def generate_response(prompt):
 
 def generate_translate(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    response = chatbot.chat(prompt, temperature =0.05)
+    translate = chatbot.chat(prompt, temperature =0.05)
     return translate
 
 def reset_conversation():
@@ -237,13 +237,13 @@ with response_container:
                             with tab1:
                                 st.markdown(st.session_state["generated"][i])
                             with tab2:
-                                response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                                response1= generate_translate(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
                                 st.markdown(response1)
                             with tab3:
-                                response2= generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                                response2= generate_translate(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
                                 st.markdown(response2)
                             with tab4:
-                                response3= generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                                response3= generate_translate(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
                                 st.markdown(response3)
                             # except:
                             #     pass
