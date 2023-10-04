@@ -227,21 +227,21 @@ with response_container:
                     if len(st.session_state["generated"])>1:
                         on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                         if on1: 
-                            try:
-                                tab1, tab2, tab3, tab4 = st.tabs(["Original Generation","French Translation","German Translation","Spanish Translation"])
-                                with tab1:
-                                    st.markdown(st.session_state["generated"][i])
-                                with tab2:
-                                    response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
-                                    st.markdown(response1)
-                                with tab3:
-                                    response2= generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
-                                    st.markdown(response2)
-                                with tab4:
-                                    response3= generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
-                                    st.markdown(response3)
-                            except:
-                                pass
+                            #try:
+                            tab1, tab2, tab3, tab4 = st.tabs(["Original Generation","French Translation","German Translation","Spanish Translation"])
+                            with tab1:
+                                st.markdown(st.session_state["generated"][i])
+                            with tab2:
+                                response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                                st.markdown(response1)
+                            with tab3:
+                                response2= generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                                st.markdown(response2)
+                            with tab4:
+                                response3= generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                                st.markdown(response3)
+                            # except:
+                            #     pass
                     # st.session_state.logged_prompt = collector.log_prompt(
                     #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
                     # )
