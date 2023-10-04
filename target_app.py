@@ -267,18 +267,17 @@ if st.session_state.generated:
     with tabx3:
         if 'name' not in st.session_state:
             st.session_state['name'] = '1_image'
-    
-      def change_name(name):
-          st.session_state['name'] = name
+        def change_name(name):
+            st.session_state['name'] = name
       #######
       # Get the input text from the user
-      st.title("Content Driven Image Generation")
+        st.title("Content Driven Image Generation")
       
       
-      def file_selector(folder_path='.'):
-          filenames = os.listdir(folder_path)
-          selected_filename = st.sidebar.selectbox('Select a file', filenames)
-          return os.path.join(folder_path, selected_filename)
+       def file_selector(folder_path='.'):
+           filenames = os.listdir(folder_path)
+           selected_filename = st.sidebar.selectbox('Select a file', filenames)
+           return os.path.join(folder_path, selected_filename)
       
       
       
@@ -441,6 +440,6 @@ if st.session_state.generated:
     
                     # if feedback:
                     #     trubrics_successful_feedback(feedback)
-
+    
     with tabx4:
         pass
