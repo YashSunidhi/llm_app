@@ -113,7 +113,17 @@ with input_container:
 ## Function for taking user prompt as input followed by producing AI generated responses
 def generate_response(prompt):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    response = chatbot.chat(prompt)
+    #response = chatbot.chat(prompt)
+    response = chatbot.query(input_prompt, web_search=True, return_full_text=True,truncate=4096)
+    count = 0
+    for source in response.web_search_sources:
+      count = count+1
+      print(str(count)+ str(": "), source.title, source.link,source.hostname)
+    # Create a new conversation
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
+    # Get conversation list
+    conversation_list = chatbot.get_conversation_list()
     return response
 
 def reset_conversation():
@@ -148,6 +158,11 @@ with response_container:
             #tab1, tab2, tab3 = st.tabs(['Generated Outcome 1','Generated Outcome 1','Generated Outcome 1' ])
             with st.spinner("Thinking..."):
                 response_text= st.markdown(st.session_state["generated"][i])
+                st.warning("Referred Resources")
+                count = 0
+                for source in response.web_search_sources:
+                    count = count+1
+                    st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
                 if len(st.session_state["generated"])>1:
                     on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                     if on1: 
