@@ -47,7 +47,7 @@ with st.sidebar:
 
 #######
 # Get the input text from the user
-st.title("Prompt Design")
+
 option0 = st.sidebar.selectbox(
 'Contemt Designer Role',
 ('pharma communication', 'scientific communication', 'marketing communication'))
@@ -148,6 +148,7 @@ else:
 with response_container:
     tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
     with tabx1:
+        tabx1.title("Prompt Design")
         option7 = st.text_input('Input your prompt here',"")
         default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
         #prompt = st.text_input('Input your prompt here')
