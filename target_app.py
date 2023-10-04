@@ -163,7 +163,7 @@ with response_container:
         st.markdown(user_input)
         st.warning("Assistant Response",icon = '🤖')
         st.markdown(response)
-        tot33 = st.button('Approve Text', on_click=change_name, args=['3_image'])
+        tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
         if tot33:
             df = pd.DaraFrame(response.text)
             csv = convert_df(df)
