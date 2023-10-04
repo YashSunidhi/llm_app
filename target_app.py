@@ -152,55 +152,75 @@ with response_container:
         # response3 = generate_response(user_input)
         st.session_state.past.append(user_input)
         st.session_state.generated.append(response)
-        st.warning("User Query")
+        st.warning("User Query",icon = ':)')
         st.markdown(user_input)
-        st.warning("Assistant Response")
+        st.warning("Assistant Response",icon = '🤖')
         st.markdown(response)
-        st.warning("Referred Resources")
+        st.warning("Referred Resources",icon = '🚨')
         count = 0
         for source in response.web_search_sources:
             count = count+1
             st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+
+        on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
+        if on1:
+            with st.spinner("Thinking..."):
+                try:
+                    tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+                    with tab1:
+                        response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                        st.markdown(response1)
+                    with tab2:
+                        response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+                        st.markdown(response2)
+                    with tab3:
+                        response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+                        st.markdown(response3)
+                except:
+                    pass
+        st.session_state.response = response_text
+        st.session_state.feedback_key += 1
         # st.session_state.generated.append(response2)
         # st.session_state.generated.append(response3)
-    model =  'LLAMA2'
-    email='smnitrkl50@gmail.com'
-    if st.session_state['generated']:
-        #message(st.session_state["generated"][0], key=str(0))
-        for i in range(len(st.session_state['generated'])):
-            message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-            #message(st.session_state["generated"][10], key=str(10))
-            #tab1, tab2, tab3 = st.tabs(['Generated Outcome 1','Generated Outcome 1','Generated Outcome 1' ])
-            with st.spinner("Thinking..."):
-                response_text= st.session_state["generated"][i]
-                #response_text= st.markdown(st.session_state["generated"][i])
-                if len(st.session_state["generated"])>1:
-                    on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
-                    if on1: 
-                        try:
-                            tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
-                            with tab1:
-                                response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
-                                st.markdown(response1)
-                            with tab2:
-                                response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
-                                st.markdown(response2)
-                            with tab3:
-                                response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
-                                st.markdown(response3)
-                        except:
-                            pass
-                # st.session_state.logged_prompt = collector.log_prompt(
-                #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
-                # )
-                st.session_state.response = response_text
-                st.session_state.feedback_key += 1
-            #break
-                #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
-                #if on1: 
+    # model =  'LLAMA2'
+    # email='smnitrkl50@gmail.com'
+    # if st.session_state['generated']:
+    #     #message(st.session_state["generated"][0], key=str(0))
+    #     for i in range(len(st.session_state['generated'])):
+    #         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+    #         #message(st.session_state["generated"][10], key=str(10))
+    #         #tab1, tab2, tab3 = st.tabs(['Generated Outcome 1','Generated Outcome 1','Generated Outcome 1' ])
+    #         with st.spinner("Thinking..."):
+    #             response_text= st.session_state["generated"][i]
+    #             #response_text= st.markdown(st.session_state["generated"][i])
+    #             if len(st.session_state["generated"])>1:
+    #                 on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
+    #                 if on1: 
+    #                     try:
+    #                         tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+    #                         with tab1:
+    #                             response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+    #                             st.markdown(response1)
+    #                         with tab2:
+    #                             response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+    #                             st.markdown(response2)
+    #                         with tab3:
+    #                             response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+    #                             st.markdown(response3)
+    #                     except:
+    #                         pass
+    #             # st.session_state.logged_prompt = collector.log_prompt(
+    #             #     config_model={"model": model}, prompt=user_input, generation=response_text, tags=["llm_app.py"], user_id=email
+    #             # )
+    #             st.session_state.response = response_text
+    #             st.session_state.feedback_key += 1
+    #         #break
+    #             #on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
+    #             #if on1: 
 
-            #st.markdown(st.session_state["generated"][i])
-
+    #         #st.markdown(st.session_state["generated"][i])
+model =  'LLAMA2'
+email='smnitrkl50@gmail.com'
 if st.session_state.generated:
     #st.markdown(f"#### :violet[{st.session_state.response}]")
 
