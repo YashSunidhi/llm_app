@@ -147,15 +147,20 @@ else:
 with response_container:
     if user_input:
         response = generate_response(user_input)
+
+        # response2 = generate_response(user_input)
+        # response3 = generate_response(user_input)
+        st.session_state.past.append(user_input)
+        st.session_state.generated.append(response)
+        st.warning("User Query")
+        st.markdown(user_input)
+        st.warning("Assistant Response")
+        st.markdown(response)
         st.warning("Referred Resources")
         count = 0
         for source in response.web_search_sources:
             count = count+1
             st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-        # response2 = generate_response(user_input)
-        # response3 = generate_response(user_input)
-        st.session_state.past.append(user_input)
-        st.session_state.generated.append(response)
         # st.session_state.generated.append(response2)
         # st.session_state.generated.append(response3)
     model =  'LLAMA2'
@@ -167,7 +172,8 @@ with response_container:
             #message(st.session_state["generated"][10], key=str(10))
             #tab1, tab2, tab3 = st.tabs(['Generated Outcome 1','Generated Outcome 1','Generated Outcome 1' ])
             with st.spinner("Thinking..."):
-                response_text= st.markdown(st.session_state["generated"][i])
+                response_text= st.session_state["generated"][i]
+                #response_text= st.markdown(st.session_state["generated"][i])
                 if len(st.session_state["generated"])>1:
                     on1 = st.toggle('Examine Translation of Generated Text', key = str(i)+'_trs')
                     if on1: 
