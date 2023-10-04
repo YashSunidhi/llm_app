@@ -163,16 +163,7 @@ with response_container:
         st.markdown(user_input)
         st.warning("Assistant Response",icon = '🤖')
         st.markdown(response)
-        tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
-        if tot33:
-            df = pd.DaraFrame(response.text)
-            csv = convert_df(df)
-            btn = st.download_button(
-                  label="Download image",
-                  data=csv,
-                  file_name="approved.csv",
-                  mime="final/csv"
-              )
+
   
         st.warning("Referred Resources",icon = '🚨')
         count = 0
@@ -198,6 +189,16 @@ with response_container:
                     pass
         st.session_state.response = response
         st.session_state.feedback_key += 1
+    tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
+    if tot33:
+        df = pd.DaraFrame(response.text)
+        csv = convert_df(df)
+        btn = st.download_button(
+              label="Download image",
+              data=csv,
+              file_name="approved.csv",
+              mime="final/csv"
+          )
         # st.session_state.generated.append(response2)
         # st.session_state.generated.append(response3)
     # model =  'LLAMA2'
