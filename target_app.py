@@ -151,7 +151,7 @@ with response_container:
         count = 0
         for source in response.web_search_sources:
             count = count+1
-            st.markdown(str(count)+ str(": "), source.title, source.link,source.hostname)
+            st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
         # response2 = generate_response(user_input)
         # response3 = generate_response(user_input)
         st.session_state.past.append(user_input)
