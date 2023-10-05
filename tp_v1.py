@@ -87,7 +87,7 @@ def text_gen():
     
     # Initialize chat history
     if "messages" not in st.session_state:
-        st.session_state.messages = []
+        st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
     
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
