@@ -386,7 +386,7 @@ with tabx3:
     if on4:
     
         #st.header(st.session_state['name'])
-        with tabx3.spinner("Thinking..."):
+        with st.spinner("Thinking..."):
             time.sleep(10)
             tab1a, tab2a, tab3a = tabx3.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
             with tab1a:
