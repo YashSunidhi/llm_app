@@ -174,6 +174,7 @@ def text_trans():
     uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True, type={"csv", "txt"})
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
+        st.text(uploaded_file)
         st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
         st.markdown(bytes_data)
