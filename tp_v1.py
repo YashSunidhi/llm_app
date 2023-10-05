@@ -105,7 +105,7 @@ def generate_response(prompt_input, email, passwd):
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
 
     prompt = f"{string_dialogue} {prompt_input} Assistant: "
-    return chatbot.query(prompt,web_search=True,truncate=4096)
+    return chatbot.query(prompt,web_search=True)
 
 
 # User-provided prompt
@@ -120,6 +120,11 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("Thinking..."):
             response = generate_response(prompt, hf_email, hf_pass) 
             st.write(response) 
-            for i in 
+            st.warning("Referred Resources",icon = '🚨')
+            count = 0
+            for source in response.web_search_sources:
+                count = count+1
+                res.append((str(count)+ str(": "), source.title, source.link,source.hostname))
+                st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
