@@ -182,9 +182,9 @@ def text_trans():
             'Select a Language of Interest',
             ('French', 'German', 'Spanish', 'Italian','Portugense'))
 
-            try:
+            if uploaded_file:
                 text = df['content'].iloc[-1]
-            except:
+            else:
                 text = st.text_area(
                 "Text to analyze",
                 )
