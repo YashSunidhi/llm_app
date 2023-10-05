@@ -404,7 +404,7 @@ def final_out():
     uploaded_files = st.sidebar.file_uploader("Choose final text and image file", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
-        st.write("filename:", uploaded_file.name)
+        #st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
         file_extension = pathlib.Path(uploaded_file.name).suffix
         if uploaded_file:
