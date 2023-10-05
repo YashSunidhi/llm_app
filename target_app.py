@@ -116,7 +116,7 @@ def generate_response(prompt):
     id = chatbot.new_conversation()
     chatbot.change_conversation(id)
     #response = chatbot.chat(prompt)
-    response = chatbot.query(prompt, web_search=True, return_full_text=True,truncate=4096)
+    response = chatbot.query(prompt, web_search=True, return_full_text=True,use_cache = True,truncate=4096)
     # count = 0
     # for source in response.web_search_sources:
     #   count = count+1
@@ -151,41 +151,39 @@ reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
 
 
 with response_container:
-    #tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
-    #with tabx1:
-    st.title("Prompt Design")
-    option7 = st.text_input('Input your prompt here',"")
-    default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
-    #prompt = st.text_input('Input your prompt here')
-    prompt_design = st.write(default_prompt[0])
-    st.title("Using Designed Prompt for Generation")
-    ## Applying the user input box
-    with input_container:
-        user_input = st.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
-
-    if reset:
-        if 'user_input' not in st.session_state:
-            st.session_state.user_input = ''
-    else:
-        user_input = st.session_state.user_input
-    if user_input:
-        response = generate_response(user_input)
-
-        # response2 = generate_response(user_input)
-        # response3 = generate_response(user_input)
-        st.session_state.past.append(user_input)
-        st.session_state.generated.append(response)
-        st.warning("User Query",icon = '💬')
-        st.markdown(user_input)
-        st.warning("Assistant Response",icon = '🤖')
-        st.markdown(response)
-
-  
-        st.warning("Referred Resources",icon = '🚨')
-        count = 0
-        for source in response.web_search_sources:
-            count = count+1
-            st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+    tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
+    with tabx1:
+        st.title("Prompt Design")
+        option7 = st.text_input('Input your prompt here',"")
+        default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+        #prompt = st.text_input('Input your prompt here')
+        prompt_design = st.write(default_prompt[0])
+        st.title("Using Designed Prompt for Generation")
+        ## Applying the user input box
+        with input_container:
+            user_input = tabx1.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
+    
+        if reset:
+            if 'user_input' not in st.session_state:
+                st.session_state.user_input = ''
+        else:
+            user_input = st.session_state.user_input
+        if user_input:
+            response = generate_response(user_input)
+    
+            # response2 = generate_response(user_input)
+            # response3 = generate_response(user_input)
+            st.session_state.past.append(user_input)
+            st.session_state.generated.append(response)
+            st.warning("User Query",icon = '💬')
+            st.markdown(user_input)
+            st.warning("Assistant Response",icon = '🤖')
+            st.markdown(response)
+            st.warning("Referred Resources",icon = '🚨')
+            count = 0
+            for source in response.web_search_sources:
+                count = count+1
+                st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
         if st.session_state['generated']:
             on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
             if on1:
@@ -203,18 +201,18 @@ with response_container:
                             st.markdown(response3)
                     except:
                         pass
-        st.session_state.response = response
-        st.session_state.feedback_key += 1
-        tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
-        if tot33:
-            df = pd.DaraFrame(response.text)
-            csv = convert_df(df)
-            btn = st.download_button(
-                  label="Download image",
-                  data=csv,
-                  file_name="approved.csv",
-                  mime="final/csv"
-              )
+            #st.session_state.response = response
+            st.session_state.feedback_key += 1
+            tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
+            if tot33:
+                df = pd.DaraFrame(response.text)
+                csv = convert_df(df)
+                btn = st.download_button(
+                      label="Download image",
+                      data=csv,
+                      file_name="approved.csv",
+                      mime="final/csv"
+                  )
             # st.session_state.generated.append(response2)
             # st.session_state.generated.append(response3)
 # # model =  'LLAMA2'
