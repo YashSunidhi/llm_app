@@ -142,7 +142,11 @@ def text_gen():
                     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
         message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
-    df = pd.DataFrame(st.session_state.messages)
+    try:
+        st.write(st.session_state.messages[-1]['content'])
+    except:
+        pass
+    df = pd.DataFrame(st.write(st.session_state.messages[-1]['content']))
     def convert_df(df):
        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
     
@@ -160,6 +164,9 @@ def text_gen():
 
 def text_trans():
     st.markdown("<h3 style='text-align: center; color: grey;'> Translation In EU5 Languages </h3>", unsafe_allow_html=True)
+    option0 = st.sidebar.select(
+        'Select a Language of Interest',
+        ('French', 'German', 'Spanish', 'Italian','Portugense'))
     with st.sidebar:
         st.title('🤗💬 AABI Content Translator')
         st.markdown('''
@@ -182,50 +189,31 @@ def text_trans():
                 stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
                 read_data=stringio.read()
                 st.write(read_data)
-        # file_extension = pathlib.Path(uploaded_file.name).suffix
-        # if file_extension=='.csv':
-        #     df = pd.read_csv(uploaded_file)
-        #     st.dataframe(df)
-    #         st.markdown(df['content'].iloc[-1])
-    #         #text = st.markdown(df['content'].iloc[-1])
-    # #######
-    #         # Get the input text from the user
-            
-    #         # option0 = st.sidebar.select(
-    #         # 'Select a Language of Interest',
-    #         # ('French', 'German', 'Spanish', 'Italian','Portugense'))
 
-    # if uploaded_files is not None:
-    #     df = pd.read_csv(uploaded_files)
-    #     text = df['content'].iloc[-1]
-    # else:
-    #     text = st.text_input(
-    #     "Text to analyze",
-    #     )
-    text = text = st.text_input(
-        "Text to analyze",
-        )
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
-    with tab1:
-        # Use any translator you like, in this example GoogleTranslator
-        #translated = GoogleTranslator(source='auto', target='french').translate(text)
-        st.markdown(text)
-    with tab2:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='french').translate(text)
-        st.markdown(translated)
-    with tab3:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='german').translate(text)
-        st.markdown(translated)
-    with tab4:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='italian').translate(text)
-        st.markdown(translated)
-    with tab5:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='spanish').translate(text)
-        st.markdown(translated)
+                text = st.text_input(
+                    "Text to analyze",read_data
+                    )
+                tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
+                with tab1:
+                    # Use any translator you like, in this example GoogleTranslator
+                    #translated = GoogleTranslator(source='auto', target='french').translate(text)
+                    st.markdown(text)
+                with tab2:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='french').translate(text)
+                    st.markdown(translated)
+                with tab3:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='german').translate(text)
+                    st.markdown(translated)
+                with tab4:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='italian').translate(text)
+                    st.markdown(translated)
+                with tab5:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='spanish').translate(text)
+                    st.markdown(translated)
             
 def image_gen():
     if 'name' not in st.session_state:
