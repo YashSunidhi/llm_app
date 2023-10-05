@@ -164,7 +164,7 @@ def text_gen():
 
 def text_trans():
     st.markdown("<h3 style='text-align: center; color: grey;'> Translation In EU5 Languages </h3>", unsafe_allow_html=True)
-    option0 = st.sidebar.select(
+    option0 = st.sidebar.selectbox(
         'Select a Language of Interest',
         ('French', 'German', 'Spanish', 'Italian','Portugense'))
     with st.sidebar:
