@@ -162,13 +162,6 @@ with response_container:
         ## Applying the user input box
         with input_container:
             user_input = tabx1.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
-    
-        if reset:
-            if 'user_input' not in st.session_state:
-                st.session_state.user_input = ''
-        else:
-            user_input = st.session_state.user_input
-
         resp = []
         us_in = []
         res = []
@@ -176,19 +169,18 @@ with response_container:
             st.warning("User Query",icon = '💬')
             st.markdown(user_input)
             response = generate_response(user_input)
-            res.append(response.text)
+            resp.append(response.text)
+            st.warning("Assistant Response",icon = '🤖')
+            st.markdown(response.text)
+            st.warning("Referred Resources",icon = '🚨')
             count = 0
             for source in response.web_search_sources:
                 count = count+1
                 res.append((str(count)+ str(": "), source.title, source.link,source.hostname))
-            us_in.append(user_input)
+                st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
-            st.warning("Assistant Response",icon = '🤖')
-            st.markdown(resp[0])
-            st.warning("Referred Resources",icon = '🚨')
-            for i in res:
-                st.write(i)
         
 
         
@@ -206,6 +198,7 @@ with response_container:
             # for source in response.web_search_sources:
             #     count = count+1
             #     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+    with tabx2:
         if res[-1]:
             on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
             if on1:
@@ -237,6 +230,11 @@ with response_container:
                       file_name="approved.csv",
                       mime="final/csv"
                   )
+# if reset:
+#     if 'user_input' not in st.session_state:
+#         st.session_state.user_input = ''
+# else:
+#     user_input = st.session_state.user_input
             # st.session_state.generated.append(response2)
             # st.session_state.generated.append(response3)
 # # model =  'LLAMA2'
@@ -279,25 +277,25 @@ with response_container:
                     #if on1: 
     
                 #st.markdown(st.session_state["generated"][i])
-        model =  'LLAMA2'
-        email='smnitrkl50@gmail.com'
-        if st.session_state.generated:
-            #st.markdown(f"#### :violet[{st.session_state.response}]")
+        # model =  'LLAMA2'
+        # email='smnitrkl50@gmail.com'
+        # if st.session_state.generated:
+        #     #st.markdown(f"#### :violet[{st.session_state.response}]")
         
-            feedback = collector.st_feedback(
-                component="default",
-                feedback_type="thumbs",
-                open_feedback_label="[Optional] Provide additional feedback",
-                #prompt_id=st.session_state.logged_prompt.id,
-                model=model,
-                align="flex-start",
-                tags=["llm_app.py"],
-                key=f"feedback_{st.session_state.feedback_key}",  # overwrite with new key
-                user_id=email,
-            )
-            if feedback:
-                st.write("#### Raw feedback saved to Trubrics:")
-                st.write(feedback)
+        #     feedback = collector.st_feedback(
+        #         component="default",
+        #         feedback_type="thumbs",
+        #         open_feedback_label="[Optional] Provide additional feedback",
+        #         #prompt_id=st.session_state.logged_prompt.id,
+        #         model=model,
+        #         align="flex-start",
+        #         tags=["llm_app.py"],
+        #         key=f"feedback_{st.session_state.feedback_key}",  # overwrite with new key
+        #         user_id=email,
+        #     )
+        #     if feedback:
+        #         st.write("#### Raw feedback saved to Trubrics:")
+        #         st.write(feedback)
 
     # with tabx3:
     #     if 'name' not in st.session_state:
