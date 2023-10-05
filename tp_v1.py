@@ -12,21 +12,67 @@ import os
 # App title
 st.set_page_config(page_title="🤗💬 AABIChat")
 
-# Hugging Face Credentials
+sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
+cookies = sign.login()
+
+# Save cookies to the local directory
+cookie_path_dir = "./cookies_snapshot"
+sign.saveCookiesToDir(cookie_path_dir)
+#st.set_page_config(layout="wide")
+st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
+st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content Drafing Suite </h6>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
+
+# Sidebar contents
 with st.sidebar:
-    st.title('🤗💬 AABIChat')
-    if ('EMAIL' in st.secrets) and ('PASS' in st.secrets):
-        st.success('HuggingFace Login credentials already provided!', icon='✅')
-        hf_email = st.secrets['EMAIL']
-        hf_pass = st.secrets['PASS']
-    else:
-        hf_email = st.text_input('Enter E-mail:', type='password')
-        hf_pass = st.text_input('Enter password:', type='password')
-        if not (hf_email and hf_pass):
-            st.warning('Please enter your credentials!', icon='⚠️')
-        else:
-            st.success('Proceed to entering your prompt message!', icon='👉')
-    #st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-an-llm-powered-chatbot-with-streamlit/)!')
+    st.title('🤗💬 LLMChat App')
+    st.markdown('''
+    ## About
+    This app is an LLM-powered Generative Engine:
+    
+    💡 Note: Free and Secure Access
+    ''')
+    # add_vertical_space(5)
+    # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
+    #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
+
+    
+
+#######
+# Get the input text from the user
+
+option0 = st.sidebar.selectbox(
+'Contemt Designer Role',
+('pharma communication', 'scientific communication', 'marketing communication'))
+option1 = st.sidebar.selectbox(
+'Product',
+('Phesgo', 'Tecentriq'))
+option2 = st.sidebar.selectbox(
+'Target Audience',
+('HCP', 'Patients', 'Patients and their Families'))
+
+option3 = st.sidebar.selectbox(
+'Tone of Generation',
+('Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
+))
+
+option4 = st.sidebar.selectbox(
+'Content Type',
+('None','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
+    ))
+option5 = st.sidebar.selectbox(
+'Objective',
+('Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
+    ))
+
+option6 = st.sidebar.selectbox(
+'Output Language',
+('','in French', 'in Spanish', 'in German', 
+    'in Italian'))
+
+option8 = st.sidebar.selectbox(
+'Target Audience Expectation',
+('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
 
 
 # Initialize chat history
