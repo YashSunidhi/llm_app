@@ -183,7 +183,8 @@ def text_trans():
             'Select a Language of Interest',
             ('French', 'German', 'Spanish', 'Italian','Portugense'))
 
-    if uploaded_files:
+    if uploaded_files is not None:
+        df = pd.read_csv(uploaded_files)
         text = df['content'].iloc[-1]
     else:
         text = st.text_input(
