@@ -146,7 +146,7 @@ def text_gen():
 
         #st.write(st.session_state.messages[-1]['content'])
 
-    df = pd.DataFrame(st.session_state.messages[1]['content'])
+    df = pd.DataFrame(st.session_state.messages)
         
     def convert_df(df):
         return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
