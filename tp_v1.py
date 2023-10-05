@@ -399,7 +399,7 @@ def final_out():
         print("File Extension: ", file_extension)
         if file_extension=='.csv':
             df = pd.read_csv(uploaded_file,encoding = "ISO-8859-1")
-            st.dataframe(df['content'].iloc[-1])
+            st.dataframe(df)
         if file_extension=='.png':
             st.image(uploaded_file)
         
