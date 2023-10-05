@@ -155,7 +155,9 @@ def text_gen():
        key='download-csv'
     )
     return st.session_state.messages[-1]['content']
-def text_trans(text_gen):
+
+var = text_gen()
+def text_trans(var):
     with st.sidebar:
         st.title('🤗💬 AABI Content Translator')
         st.markdown('''
@@ -191,7 +193,7 @@ def text_trans(text_gen):
     #     text = st.text_input(
     #     "Text to analyze",
     #     )
-    text = text_gen
+    text = var
     tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
     with tab1:
         # Use any translator you like, in this example GoogleTranslator
