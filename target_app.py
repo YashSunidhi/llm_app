@@ -168,32 +168,54 @@ with response_container:
                 st.session_state.user_input = ''
         else:
             user_input = st.session_state.user_input
+
+        resp = []
+        us_in = []
+        res = []
         if user_input:
             response = generate_response(user_input)
-    
-            # response2 = generate_response(user_input)
-            # response3 = generate_response(user_input)
-            st.session_state.past.append(user_input)
-            st.session_state.generated.append(response)
-            st.warning("User Query",icon = '💬')
-            st.markdown(user_input)
-            st.warning("Assistant Response",icon = '🤖')
-            st.markdown(response)
-            st.warning("Referred Resources",icon = '🚨')
+            res.append(response.text)
             count = 0
             for source in response.web_search_sources:
                 count = count+1
-                st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-        if st.session_state['generated']:
+                res.append(str(count)+ str(": "), source.title, source.link,source.hostname)
+            us_in.append(user_input)
+            st.session_state.past.append(user_input)
+            st.session_state.generated.append(response)
+        st.warning("User Query",icon = '💬')
+        st.markdown(us_in[0])
+        st.warning("Assistant Response",icon = '🤖')
+        st.markdown(resp[0])
+        st.warning("Referred Resources",icon = '🚨')
+        for i in res:
+            st.write(i)
+        
+
+        
+    
+            # # response2 = generate_response(user_input)
+            # # response3 = generate_response(user_input)
+            # st.session_state.past.append(user_input)
+            # st.session_state.generated.append(response)
+            # st.warning("User Query",icon = '💬')
+            # st.markdown(user_input)
+            # st.warning("Assistant Response",icon = '🤖')
+            # st.markdown(response)
+            # st.warning("Referred Resources",icon = '🚨')
+            # count = 0
+            # for source in response.web_search_sources:
+            #     count = count+1
+            #     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+        if res[-1]:
             on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
             if on1:
                 with st.spinner("Thinking..."):
                     try:
                         tab0, tab1, tab2, tab3 = st.tabs(["Generated Outcome","French Translation","German Translation","Spanish Translation"])
                         with tab0:
-                            st.markdown(st.session_state["generated"][i])
+                            st.markdown(res[-1])
                         with tab1:
-                            response1= generate_response(f''' translate the context in french {str('""" ')+ st.session_state["generated"][i] + str(' """')} ''')
+                            response1= generate_response(f''' translate the context in french {str('""" ')+ res[-1] + str(' """')} ''')
                             st.markdown(response1)
                         # with tab2:
                         #     response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
