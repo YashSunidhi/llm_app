@@ -11,7 +11,8 @@ import os
 
 # App title
 st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
-
+hf_email = 'zurich.suyash@gmail.com'
+hf_pass = 'Roche@2107'
 sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
 cookies = sign.login()
 
@@ -119,5 +120,6 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("Thinking..."):
             response = generate_response(prompt, hf_email, hf_pass) 
             st.write(response) 
+            for i in 
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
