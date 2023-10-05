@@ -1,95 +1,78 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import random
+import time
 from hugchat import hugchat
 from hugchat.login import Login
 from time import sleep
-from hugchat_api import HuggingChat
+#from hugchat_api import HuggingChat
 import os
 
-def chatbot():
-    st.title("AI powered Chat GPT 💬")
-    st.markdown('''
-      - This may produce inacurate information about people, places, or facts
-      - Limited knowledge of world and events after 2021
-      
-      
-      💡 Note: No Sign-in or API key required!
-      ''')
-    sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
-    cookies = sign.login()
+# App title
+st.set_page_config(page_title="🤗💬 AABIChat")
 
-    # Save cookies to the local directory
-    
-    cookie_path_dir = "./cookies_snapshot"
-    sign.saveCookiesToDir(cookie_path_dir)
-
-    
-    try:
-        cookie=sign.loadCookiesFromDir(cookie_path_dir)
-    except Exception as e:
-        st.error(f"An error occurred during login: {str(e)}")
-        st.stop()
-    cookie=sign.loadCookiesFromDir(cookie_dir_path=cookie_path_dir)
-    
-    # Initialize chat history
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-    # Display chat messages from history on app rerun
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-            
-    # Function to generate a response        
-    def generate_response(dialogue_history):
-        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-        # Create a new conversation
-        id = chatbot.new_conversation()
-        chatbot.change_conversation(id)
-        #response = chatbot.chat(dialogue_history, stream=True)
-        response = chatbot.query(dialogue_history, web_search=True,truncate=4096)
-        if isinstance(response, str):
-            return response
+# Hugging Face Credentials
+with st.sidebar:
+    st.title('🤗💬 AABIChat')
+    if ('EMAIL' in st.secrets) and ('PASS' in st.secrets):
+        st.success('HuggingFace Login credentials already provided!', icon='✅')
+        hf_email = st.secrets['EMAIL']
+        hf_pass = st.secrets['PASS']
+    else:
+        hf_email = st.text_input('Enter E-mail:', type='password')
+        hf_pass = st.text_input('Enter password:', type='password')
+        if not (hf_email and hf_pass):
+            st.warning('Please enter your credentials!', icon='⚠️')
         else:
-            return response.delta.get("content", "")
-    # Accept user input
-    if prompt := st.chat_input("Send your query"):
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        # Append the dialogue history to the user's prompt
-        dialogue_history = "\n".join([message["content"] for message in st.session_state.messages])
-        # Display user message in chat message container
-        with st.chat_message("user"):
-            st.markdown(prompt)
-        # Display assistant response in chat message container
-        with st.spinner('Generating response....'):
-            with st.chat_message("assistant"):
-                message_placeholder = st.empty()
-                full_response = ""
+            st.success('Proceed to entering your prompt message!', icon='👉')
+    #st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-an-llm-powered-chatbot-with-streamlit/)!')
 
-                try:
-                    for response in generate_response(dialogue_history):
-                        full_response += response
-                        message_placeholder.markdown(full_response + "▌")
-                        sleep(0.01)
-                    message_placeholder.markdown(full_response)
 
-                    # Check if there are follow-up questions
-                    if "?" in prompt:
-                    # Update the chat history with the assistant's response
-                        st.session_state.messages.append({"role": "assistant", "content": full_response})
-                        # Clear the chat input box
-                        st.session_state.prompt = ""
-                        # Set the chat input box value to the assistant's response
-                        st.chat_input("Follow-up question", value=full_response)
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-                    # Update the chat history
-                    st.session_state.messages.append({"role": "assistant", "content": full_response})
-                except Exception as e:
-                    st.error(f"An error occurred during response generation: {str(e)}")
-                    # Update the chat history with the error message
-                    st.session_state.messages.append({"role": "assistant", "content": f"An error occurred: {str(e)}"})
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
-if __name__=='__main__':
-    chatbot()
+def clear_chat_history():
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+
+
+# Function for generating LLM response
+def generate_response(prompt_input, email, passwd):
+    # Hugging Face Login
+    sign = Login(email, passwd)
+    cookies = sign.login()
+    # Create ChatBot                        
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+
+    for dict_message in st.session_state.messages:
+        string_dialogue = "You are a helpful assistant."
+        if dict_message["role"] == "user":
+            string_dialogue += "User: " + dict_message["content"] + "\n\n"
+        else:
+            string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
+
+    prompt = f"{string_dialogue} {prompt_input} Assistant: "
+    return chatbot.query(prompt,web_search=True,truncate=4096)
+
+
+# User-provided prompt
+if prompt := st.chat_input(disabled=not (hf_email and hf_pass)):
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
+# Generate a new response if last message is not from assistant
+if st.session_state.messages[-1]["role"] != "assistant":
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            response = generate_response(prompt, hf_email, hf_pass) 
+            st.write(response) 
+    message = {"role": "assistant", "content": response}
+    st.session_state.messages.append(message)
