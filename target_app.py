@@ -4,6 +4,7 @@ from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
+import time
 #from trubrics_utils import trubrics_config, trubrics_successful_feedback
 from trubrics.integrations.streamlit import FeedbackCollector
 collector = FeedbackCollector(email='smnitrkl50@gmail.com', password='Ram@2107', project="default")
@@ -181,6 +182,17 @@ with tabx1:
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
             st.session_state.user_input == ''
+        st.session_state.feedback_key += 1
+        tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
+        if tot33:
+            df = pd.DaraFrame(response.text)
+            csv = convert_df(df)
+            btn = st.download_button(
+                  label="Download image",
+                  data=csv,
+                  file_name="approved.csv",
+                  mime="final/csv"
+              )
         
 
         
@@ -198,39 +210,29 @@ with tabx1:
             # for source in response.web_search_sources:
             #     count = count+1
             #     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-    with tabx2:
-        on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
-        if on1:
-            if res[-1]:
-                print(res[-1])
-                with st.spinner("Thinking..."):
-                    try:
-                        tab0, tab1, tab2, tab3 = st.tabs(["Generated Outcome","French Translation","German Translation","Spanish Translation"])
-                        with tab0:
-                            st.markdown(res[-1])
-                        with tab1:
-                            response1= generate_translate(f''' translate the context in french {str('""" ')+ res[-1] + str(' """')} ''')
-                            st.markdown(response1)
-                        # with tab2:
-                        #     response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
-                        #     st.markdown(response2)
-                        # with tab3:
-                        #     response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
-                        #     st.markdown(response3)
-                    except:
-                        pass
-            #st.session_state.response = response
-            st.session_state.feedback_key += 1
-            tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
-            if tot33:
-                df = pd.DaraFrame(response.text)
-                csv = convert_df(df)
-                btn = st.download_button(
-                      label="Download image",
-                      data=csv,
-                      file_name="approved.csv",
-                      mime="final/csv"
-                  )
+with tabx2:
+    on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
+    if on1:
+        if res[-1]:
+            print(res[-1])
+            with st.spinner("Thinking..."):
+                try:
+                    tab0, tab1, tab2, tab3 = st.tabs(["Generated Outcome","French Translation","German Translation","Spanish Translation"])
+                    with tab0:
+                        st.markdown(res[-1])
+                    with tab1:
+                        response1= generate_translate(f''' translate the context in french {str('""" ')+ res[-1] + str(' """')} ''')
+                        st.markdown(response1)
+                    # with tab2:
+                    #     response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+                    #     st.markdown(response2)
+                    # with tab3:
+                    #     response3= tab3.write(generate_response(f''' translate the context in spanish {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
+                    #     st.markdown(response3)
+                except:
+                    pass
+        #st.session_state.response = response
+
 # if reset:
 #     if 'user_input' not in st.session_state:
 #         st.session_state.user_input = ''
@@ -386,8 +388,8 @@ with tabx3:
         #st.header(st.session_state['name'])
         with st.spinner("Thinking..."):
             time.sleep(10)
-            tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
-            with tab1:
+            tab1a, tab2a, tab3a = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+            with tab1a:
                 tot1 = st.image("./images_generated/prompt_2.png")
                 tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
                 if tot11:
@@ -398,7 +400,7 @@ with tabx3:
                                 file_name="flower.png",
                                 mime="image/png"
                             )
-            with tab2:
+            with tab2a:
                 tot2 = st.image("./images_generated/prompt_5.png")
                 tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
                 if tot22:
@@ -409,7 +411,7 @@ with tabx3:
                                 file_name="flower.png",
                                 mime="image/png"
                             )
-            with tab3:
+            with tab3a:
                 tot3 = st.image("./images_generated/prompt_4.png")
                 tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
                 if tot33:
@@ -431,8 +433,8 @@ with tabx3:
             time.sleep(10)
     
             #st.header(st.session_state['name'])
-            tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
-            with tab1:
+            tab1b, tab2b, tab3b = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+            with tab1b:
                 tot4 = st.image("./images_generated/info_1.png")
                 tot44 = st.button('Select Image 4', on_click=change_name, args=['4_image'])
                 if tot44:
@@ -443,7 +445,7 @@ with tabx3:
                                 file_name="flower.png",
                                 mime="image/png"
                             )
-            with tab2:
+            with tab2b:
                 tot5 = st.image("./images_generated/info_2.png")
                 tot55 = st.button('Select Image 5', on_click=change_name, args=['5_image'])
                             #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
@@ -455,7 +457,7 @@ with tabx3:
                                 file_name="flower.png",
                                 mime="image/png"
                             )
-            with tab3:
+            with tab3b:
                 tot6 = st.image("./images_generated/info_3.png")
                 tot66 = st.button('Select Image 6', on_click=change_name, args=['6_image'])
                 #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
