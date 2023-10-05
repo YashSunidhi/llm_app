@@ -144,10 +144,11 @@ def text_gen():
         message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
     try:
-        st.write(st.session_state.messages[-1]['content'])
+        #st.write(st.session_state.messages[-1]['content'])
+        df = pd.DataFrame(st.session_state.messages[-1]['content'])
     except:
         pass
-    df = pd.DataFrame(st.session_state.messages[-1]['content'])
+    
     def convert_df(df):
        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
     
