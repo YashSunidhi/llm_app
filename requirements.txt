@@ -15,3 +15,4 @@ hugchat
 streamlit_extras
 hugchat-api
 deep-translator
+pandas==2.1.1
