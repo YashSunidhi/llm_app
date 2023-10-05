@@ -100,6 +100,9 @@ def generate_response(prompt_input, email, passwd):
     cookies = sign.login()
     # Create ChatBot                        
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+    # Create a new conversation
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
 
     for dict_message in st.session_state.messages:
         string_dialogue = "You are a helpful assistant."
@@ -130,4 +133,5 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 count = count+1
                 st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
     message = {"role": "assistant", "content": response}
+    st.DataFrame(pd.DataFrame.from_dict(message))
     st.session_state.messages.append(message)
