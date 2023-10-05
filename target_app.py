@@ -189,7 +189,7 @@ with response_container:
             if on1:
                 with st.spinner("Thinking..."):
                     try:
-                        tab0, tab1, tab2, tab3 = st.tabs(["French Translation","German Translation","Spanish Translation"])
+                        tab0, tab1, tab2, tab3 = st.tabs(["Generated Outcome","French Translation","German Translation","Spanish Translation"])
                         with tab0:
                             st.markdown(st.session_state["generated"][i])
                         with tab1:
