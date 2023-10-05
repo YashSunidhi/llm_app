@@ -176,6 +176,9 @@ def text_trans():
         bytes_data = uploaded_file.read()
         st.write("filename:", uploaded_file.name)
         st.write(bytes_data)
+        if uploaded_file:
+            for line in uploaded_file:
+                st.write(line)
         # file_extension = pathlib.Path(uploaded_file.name).suffix
         # if file_extension=='.csv':
         #     df = pd.read_csv(uploaded_file)
