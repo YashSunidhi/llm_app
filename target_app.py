@@ -5,6 +5,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
 import time
+import pandas as pd
 #from trubrics_utils import trubrics_config, trubrics_successful_feedback
 from trubrics.integrations.streamlit import FeedbackCollector
 collector = FeedbackCollector(email='smnitrkl50@gmail.com', password='Ram@2107', project="default")
