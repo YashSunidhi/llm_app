@@ -133,5 +133,17 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 count = count+1
                 st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
     message = {"role": "assistant", "content": response}
-    st.write(message)
     st.session_state.messages.append(message)
+df = pd.DataFrame(st.session_state.messages)[-2:0]
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+
+csv = convert_df(df)
+
+st.download_button(
+   "Press to Download and save",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
