@@ -174,16 +174,9 @@ def text_trans():
     uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True, type={"csv", "txt"})
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
-        st.text(uploaded_file)
         st.write("filename:", uploaded_file.name)
-        #st.write(bytes_data)
-        # st.markdown(bytes_data)
-        # if uploaded_file:
-        #     for line in uploaded_file:
-        #         st.markdown(line)
         if uploaded_file:
-        # this will write UploadedFile(id=2, name='test.txt', type='text/plain', size=666)
-            st.write(uploaded_file)
+            #st.write(uploaded_file)
             if uploaded_file.type=='text/plain':
                 from io import StringIO
                 stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
