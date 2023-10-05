@@ -150,8 +150,8 @@ reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
 #     user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
 tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
-with tabx1:
-    with response_container:
+with response_container:
+    with tabx1:
         st.title("Prompt Design")
         option7 = st.text_input('Input your prompt here',"")
         default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
@@ -213,7 +213,7 @@ with tabx1:
 with tabx2:
     on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
     if on1:
-        if res[-1]:
+        if resp[-1]:
             print(res[-1])
             with st.spinner("Thinking..."):
                 try:
@@ -221,7 +221,7 @@ with tabx2:
                     with tab0:
                         st.markdown(res[-1])
                     with tab1:
-                        response1= generate_translate(f''' translate the context in french {str('""" ')+ res[-1] + str(' """')} ''')
+                        response1= generate_translate(f''' translate the context in french {str('""" ')+ resp[-1] + str(' """')} ''')
                         st.markdown(response1)
                     # with tab2:
                     #     response2= tab2.write(generate_response(f''' translate the context in german {str('""" ')+ st.session_state["generated"][i] + str(' """')} '''))
@@ -302,12 +302,12 @@ with tabx2:
 
 with tabx3:
     if 'name1' not in st.session_state:
-        st.session_state['name1'] = '2_image'
+        tabx3.session_state['name1'] = '2_image'
     def change_name(name):
-        st.session_state['name1'] = name
+        tabx3.session_state['name1'] = name
     #######
     # Get the input text from the user
-    st.title("Content Driven Image Generation")
+    tabx3.title("Content Driven Image Generation")
     
     
     def file_selector(folder_path='.'):
@@ -361,7 +361,7 @@ with tabx3:
     (
     "Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
     
-    option6 = st.selectbox(
+    option6 = tabx3.selectbox(
     'Recommended Image Prompts',
     ("A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.",
     "An illustration or graphic representation of cancer cells or tumors, with arrows or other visual elements highlighting the effects of Phesgo on the cancer cells. This image should help readers understand how Phesgo works and its potential benefits.",
@@ -381,42 +381,42 @@ with tabx3:
     st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
     prompt_design = st.warning(default_prompt[0],icon='🤖')
     
-    on4 = st.toggle('Examine Generated Images')
+    on4 = tabx3.toggle('Examine Generated Images')
     
     if on4:
     
         #st.header(st.session_state['name'])
-        with st.spinner("Thinking..."):
+        with tabx3.spinner("Thinking..."):
             time.sleep(10)
-            tab1a, tab2a, tab3a = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+            tab1a, tab2a, tab3a = tabx3.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
             with tab1a:
-                tot1 = st.image("./images_generated/prompt_2.png")
-                tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                tot1 = tabx3.image("./images_generated/prompt_2.png")
+                tot11 = tabx3.button('Select Image 1', on_click=change_name, args=['1_image'])
                 if tot11:
                     with open("./images_generated/prompt_2.png", "rb") as file:
-                        btn = st.download_button(
+                        btn = tabx3.download_button(
                                 label="Download image",
                                 data=file,
                                 file_name="flower.png",
                                 mime="image/png"
                             )
             with tab2a:
-                tot2 = st.image("./images_generated/prompt_5.png")
-                tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                tot2 = tabx3.image("./images_generated/prompt_5.png")
+                tot22 = tabx3.button('Select Image 2', on_click=change_name, args=['2_image'])
                 if tot22:
                     with open("./images_generated/prompt_5.png", "rb") as file:
-                        btn = st.download_button(
+                        btn = tabx3.download_button(
                                 label="Download image",
                                 data=file,
                                 file_name="flower.png",
                                 mime="image/png"
                             )
             with tab3a:
-                tot3 = st.image("./images_generated/prompt_4.png")
-                tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                tot3 = tabx3.image("./images_generated/prompt_4.png")
+                tot33 = tabx3.button('Select Image 3', on_click=change_name, args=['3_image'])
                 if tot33:
                     with open("./images_generated/prompt_4.png", "rb") as file:
-                        btn = st.download_button(
+                        btn = tabx3.download_button(
                                 label="Download image",
                                 data=file,
                                 file_name="flower.png",
