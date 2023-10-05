@@ -184,11 +184,11 @@ with response_container:
             us_in.append(user_input)
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
-        st.warning("Assistant Response",icon = '🤖')
-        st.markdown(resp[0])
-        st.warning("Referred Resources",icon = '🚨')
-        for i in res:
-            st.write(i)
+            st.warning("Assistant Response",icon = '🤖')
+            st.markdown(resp[0])
+            st.warning("Referred Resources",icon = '🚨')
+            for i in res:
+                st.write(i)
         
 
         
