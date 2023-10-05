@@ -166,7 +166,7 @@ def text_trans():
         # add_vertical_space(5)
         # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
         #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
-    uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True)
+    uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True, type={"csv", "txt"})
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
         st.write("filename:", uploaded_file.name)
@@ -179,39 +179,39 @@ def text_trans():
     #######
             # Get the input text from the user
             
-            option0 = st.sidebar.select(
-            'Select a Language of Interest',
-            ('French', 'German', 'Spanish', 'Italian','Portugense'))
+            # option0 = st.sidebar.select(
+            # 'Select a Language of Interest',
+            # ('French', 'German', 'Spanish', 'Italian','Portugense'))
 
-    if uploaded_files is not None:
-        df = pd.read_csv(uploaded_files)
-        text = df['content'].iloc[-1]
-    else:
-        text = st.text_input(
-        "Text to analyze",
-        )
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
-    with tab1:
-        # Use any translator you like, in this example GoogleTranslator
-        #translated = GoogleTranslator(source='auto', target='french').translate(text)
-        st.markdown(text)
-    with tab2:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='french').translate(text)
-        st.markdown(translated)
-    with tab3:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='german').translate(text)
-        st.markdown(translated)
-    with tab4:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='italian').translate(text)
-        st.markdown(translated)
-    with tab5:
-        # Use any translator you like, in this example GoogleTranslator
-        translated = GoogleTranslator(source='auto', target='spanish').translate(text)
-        st.markdown(translated)
-        
+        if uploaded_files is not None:
+            df = pd.read_csv(uploaded_files)
+            text = df['content'].iloc[-1]
+        else:
+            text = st.text_input(
+            "Text to analyze",
+            )
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
+        with tab1:
+            # Use any translator you like, in this example GoogleTranslator
+            #translated = GoogleTranslator(source='auto', target='french').translate(text)
+            st.markdown(text)
+        with tab2:
+            # Use any translator you like, in this example GoogleTranslator
+            translated = GoogleTranslator(source='auto', target='french').translate(text)
+            st.markdown(translated)
+        with tab3:
+            # Use any translator you like, in this example GoogleTranslator
+            translated = GoogleTranslator(source='auto', target='german').translate(text)
+            st.markdown(translated)
+        with tab4:
+            # Use any translator you like, in this example GoogleTranslator
+            translated = GoogleTranslator(source='auto', target='italian').translate(text)
+            st.markdown(translated)
+        with tab5:
+            # Use any translator you like, in this example GoogleTranslator
+            translated = GoogleTranslator(source='auto', target='spanish').translate(text)
+            st.markdown(translated)
+            
 def image_gen():
     if 'name' not in st.session_state:
         st.session_state['name'] = '1_image'
