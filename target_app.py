@@ -162,6 +162,7 @@ with response_container:
         ## Applying the user input box
         with input_container:
             user_input = tabx1.text_area(label="user_input", label_visibility="collapsed", placeholder="What would you like to know?",key='widget', on_change=submit)
+        user_input = st.session_state.user_input
         resp = []
         us_in = []
         res = []
