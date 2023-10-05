@@ -13,4 +13,5 @@ ctransformers
 streamlit-chat
 hugchat
 streamlit_extras
+huggingchat-api
 
