@@ -14,4 +14,4 @@ streamlit-chat
 hugchat
 streamlit_extras
 hugchat-api
-
+deep-translator
