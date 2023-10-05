@@ -145,14 +145,12 @@ def text_gen():
         st.session_state.messages.append(message)
 
         #st.write(st.session_state.messages[-1]['content'])
-    try:
-        df = pd.DataFrame(st.session_state.messages[-1]['content'])
-    except:
-        df = pd.DataFrame()
-    # def convert_df(df):
-    #     return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
 
-    csv = df.to_csv(sep='\t', index=False)
+    df = pd.DataFrame(st.session_state.messages[-1]['content'])
+    def convert_df(df):
+        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+
+    csv = convert_df(df)
     st.download_button(
        "Press to Download and save",
        csv,
