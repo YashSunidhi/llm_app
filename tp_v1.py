@@ -172,7 +172,7 @@ def text_trans():
         #st.write(bytes_data)
         file_extension = pathlib.Path(uploaded_file.name).suffix
         if file_extension=='.csv':
-            df = pd.read_csv(uploaded_file)
+            df = pd.read_csv(uploaded_file,encoding = "ISO-8859-1")
             st.markdown(df['content'].iloc[-1])
             #text = st.markdown(df['content'].iloc[-1])
     #######
@@ -398,7 +398,7 @@ def final_out():
         file_extension = pathlib.Path(uploaded_file.name).suffix
         print("File Extension: ", file_extension)
         if file_extension=='.csv':
-            df = pd.read_csv(uploaded_file)
+            df = pd.read_csv(uploaded_file,encoding = "ISO-8859-1")
             st.markdown(df['content'].iloc[-1])
         if file_extension=='.png':
             st.image(uploaded_file)
