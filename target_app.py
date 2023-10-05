@@ -178,12 +178,13 @@ with response_container:
             count = 0
             for source in response.web_search_sources:
                 count = count+1
-                res.append(str(count)+ str(": "), source.title, source.link,source.hostname)
+                res.append((str(count)+ str(": "), source.title, source.link,source.hostname))
             us_in.append(user_input)
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
         st.warning("User Query",icon = '💬')
-        st.markdown(us_in[0])
+        if user_input:
+            st.markdown(us_in[0])
         st.warning("Assistant Response",icon = '🤖')
         st.markdown(resp[0])
         st.warning("Referred Resources",icon = '🚨')
