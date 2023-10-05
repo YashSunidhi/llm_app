@@ -148,11 +148,9 @@ reset = st.sidebar.button('Reset Chat', on_click=reset_conversation)
 # else:
 #     user_input = st.session_state.user_input
 ## Conditional display of AI generated responses as a function of user provided prompts
-
-
-with response_container:
-    tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
-    with tabx1:
+tabx1, tabx2, tabx3, tabx4 = st.tabs(['Content Gen Workbench','Text Translation/Generation','Image Gen Workbench','Approved Outcome'])
+with tabx1:
+    with response_container:
         st.title("Prompt Design")
         option7 = st.text_input('Input your prompt here',"")
         default_prompt = ["As a " + option0 +" expert, Create a marketing content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
@@ -300,182 +298,176 @@ with response_container:
         #         st.write("#### Raw feedback saved to Trubrics:")
         #         st.write(feedback)
 
-    # with tabx3:
-    #     if 'name' not in st.session_state:
-    #         st.session_state['name'] = '1_image'
-    #     def change_name(name):
-    #         st.session_state['name'] = name
-    #     #######
-    #     # Get the input text from the user
-    #     st.title("Content Driven Image Generation")
-        
-        
-    #     def file_selector(folder_path='.'):
-    #         filenames = os.listdir(folder_path)
-    #         selected_filename = st.sidebar.selectbox('Select a file', filenames)
-    #         return os.path.join(folder_path, selected_filename)
-        
-          
-          
-          
-    #       # Sidebar contents
-    #     with st.sidebar:
-    #         st.title('🤗💬 ImageChat App')
-    #         st.markdown('''
-    #         ## About
-    #         This app is an text-2-image or text/image-2-image Generative Engine:
-            
-    #         💡 Note: Free and Secure Access
-    #         ''')
-        
-    #     if __name__ == '__main__':
-    #         # Select a file
-    #         if st.sidebar.checkbox('Select a file in current directory'):
-    #             folder_path = '.'
-    #             if st.sidebar.checkbox('Change directory'):
-    #                 folder_path = st.text_input('Enter folder path', '.')
-    #             filename = file_selector(folder_path=folder_path)
-    #             st.sidebar.write('You selected `%s` ' % filename)
-        
-    #     option1 = st.sidebar.selectbox(
-    #     'Portrait Enhancement',
-    #     ('Basic', 'Hyper-Realistic',"Hospitalized Aesthetic"))
-    #     option2 = st.sidebar.selectbox(
-    #     'Character Portrait',
-    #     ('High Quality', 'Volumetric Lighting'))
-        
-    #     option3 = st.sidebar.selectbox(
-    #     'Tone of Generation',
-    #     ('photorealistic','hyper realism', 'highly detailed',
-    #     ))
-        
-    #     option4 = st.sidebar.selectbox(
-    #     'Photography',
-    #     ('85mm portrait photography', 'award winning','full shot photograph','intense close-ups'
-    #         ))
-    #     option5 = st.sidebar.selectbox(
-    #     'Landscapes',
-    #     ('Swiss','Scottish', 'French', 'Indian'
-    #         ))
-    #     option8 = st.text_area('Prompt for Generation Content',
-    #     (
-    #     "Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
-        
-    #     option6 = st.selectbox(
-    #     'Recommended Image Prompts',
-    #     ("A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.",
-    #     "An illustration or graphic representation of cancer cells or tumors, with arrows or other visual elements highlighting the effects of Phesgo on the cancer cells. This image should help readers understand how Phesgo works and its potential benefits.",
-    #     "A picture of a person receiving chemotherapy or other cancer treatments, with a caption or surrounding text that discusses the potential side effects and limitations of traditional cancer treatments. This image should help readers empathize with the need for alternative treatment options.",
-    #     "A diagram or flowchart showing the mechanism of action of Phesgo, highlighting how it targets and destroys cancer cells while minimizing harm to healthy cells. This image should help readers understand the science behind Phesgo and its unique advantages.",
-    #     "A photo of a patient who has benefited from Phesgo treatment, with a testimonial quote or accompanying text that describes their positive experience. This image should help build credibility and trust with readers.",
-    #     "An infographic comparing the effectiveness and safety of Phesgo to other cancer treatments, using charts, graphs, or other visual elements to highlight the benefits of Phesgo. This image should help readers see the value of considering Phesgo as an alternative treatment option.",
-    #     "A stylized image of the Phesgo logo or branding, used consistently throughout the newsletter to reinforce the company's identity and message. This image should be visually appealing and memorable.",
-    #     "A photograph or illustration of a person in a natural setting, such as a park or garden, symbolizing hope, renewal, and the possibility of healing. This image should evoke emotions and create a positive association with Phesgo.",
-    #     "A chart or table listing the key benefits of Phesgo, such as targeted therapy, reduced side effects, and improved quality of life. This image should summarize the main points of the newsletter and serve as a quick reference guide for readers.",
-    #     "A call-to-action button or banner, encouraging readers to take the next step and learn more about Phesgo, request information, or schedule a consultation. This image should be prominently displayed and designed to prompt engagement."))
-        
-    #     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
-    #     option9 = st.text_input("Insert Your feedback","")
-    #     default_prompt = [ option6 + str(" ")+ option1 + str(", ") +  option2+  str(", ")+ option3+  str(", ")+ option4+  str(", ")+ option5+ str(", ")+option7 + str(" ") +option9]
-    #     #prompt = st.text_input('Input your prompt here')
-    #     st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
-    #     prompt_design = st.warning(default_prompt[0],icon='🤖')
-        
-    #     on = st.toggle('Examine Generated Images')
-        
-    #     if on:
-        
-    #         #st.header(st.session_state['name'])
-    #         with st.spinner("Thinking..."):
-    #             time.sleep(10)
-    #             tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
-    #             with tab1:
-    #                 tot1 = st.image("./images_generated/prompt_2.png")
-    #                 tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
-    #                 if tot11:
-    #                     with open("./images_generated/prompt_2.png", "rb") as file:
-    #                         btn = st.download_button(
-    #                                 label="Download image",
-    #                                 data=file,
-    #                                 file_name="flower.png",
-    #                                 mime="image/png"
-    #                             )
-    #             with tab2:
-    #                 tot2 = st.image("./images_generated/prompt_5.png")
-    #                 tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
-    #                 if tot22:
-    #                     with open("./images_generated/prompt_5.png", "rb") as file:
-    #                         btn = st.download_button(
-    #                                 label="Download image",
-    #                                 data=file,
-    #                                 file_name="flower.png",
-    #                                 mime="image/png"
-    #                             )
-    #             with tab3:
-    #                 tot3 = st.image("./images_generated/prompt_4.png")
-    #                 tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
-    #                 if tot33:
-    #                     with open("./images_generated/prompt_4.png", "rb") as file:
-    #                         btn = st.download_button(
-    #                                 label="Download image",
-    #                                 data=file,
-    #                                 file_name="flower.png",
-    #                                 mime="image/png"
-    #                             )
-        
-    #     #st.header(st.session_state['name'])
-        
-    #     on1 = st.toggle('Examine Generated Infographics')
-        
-    #     if on1:
-    #         st.warning('These informgraphics are generated for design ideation. It should not be used for any content creation.',icon="⚠️")
-    #         with st.spinner("Thinking..."):
-    #             time.sleep(10)
-        
-    #             #st.header(st.session_state['name'])
-    #             tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
-    #             with tab1:
-    #                 tot4 = st.image("./images_generated/info_1.png")
-    #                 tot44 = st.button('Select Image 4', on_click=change_name, args=['4_image'])
-    #                 if tot44:
-    #                     with open("./images_generated/info_1.png", "rb") as file:
-    #                         btn = st.download_button(
-    #                                 label="Download image",
-    #                                 data=file,
-    #                                 file_name="flower.png",
-    #                                 mime="image/png"
-    #                             )
-    #             with tab2:
-    #                 tot5 = st.image("./images_generated/info_2.png")
-    #                 tot55 = st.button('Select Image 5', on_click=change_name, args=['5_image'])
-    #                             #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
-    #                 if tot55:
-    #                     with open("./images_generated/info_2.png", "rb") as file:
-    #                         btn = st.download_button(
-    #                                 label="Download image",
-    #                                 data=file,
-    #                                 file_name="flower.png",
-    #                                 mime="image/png"
-    #                             )
-    #             with tab3:
-    #                 tot6 = st.image("./images_generated/info_3.png")
-    #                 tot66 = st.button('Select Image 6', on_click=change_name, args=['6_image'])
-    #                 #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
-    #                 if tot66:
-    #                     with open("./images_generated/info_3.png", "rb") as file:
-    #                         btn = st.download_button(
-    #                                 label="Download image",
-    #                                 data=file,
-    #                                 file_name="flower.png",
-    #                                 mime="image/png"
-    #                             )
+with tabx3:
+    if 'name1' not in st.session_state:
+        st.session_state['name1'] = '2_image'
+    def change_name(name):
+        st.session_state['name1'] = name
+    #######
+    # Get the input text from the user
+    st.title("Content Driven Image Generation")
     
     
-    #                     # Clear the Chat Messages
+    def file_selector(folder_path='.'):
+        filenames = os.listdir(folder_path)
+        selected_filename = st.sidebar.selectbox('Select a file', filenames)
+        return os.path.join(folder_path, selected_filename)
     
-    
-    #                 # if feedback:
-    #                 #     trubrics_successful_feedback(feedback)
+      
+      
+      
+      # Sidebar contents
+    with st.sidebar:
+        st.title('🤗💬 ImageChat App')
+        st.markdown('''
+        ## About
+        This app is an text-2-image or text/image-2-image Generative Engine:
         
-    # with tabx4:
-    #     pass
+        💡 Note: Free and Secure Access
+        ''')
+    
+    if __name__ == '__main__':
+        # Select a file
+        if st.sidebar.checkbox('Select a file in current directory'):
+            folder_path = '.'
+            if st.sidebar.checkbox('Change directory'):
+                folder_path = st.text_input('Enter folder path', '.')
+            filename = file_selector(folder_path=folder_path)
+            st.sidebar.write('You selected `%s` ' % filename)
+    
+    option1 = st.sidebar.selectbox(
+    'Portrait Enhancement',
+    ('Basic', 'Hyper-Realistic',"Hospitalized Aesthetic"))
+    option2 = st.sidebar.selectbox(
+    'Character Portrait',
+    ('High Quality', 'Volumetric Lighting'))
+    
+    option3 = st.sidebar.selectbox(
+    'Tone of Generation',
+    ('photorealistic','hyper realism', 'highly detailed',
+    ))
+    
+    option4 = st.sidebar.selectbox(
+    'Photography',
+    ('85mm portrait photography', 'award winning','full shot photograph','intense close-ups'
+        ))
+    option5 = st.sidebar.selectbox(
+    'Landscapes',
+    ('Swiss','Scottish', 'French', 'Indian'
+        ))
+    option8 = st.text_area('Prompt for Generation Content',
+    (
+    "Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
+    
+    option6 = st.selectbox(
+    'Recommended Image Prompts',
+    ("A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.",
+    "An illustration or graphic representation of cancer cells or tumors, with arrows or other visual elements highlighting the effects of Phesgo on the cancer cells. This image should help readers understand how Phesgo works and its potential benefits.",
+    "A picture of a person receiving chemotherapy or other cancer treatments, with a caption or surrounding text that discusses the potential side effects and limitations of traditional cancer treatments. This image should help readers empathize with the need for alternative treatment options.",
+    "A diagram or flowchart showing the mechanism of action of Phesgo, highlighting how it targets and destroys cancer cells while minimizing harm to healthy cells. This image should help readers understand the science behind Phesgo and its unique advantages.",
+    "A photo of a patient who has benefited from Phesgo treatment, with a testimonial quote or accompanying text that describes their positive experience. This image should help build credibility and trust with readers.",
+    "An infographic comparing the effectiveness and safety of Phesgo to other cancer treatments, using charts, graphs, or other visual elements to highlight the benefits of Phesgo. This image should help readers see the value of considering Phesgo as an alternative treatment option.",
+    "A stylized image of the Phesgo logo or branding, used consistently throughout the newsletter to reinforce the company's identity and message. This image should be visually appealing and memorable.",
+    "A photograph or illustration of a person in a natural setting, such as a park or garden, symbolizing hope, renewal, and the possibility of healing. This image should evoke emotions and create a positive association with Phesgo.",
+    "A chart or table listing the key benefits of Phesgo, such as targeted therapy, reduced side effects, and improved quality of life. This image should summarize the main points of the newsletter and serve as a quick reference guide for readers.",
+    "A call-to-action button or banner, encouraging readers to take the next step and learn more about Phesgo, request information, or schedule a consultation. This image should be prominently displayed and designed to prompt engagement."))
+    
+    option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
+    option9 = st.text_input("Insert Your feedback","")
+    default_prompt = [ option6 + str(" ")+ option1 + str(", ") +  option2+  str(", ")+ option3+  str(", ")+ option4+  str(", ")+ option5+ str(", ")+option7 + str(" ") +option9]
+    #prompt = st.text_input('Input your prompt here')
+    st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
+    prompt_design = st.warning(default_prompt[0],icon='🤖')
+    
+    on4 = st.toggle('Examine Generated Images')
+    
+    if on4:
+    
+        #st.header(st.session_state['name'])
+        with st.spinner("Thinking..."):
+            time.sleep(10)
+            tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+            with tab1:
+                tot1 = st.image("./images_generated/prompt_2.png")
+                tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                if tot11:
+                    with open("./images_generated/prompt_2.png", "rb") as file:
+                        btn = st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="flower.png",
+                                mime="image/png"
+                            )
+            with tab2:
+                tot2 = st.image("./images_generated/prompt_5.png")
+                tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                if tot22:
+                    with open("./images_generated/prompt_5.png", "rb") as file:
+                        btn = st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="flower.png",
+                                mime="image/png"
+                            )
+            with tab3:
+                tot3 = st.image("./images_generated/prompt_4.png")
+                tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                if tot33:
+                    with open("./images_generated/prompt_4.png", "rb") as file:
+                        btn = st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="flower.png",
+                                mime="image/png"
+                            )
+    
+    #st.header(st.session_state['name'])
+    
+    on3 = st.toggle('Examine Generated Infographics')
+    
+    if on3:
+        st.warning('These informgraphics are generated for design ideation. It should not be used for any content creation.',icon="⚠️")
+        with st.spinner("Thinking..."):
+            time.sleep(10)
+    
+            #st.header(st.session_state['name'])
+            tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+            with tab1:
+                tot4 = st.image("./images_generated/info_1.png")
+                tot44 = st.button('Select Image 4', on_click=change_name, args=['4_image'])
+                if tot44:
+                    with open("./images_generated/info_1.png", "rb") as file:
+                        btn = st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="flower.png",
+                                mime="image/png"
+                            )
+            with tab2:
+                tot5 = st.image("./images_generated/info_2.png")
+                tot55 = st.button('Select Image 5', on_click=change_name, args=['5_image'])
+                            #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
+                if tot55:
+                    with open("./images_generated/info_2.png", "rb") as file:
+                        btn = st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="flower.png",
+                                mime="image/png"
+                            )
+            with tab3:
+                tot6 = st.image("./images_generated/info_3.png")
+                tot66 = st.button('Select Image 6', on_click=change_name, args=['6_image'])
+                #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
+                if tot66:
+                    with open("./images_generated/info_3.png", "rb") as file:
+                        btn = st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="flower.png",
+                                mime="image/png"
+                            )
+
+    
+with tabx4:
+    pass
