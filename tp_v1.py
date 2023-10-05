@@ -142,7 +142,7 @@ def text_gen():
                     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
         message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
-    df = pd.DataFrame(st.session_state.messages[-1]['content'], columns = ['content'])
+    df = pd.DataFrame(st.session_state.messages)
     def convert_df(df):
        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
     
