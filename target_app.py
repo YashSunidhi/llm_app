@@ -182,7 +182,7 @@ with response_container:
 
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
-            st.session_state.user_input = ''
+            del st.session_state[user_input]
         
 
         
