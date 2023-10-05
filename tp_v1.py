@@ -15,9 +15,10 @@ from PIL import Image
 # App title
 st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
 st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content Drafing Suite </h6>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
+#st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
 
 def text_gen():
+    st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
     hf_email = 'zurich.suyash@gmail.com'
     hf_pass = 'Roche@2107'
     sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
@@ -158,6 +159,7 @@ def text_gen():
 
 
 def text_trans():
+    st.markdown("<h3 style='text-align: center; color: grey;'> Translation In EU5 Languages </h3>", unsafe_allow_html=True)
     with st.sidebar:
         st.title('🤗💬 AABI Content Translator')
         st.markdown('''
@@ -390,6 +392,7 @@ def image_gen():
                               mime="image/png"
                           )
 def final_out():
+    st.markdown("<h3 style='text-align: center; color: grey;'> Integration of Generated Text and Image for final outcome </h3>", unsafe_allow_html=True)
     st.warning('Text and Images are arranged in order',icon="⚠️")
     # Sidebar contents
     with st.sidebar:
