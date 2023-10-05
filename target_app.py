@@ -199,9 +199,9 @@ with response_container:
             #     count = count+1
             #     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
     with tabx2:
-        if res[-1]:
-            on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
-            if on1:
+        on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
+        if on1:
+            if res[-1]:
                 with st.spinner("Thinking..."):
                     try:
                         tab0, tab1, tab2, tab3 = st.tabs(["Generated Outcome","French Translation","German Translation","Spanish Translation"])
