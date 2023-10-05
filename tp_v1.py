@@ -193,7 +193,7 @@ def text_trans():
                 stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
                 read_data=stringio.read()
                 #st.write(read_data)
-                read_data = read_data.split('assistant')[1]
+                read_data = read_data.split('assistant')[2]
 
                 text = st.text_input(
                     "Text to analyze",read_data
@@ -413,7 +413,7 @@ def final_out():
                 from io import StringIO
                 stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
                 read_data=stringio.read()
-                read_data = read_data.split('assistant')[1]
+                read_data = read_data.split('assistant')[2]
                 st.markdown(read_data)
             #st.dataframe(df)
         if file_extension=='.png':
