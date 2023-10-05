@@ -133,5 +133,5 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 count = count+1
                 st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
     message = {"role": "assistant", "content": response}
-    st.DataFrame(pd.DataFrame.from_dict(message))
+    st.dataframe(pd.DataFrame.from_dict(message))
     st.session_state.messages.append(message)
