@@ -302,12 +302,12 @@ with tabx2:
 
 with tabx3:
     if 'name1' not in st.session_state:
-        tabx3.session_state['name1'] = '2_image'
+        st.session_state['name1'] = '2_image'
     def change_name(name):
-        tabx3.session_state['name1'] = name
+        st.session_state['name1'] = name
     #######
     # Get the input text from the user
-    tabx3.title("Content Driven Image Generation")
+    st.title("Content Driven Image Generation")
     
     
     def file_selector(folder_path='.'):
