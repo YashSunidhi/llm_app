@@ -130,38 +130,37 @@ def text_gen():
     
     # Generate a new response if last message is not from assistant
     #st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+  
+    if st.session_state.messages[-1]["role"] != "assistant":
+        with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
+                response = generate_response(prompt, hf_email, hf_pass) 
+                st.write(response) 
+                st.warning("Referred Resources",icon = '🚨')
+                count = 0
+                for source in response.web_search_sources:
+                    count = count+1
+                    st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+        message = {"role": "assistant", "content": response}
+        st.session_state.messages.append(message)
     try:
-        if st.session_state.messages[-1]["role"] != "assistant":
-            with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
-                    response = generate_response(prompt, hf_email, hf_pass) 
-                    st.write(response) 
-                    st.warning("Referred Resources",icon = '🚨')
-                    count = 0
-                    for source in response.web_search_sources:
-                        count = count+1
-                        st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-            message = {"role": "assistant", "content": response}
-            st.session_state.messages.append(message)
-        try:
-            st.write(st.session_state.messages[-1]['content'])
-        except:
-            pass
-        df = pd.DataFrame(st.write(st.session_state.messages[-1]['content']))
-        def convert_df(df):
-           return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-        
-        csv = convert_df(df)
-        
-        st.download_button(
-           "Press to Download and save",
-           csv,
-           "file.txt",
-           "text/csv",
-           key='download-txt'
-        )
+        st.write(st.session_state.messages[-1]['content'])
     except:
         pass
+    df = pd.DataFrame(st.write(st.session_state.messages[-1]['content']))
+    def convert_df(df):
+       return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+    
+    csv = convert_df(df)
+    
+    st.download_button(
+       "Press to Download and save",
+       csv,
+       "file.txt",
+       "text/csv",
+       key='download-txt'
+    )
+   
     
 
 
