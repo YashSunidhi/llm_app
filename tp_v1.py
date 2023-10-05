@@ -169,14 +169,15 @@ def text_trans():
         # add_vertical_space(5)
         # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
         #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
-    # uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True, type={"csv", "txt"})
-    # for uploaded_file in uploaded_files:
-    #     bytes_data = uploaded_file.read()
-    #     st.write("filename:", uploaded_file.name)
-    #     #st.write(bytes_data)
-    #     file_extension = pathlib.Path(uploaded_file.name).suffix
-    #     if file_extension=='.csv':
-    #         df = pd.read_csv(uploaded_file,encoding = "ISO-8859-1")
+    uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True, type={"csv", "txt"})
+    for uploaded_file in uploaded_files:
+        bytes_data = uploaded_file.read()
+        st.write("filename:", uploaded_file.name)
+        #st.write(bytes_data)
+        file_extension = pathlib.Path(uploaded_file.name).suffix
+        if file_extension=='.csv':
+            df = pd.read_csv(uploaded_file)
+            st.dataframe(df)
     #         st.markdown(df['content'].iloc[-1])
     #         #text = st.markdown(df['content'].iloc[-1])
     # #######
