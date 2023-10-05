@@ -163,13 +163,15 @@ def text_trans():
         # add_vertical_space(5)
         # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
         #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
-    uploaded_files = st.sidebar.file_uploader("Choose final text and image file", accept_multiple_files=True)
+    uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
         st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
-        if uploaded_file.name=='file.csv':
-            df = pd.read_csv('file.csv')
+        file_extension = pathlib.Path(uploaded_file.name).suffix
+        if file_extension=='.csv':
+            df = pd.read_csv(uploaded_file.name)
+            st.markdown(df['content'].iloc[-1])
             #text = st.markdown(df['content'].iloc[-1])
     #######
             # Get the input text from the user
@@ -391,11 +393,13 @@ def final_out():
         bytes_data = uploaded_file.read()
         st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
-        if uploaded_file.name=='file.csv':
-            df = pd.read_csv('file.csv')
+        file_extension = pathlib.Path(uploaded_file.name).suffix
+        print("File Extension: ", file_extension)
+        if file_extension=='.csv':
+            df = pd.read_csv(uploaded_file.name)
             st.markdown(df['content'].iloc[-1])
-        if uploaded_file.name=='flower.png':
-            st.image("flower.png")
+        if file_extension=='.png':
+            st.image(uploaded_file.name)
         
     
     
