@@ -9,6 +9,7 @@ from time import sleep
 #from hugchat_api import HuggingChat
 from deep_translator import GoogleTranslator
 import os
+import pathlib
 
 # App title
 st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
