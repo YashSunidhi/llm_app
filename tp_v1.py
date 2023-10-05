@@ -58,7 +58,7 @@ option3 = st.sidebar.selectbox(
 
 option4 = st.sidebar.selectbox(
 'Content Type',
-('None','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
+('content','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
     ))
 option5 = st.sidebar.selectbox(
 'Objective',
@@ -73,7 +73,11 @@ option6 = st.sidebar.selectbox(
 option8 = st.sidebar.selectbox(
 'Target Audience Expectation',
 ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
-
+st.title("Prompt Design Template")
+option7 = st.text_input('Input your prompt here',"")
+default_prompt = ["As a " + option0 +" expert, Create a content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+#prompt = st.text_input('Input your prompt here')
+prompt_design = st.write(default_prompt[0])
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -105,7 +109,7 @@ def generate_response(prompt_input, email, passwd):
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
 
     prompt = f"{string_dialogue} {prompt_input} Assistant: "
-    return chatbot.query(prompt,web_search=True,use_cache=True, truncate = 8192, temperature =0.5)
+    return chatbot.query(prompt,web_search=True, truncate = 8192,max_new_tokens= 2048)
 
 
 # User-provided prompt
