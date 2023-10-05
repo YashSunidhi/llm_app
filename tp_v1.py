@@ -148,7 +148,7 @@ def text_gen():
     try:
         df = pd.DataFrame(st.session_state.messages[-1]['content'])
     except:
-        pass
+        df = pd.DataFrame()
     # def convert_df(df):
     #     return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
 
