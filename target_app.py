@@ -183,16 +183,16 @@ with response_container:
             st.session_state.generated.append(response)
         st.session_state.user_input == ''
         st.session_state.feedback_key += 1
-        tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
-        if tot33:
-            df = pd.DaraFrame(rest)
-            csv = convert_df(df)
-            btn = st.download_button(
-                  label="Download text",
-                  data=csv,
-                  file_name="approved.csv",
-                  mime="final/csv"
-              )
+    tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
+    if tot33:
+        df = pd.DaraFrame(rest)
+        csv = convert_df(df)
+        btn = st.download_button(
+              label="Download text",
+              data=csv,
+              file_name="approved.csv",
+              mime="final/csv"
+          )
         
 
         
