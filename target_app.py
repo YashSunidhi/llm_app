@@ -173,6 +173,8 @@ with response_container:
         us_in = []
         res = []
         if user_input:
+            st.warning("User Query",icon = '💬')
+            st.markdown(user_input)
             response = generate_response(user_input)
             res.append(response.text)
             count = 0
@@ -182,9 +184,6 @@ with response_container:
             us_in.append(user_input)
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
-        st.warning("User Query",icon = '💬')
-        if user_input:
-            st.markdown(us_in[0])
         st.warning("Assistant Response",icon = '🤖')
         st.markdown(resp[0])
         st.warning("Referred Resources",icon = '🚨')
