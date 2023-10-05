@@ -177,10 +177,18 @@ def text_trans():
         st.text(uploaded_file)
         st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
-        st.markdown(bytes_data)
+        # st.markdown(bytes_data)
+        # if uploaded_file:
+        #     for line in uploaded_file:
+        #         st.markdown(line)
         if uploaded_file:
-            for line in uploaded_file:
-                st.markdown(line)
+        # this will write UploadedFile(id=2, name='test.txt', type='text/plain', size=666)
+        st.write(uploaded_file)
+        if uploaded_file.type=='text/plain':
+            from io import StringIO
+            stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
+            read_data=stringio.read()
+            st.write(read_data)
         # file_extension = pathlib.Path(uploaded_file.name).suffix
         # if file_extension=='.csv':
         #     df = pd.read_csv(uploaded_file)
