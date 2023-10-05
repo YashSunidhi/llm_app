@@ -404,11 +404,14 @@ def final_out():
         bytes_data = uploaded_file.read()
         st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
-        file_extension = pathlib.Path(uploaded_file.name).suffix
-        print("File Extension: ", file_extension)
-        if file_extension=='.csv':
-            df = pd.read_csv(uploaded_file,encoding = "ISO-8859-1")
-            st.dataframe(df)
+        if uploaded_file:
+            #st.write(uploaded_file)
+            if uploaded_file.type=='text/plain':
+                from io import StringIO
+                stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
+                read_data=stringio.read()
+                st.markdown(read_data)
+            #st.dataframe(df)
         if file_extension=='.png':
             st.image(uploaded_file)
         
