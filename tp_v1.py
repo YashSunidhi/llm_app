@@ -185,14 +185,15 @@ def text_trans():
     uploaded_files = st.sidebar.file_uploader("Choose final text", accept_multiple_files=True, type={"csv", "txt"})
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
-        st.write("filename:", uploaded_file.name)
+        #st.write("filename:", uploaded_file.name)
         if uploaded_file:
             #st.write(uploaded_file)
             if uploaded_file.type=='text/plain':
                 from io import StringIO
                 stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
                 read_data=stringio.read()
-                st.write(read_data)
+                #st.write(read_data)
+                read_data = read_data.split('assistant')[1]
 
                 text = st.text_input(
                     "Text to analyze",read_data
@@ -412,6 +413,7 @@ def final_out():
                 from io import StringIO
                 stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
                 read_data=stringio.read()
+                read_data = read_data.split('assistant')[1]
                 st.markdown(read_data)
             #st.dataframe(df)
         if file_extension=='.png':
