@@ -406,6 +406,7 @@ def final_out():
         bytes_data = uploaded_file.read()
         st.write("filename:", uploaded_file.name)
         #st.write(bytes_data)
+        file_extension = pathlib.Path(uploaded_file.name).suffix
         if uploaded_file:
             #st.write(uploaded_file)
             if uploaded_file.type=='text/plain':
