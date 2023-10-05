@@ -181,7 +181,7 @@ with response_container:
 
             st.session_state.past.append(user_input)
             st.session_state.generated.append(response)
-            st.session_state.user_input == ''
+        st.session_state.user_input == ''
         st.session_state.feedback_key += 1
         tot33 = st.button('Approve Text', on_click=change_name, args=['1_image'])
         if tot33:
@@ -210,16 +210,15 @@ with response_container:
             # for source in response.web_search_sources:
             #     count = count+1
             #     st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-with tabx2:
     on1 = st.toggle('Examine Translation of Generated Text', key = '_trsw')
     if on1:
         if resp[-1]:
-            print(res[-1])
+            print(resp[-1])
             with st.spinner("Thinking..."):
                 try:
                     tab0, tab1, tab2, tab3 = st.tabs(["Generated Outcome","French Translation","German Translation","Spanish Translation"])
                     with tab0:
-                        st.markdown(res[-1])
+                        st.markdown(resp[-1])
                     with tab1:
                         response1= generate_translate(f''' translate the context in french {str('""" ')+ resp[-1] + str(' """')} ''')
                         st.markdown(response1)
