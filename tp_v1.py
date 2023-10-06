@@ -119,7 +119,7 @@ def text_gen():
                 string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
-        return chatbot.query(prompt,web_search=True,max_new_tokens= 4096)
+        return chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096)
     
     
     # User-provided prompt
