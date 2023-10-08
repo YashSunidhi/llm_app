@@ -16,7 +16,7 @@ streamlit_extras
 hugchat-api
 deep-translator
 pandas==2.1.1
-PyMuPDF==1.22.3
+PyMuPDF==1.23.3
 pdfplumber==0.8.0
 pdf2image==1.16.2
 zipp==3.12.0
