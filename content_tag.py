@@ -47,7 +47,7 @@ if uploaded_files:
     #st.write(k)
     #doc = i
     doc = mx[mx['files_name'] ==filen]['data'].reset_index(drop=True)[0]
-    page_option = st.sidebar.selectbox(
+    page_option = col1.sidebar.selectbox(
     'Page Selection',
     (range(0,len(doc))))
 
@@ -177,7 +177,7 @@ if uploaded_files:
                     format=output_format.upper())
             else:
                 print(f"[-] Skipping image {image_index} on page {page_index} due to its small size.")
-    option = st.sidebar.selectbox(
+    option = col1.sidebar.selectbox(
     'Document Granularity Selection',
     ('blocks','page', 'lines', 'size', 
         'flags'))
