@@ -489,7 +489,7 @@ if uploaded_files:
     #dg = pd.read_csv(os.path.join(os.getcwd(),'test_breast_file_csv_updated_3.csv'))
     font_dg = pd.DataFrame(dg[['page','font','size']].value_counts()).reset_index().sort_values('size',ascending=False).reset_index(drop=True)
     #font_dg = font_dg[font_dg['page']==page_option]
-    col1a.markdown(font_dg)
+    col1a.dataframe(font_dg)
 
     font_dg.columns = ['page','font','size','count_para']
     if font_dg['count_para'][:10].sum()>=20:
