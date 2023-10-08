@@ -522,10 +522,10 @@ if uploaded_files:
     
     context = ', '.join(rot['text'])
     # non stream response
-    query_result = chatbot.query(f''' <s>[INST]
+    query_result = chatbot.query(f''' 
             schema :{schema} \n\n
             context : {context} \n\n
-            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n [/INST]
+            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n 
             ''')
     col2a.write(query_result)
     
@@ -533,10 +533,10 @@ if uploaded_files:
     chatbot.change_conversation(id)
 
     # non stream response
-    query_result_1 = chatbot.query(f''' <s>[INST]
+    query_result_1 = chatbot.query(f''' 
             schema :{schema_1} \n\n
             context : {context} \n\n
-            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n [/INST]
+            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n 
             ''')
     col2a.write(query_result_1)
     
@@ -558,8 +558,8 @@ if uploaded_files:
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][2])
     col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
-    query_result_s = chatbot.query(f''' <s>[INST]
+    query_result_s = chatbot.query(f'''
             context : {context} \n\n
-            Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n [/INST]
+            Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n 
             ''')
     col2a.write(query_result_s)
