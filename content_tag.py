@@ -2,8 +2,8 @@ import streamlit as st
 from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
-# from hugchat import hugchat
-# from hugchat.login import Login
+from hugchat import hugchat
+from hugchat.login import Login
 import time
 import sys, fitz
 import pdfplumber
@@ -504,6 +504,44 @@ if uploaded_files:
     #col1.markdown("<h3 style='text-align: center; color: grey;'> Document Understanding Based on Fonts Size (Larger the Fonts Important the message) </h3>", unsafe_allow_html=True)
 
     col2a.markdown("<h4 style='text-align: center; color: grey;'> Proposed Tags/ Concept for Document </h4>", unsafe_allow_html=True)
+    
+    # Log in to huggingface and grant authorization to huggingchat
+    sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
+    cookies = sign.login()
+    
+    # Save cookies to the local directory
+    cookie_path_dir = "./cookies_snapshot"
+    sign.saveCookiesToDir(cookie_path_dir)
+    
+    # Load cookies when you restart your program:
+    # sign = login(email, None)
+    # cookies = sign.loadCookiesFromDir(cookie_path_dir) # This will detect if the JSON file exists, return cookies if it does and raise an Exception if it's not.
+    # Create a new conversation
+    # Create a ChatBot
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
+    
+    context = ', '.join(rot['text'])
+    # non stream response
+    query_result = chatbot.query(f''' <s>[INST]
+            schema :{schema} \n\n
+            context : {context} \n\n
+            Assistant: You are intelligent pharma expert, Classify context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n [/INST]
+            ''')
+    col2a.write(query_result)
+    
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
+
+    # non stream response
+    query_result_1 = chatbot.query(f''' <s>[INST]
+            schema :{schema_1} \n\n
+            context : {context} \n\n
+            Assistant: You are intelligent pharma expert, Classify context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n [/INST]
+            ''')
+    col2a.write(query_result_1)
+    
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
     dg_g = pd.read_csv(os.path.join(os.getcwd(),'Demo_lab_1 - Demo_lab.csv'))
     #print(os.getcwd())
     #print(uploaded_file.name)
@@ -519,3 +557,9 @@ if uploaded_files:
         col2a.write(ast.literal_eval(dg_g['Tags'][2]))
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][2])
+    col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
+    query_result_s = chatbot.query(f''' <s>[INST]
+            context : {context} \n\n
+            Assistant: You are intelligent pharma expert, Write a short and concise summary for the context. \n\n [/INST]
+            ''')
+    col2a.write(query_result_s)
