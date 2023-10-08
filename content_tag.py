@@ -490,7 +490,7 @@ if uploaded_files:
     font_dg = pd.DataFrame(dg[['page','font','size']].value_counts()).reset_index().sort_values('size',ascending=False).reset_index(drop=True)
     #font_dg = font_dg[font_dg['page']==page_option]
     col1a.dataframe(font_dg)
-
+    col2a.markdown("<h4 style='text-align: center; color: grey;'> Priortized Context for Analysis </h4>", unsafe_allow_html=True)
     font_dg.columns = ['page','font','size','count_para']
     if font_dg['count_para'][:10].sum()>=20:
         fontt = font_dg['font'][:10].to_list()
