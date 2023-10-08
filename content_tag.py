@@ -489,7 +489,7 @@ if uploaded_files:
     #dg = pd.read_csv(os.path.join(os.getcwd(),'test_breast_file_csv_updated_3.csv'))
     font_dg = pd.DataFrame(dg[['page','font','size']].value_counts()).reset_index().sort_values('size',ascending=False).reset_index(drop=True)
     #font_dg = font_dg[font_dg['page']==page_option]
-    col1a.dataframe(font_dg)
+    col1a.markdown(font_dg)
 
     font_dg.columns = ['page','font','size','count_para']
     if font_dg['count_para'][:10].sum()>=20:
@@ -499,7 +499,7 @@ if uploaded_files:
     else:
         fontt = font_dg['font'][:15].to_list()
         rot = dg[dg['font'].isin(fontt)][['page','blocks','text']].replace('Reference:','').replace('References:','').drop_duplicates().groupby(['page']).agg({'text':''.join}).drop_duplicates().reset_index(drop=True)
-        col1a.dataframe(rot['text'])
+        col1a.markdown(rot['text'].to_list())
     
     #col1.markdown("<h3 style='text-align: center; color: grey;'> Document Understanding Based on Fonts Size (Larger the Fonts Important the message) </h3>", unsafe_allow_html=True)
 
