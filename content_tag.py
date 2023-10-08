@@ -525,9 +525,9 @@ if uploaded_files:
     query_result = chatbot.query(f''' 
             schema :{schema} \n\n
             context : {context} \n\n
-            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n 
+            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n 
             ''')
-    col2a.write(query_result)
+    col2a.markdown(query_result)
     
     id = chatbot.new_conversation()
     chatbot.change_conversation(id)
@@ -536,9 +536,9 @@ if uploaded_files:
     query_result_1 = chatbot.query(f''' 
             schema :{schema_1} \n\n
             context : {context} \n\n
-            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n 
+            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n 
             ''')
-    col2a.write(query_result_1)
+    col2a.markdown(query_result_1)
     
     id = chatbot.new_conversation()
     chatbot.change_conversation(id)
@@ -562,4 +562,4 @@ if uploaded_files:
             context : {context} \n\n
             Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n 
             ''')
-    col2a.write(query_result_s)
+    col2a.markdown(query_result_s)
