@@ -503,7 +503,7 @@ if uploaded_files:
     
     #col1.markdown("<h3 style='text-align: center; color: grey;'> Document Understanding Based on Fonts Size (Larger the Fonts Important the message) </h3>", unsafe_allow_html=True)
 
-    col2a.markdown("<h4 style='text-align: center; color: grey;'> Proposed Tags/ Concept for Document </h4>", unsafe_allow_html=True)
+    col1a.markdown("<h4 style='text-align: center; color: grey;'> Proposed Tags/ Concept for Document </h4>", unsafe_allow_html=True)
     
     # # Log in to huggingface and grant authorization to huggingchat
     # sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
