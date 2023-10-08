@@ -499,7 +499,7 @@ if uploaded_files:
     else:
         fontt = font_dg['font'][:15].to_list()
         rot = dg[dg['font'].isin(fontt)][['page','blocks','text']].replace('Reference:','').replace('References:','').drop_duplicates().groupby(['page']).agg({'text':''.join}).drop_duplicates().reset_index(drop=True)
-        col1a.markdown(rot['text'].to_list())
+        col1a.markdown(', '.join(rot['text'].to_list()))
     
     #col1.markdown("<h3 style='text-align: center; color: grey;'> Document Understanding Based on Fonts Size (Larger the Fonts Important the message) </h3>", unsafe_allow_html=True)
 
@@ -557,7 +557,7 @@ if uploaded_files:
         col2a.write(ast.literal_eval(dg_g['Tags'][2]))
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][2])
-    col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
+    #col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
     # query_result_s = chatbot.query(f'''
     #         context : {context} \n\n
     #         Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n 
