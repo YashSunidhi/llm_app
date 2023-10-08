@@ -453,7 +453,7 @@ if uploaded_files:
     # page_option = st.sidebar.selectbox(
     # 'Page Selection',
     # (range(0,len(doc))))
-    cola.markdown("<h4 style='text-align: center; color: grey;'> Hypothesis: Larger the Fonts, Important the message </h4>", unsafe_allow_html=True)
+    col1a.markdown("<h4 style='text-align: center; color: grey;'> Hypothesis: Larger the Fonts, Important the message </h4>", unsafe_allow_html=True)
     #doc = fitz.open(stream=uploaded_file.read(), filetype="pdf") 
     mnbb = []
     for p in range(0,len(doc)):
