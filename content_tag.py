@@ -490,7 +490,7 @@ if uploaded_files:
     font_dg = pd.DataFrame(dg[['page','font','size']].value_counts()).reset_index().sort_values('size',ascending=False).reset_index(drop=True)
     #font_dg = font_dg[font_dg['page']==page_option]
     col1a.dataframe(font_dg)
-    col2a.markdown("<h4 style='text-align: center; color: grey;'> Priortized Context for Analysis </h4>", unsafe_allow_html=True)
+    col1a.markdown("<h4 style='text-align: center; color: grey;'> Priortized Context for Analysis </h4>", unsafe_allow_html=True)
     font_dg.columns = ['page','font','size','count_para']
     if font_dg['count_para'][:10].sum()>=20:
         fontt = font_dg['font'][:10].to_list()
@@ -503,7 +503,7 @@ if uploaded_files:
     
     #col1.markdown("<h3 style='text-align: center; color: grey;'> Document Understanding Based on Fonts Size (Larger the Fonts Important the message) </h3>", unsafe_allow_html=True)
 
-    col1a.markdown("<h4 style='text-align: center; color: grey;'> Proposed Tags/ Concept for Document </h4>", unsafe_allow_html=True)
+    col2a.markdown("<h4 style='text-align: center; color: grey;'> Proposed Tags/ Concept for Document </h4>", unsafe_allow_html=True)
     
     # # Log in to huggingface and grant authorization to huggingchat
     # sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
