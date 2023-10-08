@@ -130,7 +130,7 @@ if uploaded_files:
 
 
     tabl = list(itertools.chain.from_iterable(torx))
-    ttb = pd.concat(tabl).reset_index(drop=True)
+    #ttb = pd.concat(tabl).reset_index(drop=True)
 
     ### Images Extraction
     # Output directory for the extracted images
