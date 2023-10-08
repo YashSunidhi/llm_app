@@ -525,7 +525,7 @@ if uploaded_files:
     query_result = chatbot.query(f''' <s>[INST]
             schema :{schema} \n\n
             context : {context} \n\n
-            Assistant: You are intelligent pharma expert, Classify context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n [/INST]
+            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n [/INST]
             ''')
     col2a.write(query_result)
     
@@ -536,7 +536,7 @@ if uploaded_files:
     query_result_1 = chatbot.query(f''' <s>[INST]
             schema :{schema_1} \n\n
             context : {context} \n\n
-            Assistant: You are intelligent pharma expert, Classify context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n [/INST]
+            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with explanation. \n\n [/INST]
             ''')
     col2a.write(query_result_1)
     
@@ -560,6 +560,6 @@ if uploaded_files:
     col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
     query_result_s = chatbot.query(f''' <s>[INST]
             context : {context} \n\n
-            Assistant: You are intelligent pharma expert, Write a short and concise summary for the context. \n\n [/INST]
+            Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n [/INST]
             ''')
     col2a.write(query_result_s)
