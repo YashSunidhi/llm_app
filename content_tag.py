@@ -495,7 +495,7 @@ if uploaded_files:
     if font_dg['count_para'][:10].sum()>=20:
         fontt = font_dg['font'][:10].to_list()
         rot = dg[dg['font'].isin(fontt)][['page','blocks','text']].replace('Reference:','').replace('References:','').drop_duplicates().groupby(['page']).agg({'text':''.join}).drop_duplicates().reset_index(drop=True)
-        col1a.dataframe(rot['text'])
+        col1a.markdown(', '.join(rot['text'].to_list()))
     else:
         fontt = font_dg['font'][:15].to_list()
         rot = dg[dg['font'].isin(fontt)][['page','blocks','text']].replace('Reference:','').replace('References:','').drop_duplicates().groupby(['page']).agg({'text':''.join}).drop_duplicates().reset_index(drop=True)
