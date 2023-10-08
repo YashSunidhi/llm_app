@@ -505,43 +505,43 @@ if uploaded_files:
 
     col2a.markdown("<h4 style='text-align: center; color: grey;'> Proposed Tags/ Concept for Document </h4>", unsafe_allow_html=True)
     
-    # Log in to huggingface and grant authorization to huggingchat
-    sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
-    cookies = sign.login()
+    # # Log in to huggingface and grant authorization to huggingchat
+    # sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
+    # cookies = sign.login()
     
-    # Save cookies to the local directory
-    cookie_path_dir = "./cookies_snapshot"
-    sign.saveCookiesToDir(cookie_path_dir)
+    # # Save cookies to the local directory
+    # cookie_path_dir = "./cookies_snapshot"
+    # sign.saveCookiesToDir(cookie_path_dir)
     
-    # Load cookies when you restart your program:
-    # sign = login(email, None)
-    # cookies = sign.loadCookiesFromDir(cookie_path_dir) # This will detect if the JSON file exists, return cookies if it does and raise an Exception if it's not.
-    # Create a new conversation
-    # Create a ChatBot
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
+    # # Load cookies when you restart your program:
+    # # sign = login(email, None)
+    # # cookies = sign.loadCookiesFromDir(cookie_path_dir) # This will detect if the JSON file exists, return cookies if it does and raise an Exception if it's not.
+    # # Create a new conversation
+    # # Create a ChatBot
+    # chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
     
-    context = ', '.join(rot['text'])
-    # non stream response
-    query_result = chatbot.query(f''' 
-            schema :{schema} \n\n
-            context : {context} \n\n
-            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n 
-            ''')
-    col2a.markdown(query_result)
+    # context = ', '.join(rot['text'])
+    # # non stream response
+    # query_result = chatbot.query(f''' 
+    #         schema :{schema} \n\n
+    #         context : {context} \n\n
+    #         Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n 
+    #         ''')
+    # col2a.markdown(query_result)
     
-    id = chatbot.new_conversation()
-    chatbot.change_conversation(id)
+    # id = chatbot.new_conversation()
+    # chatbot.change_conversation(id)
 
-    # non stream response
-    query_result_1 = chatbot.query(f''' 
-            schema :{schema_1} \n\n
-            context : {context} \n\n
-            Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n 
-            ''')
-    col2a.markdown(query_result_1)
+    # # non stream response
+    # query_result_1 = chatbot.query(f''' 
+    #         schema :{schema_1} \n\n
+    #         context : {context} \n\n
+    #         Assistant: As an intelligent medical expert, Map context strictly based on schema properties description and assign one of the enum strictly in json format with no explanation. \n\n 
+    #         ''')
+    # col2a.markdown(query_result_1)
     
-    id = chatbot.new_conversation()
-    chatbot.change_conversation(id)
+    # id = chatbot.new_conversation()
+    # chatbot.change_conversation(id)
     dg_g = pd.read_csv(os.path.join(os.getcwd(),'Demo_lab_1 - Demo_lab.csv'))
     #print(os.getcwd())
     #print(uploaded_file.name)
@@ -558,8 +558,8 @@ if uploaded_files:
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][2])
     col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
-    query_result_s = chatbot.query(f'''
-            context : {context} \n\n
-            Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n 
-            ''')
-    col2a.markdown(query_result_s)
+    # query_result_s = chatbot.query(f'''
+    #         context : {context} \n\n
+    #         Assistant: As an intelligent medical expert, Write a summary in bullet points for the context. \n\n 
+    #         ''')
+    # col2a.markdown(query_result_s)
