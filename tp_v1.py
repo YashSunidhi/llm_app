@@ -81,9 +81,18 @@ def text_gen():
         option8 = st.sidebar.selectbox(
         'Target Audience Expectation',
         ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
+
+        option11 = st.sidebar.selectbox(
+        'Indication',
+        ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
+
+        option12 = st.sidebar.selectbox(
+        'Company',
+        ("Genentech's", "Roche's"))
+
         st.title("Prompt Design Template")
         option7 = st.text_input('Input your prompt here',"")
-        default_prompt = ["As a " + option0 +" expert, Create a content " + option6 + " for " + option2+ ", emphasizing the " +option3+ " tone. Craft a "+ option4+ " that educates them about " + option1 +" role in cancer treatment and its potential benefits. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+        default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in more than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
         #prompt = st.text_input('Input your prompt here')
         prompt_design = st.write(default_prompt[0])
         
