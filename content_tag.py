@@ -449,7 +449,7 @@ if uploaded_files:
 
     col4.markdown("<h3 style='text-align: center; color: grey;'> Tags Recommendation and Document Debrief Based on Hypothesis </h3>", unsafe_allow_html=True)
     col4.write(" For PPT like PDF, Title  and Subtitle might contain most important information")
-    col1a, col2a = col4.columns([1,1])
+    col1a, col2a = col4.tabs(["Context Priortized",'Tags and Brief"])
     # page_option = st.sidebar.selectbox(
     # 'Page Selection',
     # (range(0,len(doc))))
