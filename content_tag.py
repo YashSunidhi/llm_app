@@ -550,7 +550,7 @@ if uploaded_files:
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][0])
     elif filen == 'test_breast_file.pdf':
-        col2a.write(ast.literal_eval(dg_g['Tags'][1]))
+        col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][1])
     elif filen == 'APAC DAN Lung PPoC Insight WP (last updated 2023.08.08).pdf':
