@@ -203,11 +203,11 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     #translated = GoogleTranslator(source='auto', target='french').translate(text)
                     st.markdown(text)
-                    df = pd.DataFrame(str(text))
-                    def convert_df(df):
-                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+                    # df = pd.DataFrame(str(text))
+                    # def convert_df(df):
+                    #     return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
                 
-                    csv = convert_df(df)
+                    # csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
                        text,
