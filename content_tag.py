@@ -449,7 +449,7 @@ if uploaded_files:
 
     col4.markdown("<h3 style='text-align: center; color: grey;'> Tags Recommendation and Document Debrief Based on Hypothesis </h3>", unsafe_allow_html=True)
     col4.write(" For PPT like PDF, Title  and Subtitle might contain most important information")
-    col1a, col2a = col4.tabs(["Context Priortized","Tags and Brief"])
+    col1a, col2a, col3a = col4.tabs(["Context Priortized","Tags with Explanation", "Document Debrief"])
     # page_option = st.sidebar.selectbox(
     # 'Page Selection',
     # (range(0,len(doc))))
@@ -547,20 +547,20 @@ if uploaded_files:
     #print(uploaded_file.name)
     if filen == 'Residual Disease Management In HER2+ve Early Breast Cancer Setting - Case Discussion.pdf':
         col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
-        col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
-        col2a.write(dg_g['Summary'][0])
+        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        col3a.write(dg_g['Summary'][0])
     elif filen == 'test_breast_file.pdf':
         col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
-        col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
-        col2a.write(dg_g['Summary'][1])
+        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        col3a.write(dg_g['Summary'][1])
     elif filen == 'APAC DAN Lung PPoC Insight WP (last updated 2023.08.08).pdf':
         col2a.write(ast.literal_eval(dg_g['Tags'][2]))
-        col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
-        col2a.write(dg_g['Summary'][2])
+        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        col3a.write(dg_g['Summary'][2])
     else: #== 'slide deck Dépistage personnalisé cancer du sein - associations de patients.pdf':
         col2a.write(dg_g['Tags'][3])
-        col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
-        col2a.write(dg_g['Summary'][3])
+        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        col3a.write(dg_g['Summary'][3])
     #col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
     # query_result_s = chatbot.query(f'''
     #         context : {context} \n\n
