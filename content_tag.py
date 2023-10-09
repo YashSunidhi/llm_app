@@ -40,7 +40,7 @@ if uploaded_files:
     mx = pd.DataFrame(file_name , columns =  ['files_name'])
     mx['data'] = data_f
     #doc = mx[mx['file_name'] ==filen]['data'].reset_index(drop=True)[0]
-    col2, col1, col3, col4 = st.tabs(['Key Statistics','Page Review of Uploaded Document', 'Ontology Schema View', 'Tags Recommendation'])
+    col2, col1, col4 = st.tabs(['Key Statistics','Page Review of Uploaded Document', 'Tags Recommendation'])
     col1.markdown("<h3 style='text-align: center; color: grey;'> Selected Page from Document under Review </h3>", unsafe_allow_html=True)
 
     #for i, k in zip(data_f, filen):
