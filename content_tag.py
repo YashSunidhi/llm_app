@@ -546,7 +546,7 @@ if uploaded_files:
     #print(os.getcwd())
     #print(uploaded_file.name)
     if filen == 'Residual Disease Management In HER2+ve Early Breast Cancer Setting - Case Discussion.pdf':
-        col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'])
+        col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][0])
     elif filen == 'test_breast_file.pdf':
