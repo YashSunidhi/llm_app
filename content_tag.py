@@ -448,7 +448,7 @@ if uploaded_files:
     #     col3b.json(schema_1)
 
     col4.markdown("<h3 style='text-align: center; color: grey;'> Tags Recommendation and Document Debrief Based on Hypothesis </h3>", unsafe_allow_html=True)
-    col0a, col00a, col2a, col1a, col3a = col4.tabs(["Global Taxonomy","Taxonomy Driven Tags","Tags with Explanation","Context Priortized", "Document Debrief"])
+    col0a, col00a, col2a, col1a = col4.tabs(["Global Taxonomy","Taxonomy Driven Tags","Tags with Explanation","Context Priortized"])
     col0a.markdown("<h4 style='text-align: center; color: grey;'> Global Taxonomy </h4>", unsafe_allow_html=True)
     dg_g = pd.read_csv(os.path.join(os.getcwd(),'Demo_lab_1 - Demo_lab.csv'))
     dg_t = pd.read_csv(os.path.join(os.getcwd(),'cont_tax.csv'))
@@ -457,11 +457,13 @@ if uploaded_files:
     if filen == 'Residual Disease Management In HER2+ve Early Breast Cancer Setting - Case Discussion.pdf':
         dg_tt = pd.read_csv(os.path.join(os.getcwd(),'doc1.csv'))
         col00a.dataframe(dg_tt)
+        col00a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
         col00a.write(dg_g['Summary'][0])
 
     else:
         dg_tt = pd.read_csv(os.path.join(os.getcwd(),'doc2.csv'))
         col00a.dataframe(dg_tt)
+        col00a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
         col00a.write(dg_g['Summary'][3])
         
 
@@ -559,20 +561,20 @@ if uploaded_files:
     #print(uploaded_file.name)
     if filen == 'Residual Disease Management In HER2+ve Early Breast Cancer Setting - Case Discussion.pdf':
         col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
-        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
-        col3a.write(dg_g['Summary'][0])
+        # col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        # col3a.write(dg_g['Summary'][0])
     elif filen == 'test_breast_file.pdf':
         col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
-        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
-        col3a.write(dg_g['Summary'][1])
+        # col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        # col3a.write(dg_g['Summary'][1])
     elif filen == 'APAC DAN Lung PPoC Insight WP (last updated 2023.08.08).pdf':
         col2a.write(ast.literal_eval(dg_g['Tags'][2]))
-        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
-        col3a.write(dg_g['Summary'][2])
+        # col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        # col3a.write(dg_g['Summary'][2])
     else: #== 'slide deck Dépistage personnalisé cancer du sein - associations de patients.pdf':
         col2a.write(dg_g['Tags'][3])
-        col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
-        col3a.write(dg_g['Summary'][3])
+        # col3a.markdown("<h4 style='text-align: center; color: grey;'> Short Debrief of Document </h4>", unsafe_allow_html=True)
+        # col3a.write(dg_g['Summary'][3])
     #col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
     # query_result_s = chatbot.query(f'''
     #         context : {context} \n\n
