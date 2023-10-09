@@ -54,7 +54,7 @@ def text_gen():
         ('pharma communication', 'scientific communication', 'marketing communication'))
         option1 = st.sidebar.selectbox(
         'Product',
-        ('Phesgo', 'Tecentriq'))
+        ('Phesgo', 'Tecentriq','Ocrevus','Polivy','Crovalimab','Vabysmo'))
         option2 = st.sidebar.selectbox(
         'Target Audience',
         ('HCP', 'Patients', 'Patients and their Families'))
