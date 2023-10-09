@@ -283,30 +283,31 @@ True
 Based on the provided context, I would classify it under the ""Treatment"" category, as it discusses the use of Kadcyla for treating patients with residual invasive disease.
 
 Here's the JSON format classification:
-
+```json
 {
-""category"": ""Treatment"",
-""properties"": {
-""prevention"": false,
-""treatment"": true,
-""epidemiology"": false,
-""pharmacovigilance"": false,
-""patient support programme"": false,
-""patient access"": false,
-""content complexity introductory"": false,
-""home"": false,
-""content complexity intermediate"": false,
-""content complexity advanced"": false,
-""content complexity expert"": false,
-""Non Clinical Topics"": false,
-""congress meeting event"": false,
-""disease stage"": false,
-""personalised healthcare"": false,
-""tolerability"": false,
-""overall survival"": false,
-""mechanism of action"": false
+    ""category"": ""Treatment"",
+    ""properties"": {
+    ""prevention"": false,
+    ""treatment"": true,
+    ""epidemiology"": false,
+    ""pharmacovigilance"": false,
+    ""patient support programme"": false,
+    ""patient access"": false,
+    ""content complexity introductory"": false,
+    ""home"": false,
+    ""content complexity intermediate"": false,
+    ""content complexity advanced"": false,
+    ""content complexity expert"": false,
+    ""Non Clinical Topics"": false,
+    ""congress meeting event"": false,
+    ""disease stage"": false,
+    ""personalised healthcare"": false,
+    ""tolerability"": false,
+    ""overall survival"": false,
+    ""mechanism of action"": false
+    }
 }
-}
+```
 
 Explanation:
 
