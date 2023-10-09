@@ -203,11 +203,6 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     #translated = GoogleTranslator(source='auto', target='french').translate(text)
                     st.markdown(text)
-                    # df = pd.DataFrame(str(text))
-                    # def convert_df(df):
-                    #     return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-                
-                    # csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
                        text,
@@ -219,14 +214,9 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='french').translate(text)
                     st.markdown(translated)
-                    df = pd.DataFrame(translated)
-                    def convert_df(df):
-                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-                
-                    csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
-                       csv,
+                       translated,
                        "file_french.txt",
                        "text/csv",
                        key='download-txt_f'
@@ -235,14 +225,9 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='german').translate(text)
                     st.markdown(translated)
-                    df = pd.DataFrame(translated)
-                    def convert_df(df):
-                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-                
-                    csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
-                       csv,
+                       translated,
                        "file_german.txt",
                        "text/csv",
                        key='download-txt_g')               
@@ -252,14 +237,9 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='italian').translate(text)
                     st.markdown(translated)
-                    df = pd.DataFrame(translated)
-                    def convert_df(df):
-                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-                
-                    csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
-                       csv,
+                       translated,
                        "file_italian.txt",
                        "text/csv",
                        key='download-txt_i'  )
@@ -267,14 +247,9 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='spanish').translate(text)
                     st.markdown(translated)
-                    df = pd.DataFrame(translated)
-                    def convert_df(df):
-                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-                
-                    csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
-                       csv,
+                       translated,
                        "file_spanish.txt",
                        "text/csv",
                        key='download-txt_s' )
