@@ -448,7 +448,7 @@ if uploaded_files:
     #     col3b.json(schema_1)
 
     col4.markdown("<h3 style='text-align: center; color: grey;'> Tags Recommendation and Document Debrief Based on Hypothesis </h3>", unsafe_allow_html=True)
-    col0a,col1a, col2a, col3a = col4.tabs(["Global Taxonomy","Context Priortized","Tags with Explanation", "Document Debrief"])
+    col0a, col00a, col2a, col1a, col3a = col4.tabs(["Global Taxonomy","Taxonomy Driven Tags","Context Priortized","Tags with Explanation", "Document Debrief"])
     col0a.markdown("<h4 style='text-align: center; color: grey;'> Global Taxonomy </h4>", unsafe_allow_html=True)
     dg_t = pd.read_csv(os.path.join(os.getcwd(),'cont_tax.csv'))
     col0a.dataframe(dg_t)
