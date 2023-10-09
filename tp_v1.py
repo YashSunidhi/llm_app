@@ -210,7 +210,7 @@ def text_trans():
                     csv = convert_df(df)
                     st.download_button(
                        "Press to Download and save",
-                       csv,
+                       text,
                        "file_eng.txt",
                        "text/csv",
                        key='download-txt_e'
