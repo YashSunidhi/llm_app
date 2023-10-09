@@ -33,7 +33,7 @@ for upf in uploaded_files:
 
 
 if uploaded_files:
-    ontology = st.sidebar.selectbox("select taxonomy of interest",['','global','oce-p','oce-d'])
+    ontology = st.sidebar.selectbox("select taxonomy of interest",['global','oce-p','oce-d'])
     filen = st.sidebar.selectbox("select upload file of interest",file_name)
 
 
