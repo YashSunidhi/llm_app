@@ -245,7 +245,7 @@ def text_trans():
                        csv,
                        "file_german.txt",
                        "text/csv",
-                       key='download-txt_g'                
+                       key='download-txt_g')               
                 
 
                 with tab4:
@@ -262,7 +262,7 @@ def text_trans():
                        csv,
                        "file_italian.txt",
                        "text/csv",
-                       key='download-txt_i'  
+                       key='download-txt_i'  )
                 with tab5:
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='spanish').translate(text)
@@ -277,7 +277,7 @@ def text_trans():
                        csv,
                        "file_spanish.txt",
                        "text/csv",
-                       key='download-txt_s' 
+                       key='download-txt_s' )
             
 def image_gen():
     if 'name' not in st.session_state:
