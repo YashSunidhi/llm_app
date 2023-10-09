@@ -462,6 +462,7 @@ page_names_to_funcs = {
     "Image Generation": image_gen,
     "Final Document": final_out,
 }
-
-selected_page = st.sidebar.selectbox("Select Gen AI Application", page_names_to_funcs.keys())
+with st.sidebar:
+    st.title('Select Gen AI Application')
+selected_page = st.sidebar.selectbox("", page_names_to_funcs.keys())
 page_names_to_funcs[selected_page]()
