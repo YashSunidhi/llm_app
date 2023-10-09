@@ -456,12 +456,12 @@ if uploaded_files:
     col00a.markdown("<h4 style='text-align: center; color: grey;'> Tags based on Global Taxonomy </h4>", unsafe_allow_html=True)
     if filen == 'Residual Disease Management In HER2+ve Early Breast Cancer Setting - Case Discussion.pdf':
         dg_tt = pd.read_csv(os.path.join(os.getcwd(),'doc1 - Sheet1.csv'))
-        col00a.dataframe(dg_t)
+        col00a.dataframe(dg_tt)
         col00a.write(dg_g['Summary'][0])
 
     else:
         dg_tt = pd.read_csv(os.path.join(os.getcwd(),'doc1 - Sheet2.csv'))
-        col00a.dataframe(dg_t)
+        col00a.dataframe(dg_tt)
         col00a.write(dg_g['Summary'][3])
         
 
