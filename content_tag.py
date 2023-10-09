@@ -441,7 +441,7 @@ if uploaded_files:
         "required": ['prevention', 'treatment', 'epidemiology', 'pharmacovigilance', 'patient support programme', 'patient access', 'content complexity introductory', 'home', 'content complexity intermediate', 'content complexity advanced', 'content complexity expert', 'Non Clinical Topics', 'congress meeting event', 'disease stage', 'personalised healthcare', 'tolerability', 'overall survival', 'mechanism of action'],
     }
 
-    col3.markdown("<h3 style='text-align: center; color: grey;'> Using Excel to Transform into Desired Schema format </h3>", unsafe_allow_html=True)
+    #col3.markdown("<h3 style='text-align: center; color: grey;'> Using Excel to Transform into Desired Schema format </h3>", unsafe_allow_html=True)
     col3a, col3b = col3.tabs(['Schema Part 1','Schema Part 2'])
     if ontology=='global':
         col3a.json(schema)
