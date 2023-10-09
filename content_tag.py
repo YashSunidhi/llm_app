@@ -442,10 +442,10 @@ if uploaded_files:
     }
 
     #col3.markdown("<h3 style='text-align: center; color: grey;'> Using Excel to Transform into Desired Schema format </h3>", unsafe_allow_html=True)
-    col3a, col3b = col3.tabs(['Schema Part 1','Schema Part 2'])
-    if ontology=='global':
-        col3a.json(schema)
-        col3b.json(schema_1)
+    # col3a, col3b = col3.tabs(['Schema Part 1','Schema Part 2'])
+    # if ontology=='global':
+    #     col3a.json(schema)
+    #     col3b.json(schema_1)
 
     col4.markdown("<h3 style='text-align: center; color: grey;'> Tags Recommendation and Document Debrief Based on Hypothesis </h3>", unsafe_allow_html=True)
     col1a, col2a, col3a = col4.tabs(["Context Priortized","Tags with Explanation", "Document Debrief"])
