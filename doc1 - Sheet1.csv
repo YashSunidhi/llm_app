@@ -1,0 +1,36 @@
+Term Label,Tags
+scientific area,Oncology
+indication,Breast Cancer
+drug,Kadcyla
+audience,medical_professionals
+diagnosis,mentioned
+dose-description,not_provided
+dose-form,not_specified
+efficacy,important_factor
+hospital,mentioned
+immunotherapy,mentioned
+language,formal_professional
+minimal_residual_disease,defined
+quality_of_life,briefly_referenced
+radiotherapy,mentioned
+route_of_administration,not_elaborated
+safety,not_explicitly_mentioned
+sentiment,neutral
+surgery,mentioned
+symptoms,briefly_mentioned
+Content Complexity Advanced,no
+Content Complexity Expert,no
+Content Complexity Intermediate,no
+Content Complexity Introductory,yes
+Epidemiology,no
+Home,no
+Mechanism of Action,no
+Non-Clinical Topics,[Congress Meeting Event]
+Overall Survival,no
+Patient Access,no
+Patient Support Programme,no
+Personalised Healthcare,no
+Pharmacovigilance,no
+Prevention,yes
+Tolerability,no
+Treatment,yes

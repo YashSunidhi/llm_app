@@ -1,0 +1,39 @@
+Term Label,Tags
+scientific area,Oncology
+indication,NA
+drug,NA
+Non Clinical Topics,Congress
+congress meeting event,Pre-Event
+content complexity advanced,No
+content complexity expert,No
+content complexity intermediate,Yes
+content complexity introductory,Yes
+disease stage,No
+epidemiology,No
+home,No
+mechanism of action,No
+overall survival,No
+patient access,Yes
+patient support programme,Yes
+personalised healthcare,Yes
+pharmacovigilance,No
+prevention,Yes
+tolerability,No
+treatment,Yes
+audience,medical_professionals
+diagnosis,yes
+dosage,no
+dose-description,no
+dose-form,no
+efficacy,yes
+hospital,yes
+immunotherapy,yes
+language,formal_professional
+minimal_residual_disease,yes
+quality_of_life,no
+radiotherapy,yes
+route_of_administration,no
+safety,not_explicitly_mentioned
+sentiment,neutral
+surgery,yes
+symptoms,no
