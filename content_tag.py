@@ -557,6 +557,10 @@ if uploaded_files:
         col2a.write(ast.literal_eval(dg_g['Tags'][2]))
         col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
         col2a.write(dg_g['Summary'][2])
+    elif filen == 'slide deck Dépistage personnalisé cancer du sein - associations de patients.pdf':
+        col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Tags'][0])
+        col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
+        col2a.write(dg_g[dg_g['Document']==filen].reset_index(drop=True)['Summary'][0])
     #col2a.markdown("<h4 style='text-align: center; color: grey;'> Short Summary based on NLP Model </h4>", unsafe_allow_html=True)
     # query_result_s = chatbot.query(f'''
     #         context : {context} \n\n
