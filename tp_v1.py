@@ -203,22 +203,81 @@ def text_trans():
                     # Use any translator you like, in this example GoogleTranslator
                     #translated = GoogleTranslator(source='auto', target='french').translate(text)
                     st.markdown(text)
+                    df = pd.DataFrame(text)
+                    def convert_df(df):
+                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+                
+                    csv = convert_df(df)
+                    st.download_button(
+                       "Press to Download and save",
+                       csv,
+                       "file_eng.txt",
+                       "text/csv",
+                       key='download-txt_e'
+                    )
                 with tab2:
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='french').translate(text)
                     st.markdown(translated)
+                    df = pd.DataFrame(translated)
+                    def convert_df(df):
+                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+                
+                    csv = convert_df(df)
+                    st.download_button(
+                       "Press to Download and save",
+                       csv,
+                       "file_french.txt",
+                       "text/csv",
+                       key='download-txt_f'
+                    )                    
                 with tab3:
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='german').translate(text)
                     st.markdown(translated)
+                    df = pd.DataFrame(translated)
+                    def convert_df(df):
+                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+                
+                    csv = convert_df(df)
+                    st.download_button(
+                       "Press to Download and save",
+                       csv,
+                       "file_german.txt",
+                       "text/csv",
+                       key='download-txt_g'                
+                
+
                 with tab4:
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='italian').translate(text)
                     st.markdown(translated)
+                    df = pd.DataFrame(translated)
+                    def convert_df(df):
+                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+                
+                    csv = convert_df(df)
+                    st.download_button(
+                       "Press to Download and save",
+                       csv,
+                       "file_italian.txt",
+                       "text/csv",
+                       key='download-txt_i'  
                 with tab5:
                     # Use any translator you like, in this example GoogleTranslator
                     translated = GoogleTranslator(source='auto', target='spanish').translate(text)
                     st.markdown(translated)
+                    df = pd.DataFrame(translated)
+                    def convert_df(df):
+                        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+                
+                    csv = convert_df(df)
+                    st.download_button(
+                       "Press to Download and save",
+                       csv,
+                       "file_spanish.txt",
+                       "text/csv",
+                       key='download-txt_s' 
             
 def image_gen():
     if 'name' not in st.session_state:
