@@ -50,7 +50,7 @@ def text_gen():
         # Get the input text from the user
         with st.sidebar:
             st.title('🤗💬 Product Positioning')
-            if st.sidebar.checkbox('Select a file in current directory'):
+            if st.sidebar.checkbox('Select if you want to pass "Product Positioning"'):
                 option01 = st.sidebar.text_input('For - Eligible Population','')
                 option02 = st.sidebar.text_input('Who - Target Patient Identifier','')
                 option03 = st.sidebar.text_input('Drug - Product Category','')
