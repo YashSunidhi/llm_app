@@ -50,12 +50,13 @@ def text_gen():
         # Get the input text from the user
         with st.sidebar:
             st.title('🤗💬 Product Positioning')
-        option01 = st.sidebar.text_input('For - Eligible Population','')
-        option02 = st.sidebar.text_input('Who - Target Patient Identifier','')
-        option03 = st.sidebar.text_input('Drug - Product Category','')
-        option04 = st.sidebar.text_input('That Uniquely - Rational differentiator','')
-        option05 = st.sidebar.text_input('Because - Reason to believe','')
-        option06 = st.sidebar.text_input('So that - Emotional Benefit','')
+            if st.sidebar.checkbox('Select a file in current directory'):
+                option01 = st.sidebar.text_input('For - Eligible Population','')
+                option02 = st.sidebar.text_input('Who - Target Patient Identifier','')
+                option03 = st.sidebar.text_input('Drug - Product Category','')
+                option04 = st.sidebar.text_input('That Uniquely - Rational differentiator','')
+                option05 = st.sidebar.text_input('Because - Reason to believe','')
+                option06 = st.sidebar.text_input('So that - Emotional Benefit','')
 
         with st.sidebar:
             st.title('🤗💬 User Input for Base Prompt')
