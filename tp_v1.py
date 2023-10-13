@@ -61,7 +61,7 @@ def text_gen():
         with st.sidebar:
             st.title('🤗💬 User Input for Base Prompt')
             if st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"'):
-        
+                option0w = st.sidebar.selectbox('Select Web Search',(False,True))
                 option0 = st.sidebar.selectbox(
                 'Contemt Designer Role',
                 ('pharma communication', 'scientific communication', 'marketing communication'))
@@ -124,7 +124,7 @@ def text_gen():
         
         
         # Function for generating LLM response
-        def generate_response(prompt_input, email, passwd):
+        def generate_response(prompt_input, email, passwd,option0w):
             # Hugging Face Login
             sign = Login(email, passwd)
             cookies = sign.login()
@@ -142,7 +142,7 @@ def text_gen():
                     string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
         
             prompt = f"{string_dialogue} {prompt_input} Assistant: "
-            return chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+            return chatbot.query(prompt,web_search=option0w,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
         
         
         # User-provided prompt
