@@ -51,12 +51,12 @@ def text_gen():
         with st.sidebar:
             st.title('🤗💬 Product Positioning')
             if st.sidebar.checkbox('Select if you want to pass "Product Positioning"'):
-                option01 = st.sidebar.text_input('For - Eligible Population','')
-                option02 = st.sidebar.text_input('Who - Target Patient Identifier','')
-                option03 = st.sidebar.text_input('Drug - Product Category','')
-                option04 = st.sidebar.text_input('That Uniquely - Rational differentiator','')
-                option05 = st.sidebar.text_input('Because - Reason to believe','')
-                option06 = st.sidebar.text_input('So that - Emotional Benefit','')
+                option01 = st.sidebar.text_input('For - Eligible Population','None')
+                option02 = st.sidebar.text_input('Who - Target Patient Identifier','None')
+                option03 = st.sidebar.text_input('Drug - Product Category','None')
+                option04 = st.sidebar.text_input('That Uniquely - Rational differentiator','None')
+                option05 = st.sidebar.text_input('Because - Reason to believe','None')
+                option06 = st.sidebar.text_input('So that - Emotional Benefit','None')
 
         with st.sidebar:
             st.title('🤗💬 User Input for Base Prompt')
