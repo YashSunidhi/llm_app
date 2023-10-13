@@ -54,11 +54,11 @@ def text_gen():
             option0C = st.sidebar.text_area('Input context reference if any','')
             option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
             if option0m == 'Base Model':
-                option0m == 0
+                modelx == 0
             elif option0m == 'Large Model':
-                option0m == 2
+                modelx == 2
             else:
-                option0m == 3
+                modelx == 3
 
 
                                                             
@@ -137,7 +137,7 @@ def text_gen():
         
         
         # Function for generating LLM response
-        def generate_response(prompt_input, email, passwd, model_choice = option0m):
+        def generate_response(prompt_input, email, passwd, model_choice = modelx):
             # Hugging Face Login
             sign = Login(email, passwd)
             cookies = sign.login()
@@ -159,7 +159,7 @@ def text_gen():
             #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
             return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
 
-        def generate_response_web(prompt_input, email, passwd, model_choice = option0m):
+        def generate_response_web(prompt_input, email, passwd, model_choice = modelx):
             # Hugging Face Login
             sign = Login(email, passwd)
             cookies = sign.login()
