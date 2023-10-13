@@ -124,7 +124,7 @@ def text_gen():
         
         
         # Function for generating LLM response
-        def generate_response(prompt_input, email, passwd,webs = option0w):
+        def generate_response(prompt_input, email, passwd):
             # Hugging Face Login
             sign = Login(email, passwd)
             cookies = sign.login()
@@ -142,8 +142,29 @@ def text_gen():
                     string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
         
             prompt = f"{string_dialogue} {prompt_input} Assistant: "
-            response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-            return response
+            #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+            return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+
+        def generate_response_web(prompt_input, email, passwd):
+            # Hugging Face Login
+            sign = Login(email, passwd)
+            cookies = sign.login()
+            # Create ChatBot                        
+            chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+            # Create a new conversation
+            id = chatbot.new_conversation()
+            chatbot.change_conversation(id)
+        
+            for dict_message in st.session_state.messages:
+                string_dialogue = "You are a helpful assistant."
+                if dict_message["role"] == "user":
+                    string_dialogue += "User: " + dict_message["content"] + "\n\n"
+                else:
+                    string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
+        
+            prompt = f"{string_dialogue} {prompt_input} Assistant: "
+            #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+            return chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
         
         
         # User-provided prompt
@@ -158,7 +179,11 @@ def text_gen():
         if st.session_state.messages[-1]["role"] != "assistant":
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
-                    response = generate_response(prompt, hf_email, hf_pass) 
+                    if option0w==False:
+                        response = generate_response(prompt, hf_email, hf_pass)
+                    else:
+                        response = generate_response_web(prompt, hf_email, hf_pass)
+                        
                     st.write(response) 
                     st.warning("Referred Resources",icon = '🚨')
                     count = 0
