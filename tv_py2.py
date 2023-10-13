@@ -11,6 +11,9 @@ from deep_translator import GoogleTranslator
 import os
 import pathlib
 from PIL import Image
+import requests
+import io
+from PIL import Image
 
 # App title
 st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
@@ -326,7 +329,21 @@ def image_gen():
       filenames = os.listdir(folder_path)
       selected_filename = st.sidebar.selectbox('Select a file', filenames)
       return os.path.join(folder_path, selected_filename)
+    hf_email = 'zurich.suyash@gmail.com'
+    hf_pass = 'Roche@2107'
+    def generate_response(prompt_input, email, passwd):
+        # Hugging Face Login
+        sign = Login(email, passwd)
+        cookies = sign.login()
+        # Create ChatBot                        
+        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+        # Create a new conversation
+        id = chatbot.new_conversation()
+        chatbot.change_conversation(id)
+        chatbot.switch_llm(0)
     
+        prompt = f" Can you please provide meaningful and impressive image placeholders suitable for text to image generation from text " + str('""" ') {prompt_input} + str(' """') Assistant: "
+        return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
     
     
     
@@ -372,28 +389,48 @@ def image_gen():
     option8 = st.text_area('Prompt for Generation Content',
     (
     "Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
-    
-    option6 = st.selectbox(
-    'Recommended Image Prompts',
-    ("A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.",
-    "An illustration or graphic representation of cancer cells or tumors, with arrows or other visual elements highlighting the effects of Phesgo on the cancer cells. This image should help readers understand how Phesgo works and its potential benefits.",
-    "A picture of a person receiving chemotherapy or other cancer treatments, with a caption or surrounding text that discusses the potential side effects and limitations of traditional cancer treatments. This image should help readers empathize with the need for alternative treatment options.",
-    "A diagram or flowchart showing the mechanism of action of Phesgo, highlighting how it targets and destroys cancer cells while minimizing harm to healthy cells. This image should help readers understand the science behind Phesgo and its unique advantages.",
-    "A photo of a patient who has benefited from Phesgo treatment, with a testimonial quote or accompanying text that describes their positive experience. This image should help build credibility and trust with readers.",
-    "An infographic comparing the effectiveness and safety of Phesgo to other cancer treatments, using charts, graphs, or other visual elements to highlight the benefits of Phesgo. This image should help readers see the value of considering Phesgo as an alternative treatment option.",
-    "A stylized image of the Phesgo logo or branding, used consistently throughout the newsletter to reinforce the company's identity and message. This image should be visually appealing and memorable.",
-    "A photograph or illustration of a person in a natural setting, such as a park or garden, symbolizing hope, renewal, and the possibility of healing. This image should evoke emotions and create a positive association with Phesgo.",
-    "A chart or table listing the key benefits of Phesgo, such as targeted therapy, reduced side effects, and improved quality of life. This image should summarize the main points of the newsletter and serve as a quick reference guide for readers.",
-    "A call-to-action button or banner, encouraging readers to take the next step and learn more about Phesgo, request information, or schedule a consultation. This image should be prominently displayed and designed to prompt engagement."))
+    response = generate_response(option8,hf_email, hf_pass)
+    if response:
+        st.write(response)
+    option6 = st.text_area(
+    'Select a Recommended Prompt and Paste here', ' ')
     
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
     option9 = st.text_input("Insert Your feedback","")
-    default_prompt = [ option6 + str(" ")+ option1 + str(", ") +  option2+  str(", ")+ option3+  str(", ")+ option4+  str(", ")+ option5+ str(", ")+option7 + str(" ") +option9]
+    if response:
+        default_prompt = [ option6 + str(" ")+ option1 + str(", ") +  option2+  str(", ")+ option3+  str(", ")+ option4+  str(", ")+ option5+ str(", ")+option7 + str(" ") +option9]
+    else:
+        default_prompt = ["A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise."]
+        
     #prompt = st.text_input('Input your prompt here')
     st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
     prompt_design = st.warning(default_prompt[0],icon='🤖')
+
+    ### Experiment with Generated images
+    API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+    headers = {"Authorization": "Bearer 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"}
     
+    def query(payload):
+    	response = requests.post(API_URL, headers=headers, json=payload)
+    	return response.content
+    image_bytes = query({
+    	"inputs": default_prompt[0] + " , Basic, High Quality, photorealistic, 85mm portrait photography, Swiss,detailed, 8k",
+      "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':3},
+      "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+     
+    })
+    #'denoising_end':0.8,'guidance_scale':1.5
+    # You can access the image with PIL.Image for example
+    image = Image.open(io.BytesIO(image_bytes))
+    st.markdown('''
+      ## About
+      Live text-2-image Generation:
+      
+      💡 Note: Free and Secure Access
+      ''')
+    tot1 = st.image(image)
     on = st.toggle('Examine Generated Images')
+    
     
     if on:
     
