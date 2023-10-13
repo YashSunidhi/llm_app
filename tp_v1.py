@@ -191,9 +191,9 @@ def text_gen():
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
                     if option0w==False:
-                        response = generate_response(prompt, hf_email, hf_pass)
+                        response = generate_response(prompt, hf_email, hf_pass,model_choice = model_v)
                     else:
-                        response = generate_response_web(prompt, hf_email, hf_pass)
+                        response = generate_response_web(prompt, hf_email, model_choice = model_v)
                         
                     st.write(response) 
                     st.warning("Referred Resources",icon = '🚨')
