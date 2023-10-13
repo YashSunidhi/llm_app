@@ -49,6 +49,10 @@ def text_gen():
         #######
         # Get the input text from the user
         with st.sidebar:
+            st.title('🤗💬 Web Search Inclusion (Default Not Included')
+            option0w = st.sidebar.selectbox('Select Web Search',(False,True))
+            option0C = st.sidebar.text_area('Input context reference if any','')
+        with st.sidebar:
             st.title('🤗💬 Product Positioning')
             if st.sidebar.checkbox('Select if you want to pass "Product Positioning"'):
                 option01 = st.sidebar.text_input('For - Eligible Population','None')
@@ -61,7 +65,6 @@ def text_gen():
         with st.sidebar:
             st.title('🤗💬 User Input for Base Prompt')
             if st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"'):
-                option0w = st.sidebar.selectbox('Select Web Search',(False,True))
                 option0 = st.sidebar.selectbox(
                 'Contemt Designer Role',
                 ('pharma communication', 'scientific communication', 'marketing communication'))
