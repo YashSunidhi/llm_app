@@ -133,7 +133,7 @@ def text_gen():
         
         
         # Function for generating LLM response
-        def generate_response(prompt_input, email, passwd, model_choice = model_v):
+        def generate_response(prompt_input, email, passwd, model_v):
             # Hugging Face Login
             sign = Login(email, passwd)
             cookies = sign.login()
@@ -142,7 +142,7 @@ def text_gen():
             # Create a new conversation
             id = chatbot.new_conversation()
             chatbot.change_conversation(id)
-            chatbot.switch_llm(model_choice)
+            chatbot.switch_llm(model_v)
         
             for dict_message in st.session_state.messages:
                 string_dialogue = "You are a helpful assistant."
@@ -155,7 +155,7 @@ def text_gen():
             #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
             return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
 
-        def generate_response_web(prompt_input, email, passwd, model_choice = model_v):
+        def generate_response_web(prompt_input, email, passwd, model_v):
             # Hugging Face Login
             sign = Login(email, passwd)
             cookies = sign.login()
@@ -164,7 +164,7 @@ def text_gen():
             # Create a new conversation
             id = chatbot.new_conversation()
             chatbot.change_conversation(id)
-            chatbot.switch_llm(model_choice)
+            chatbot.switch_llm(model_v)
         
             for dict_message in st.session_state.messages:
                 string_dialogue = "You are a helpful assistant."
@@ -191,9 +191,9 @@ def text_gen():
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
                     if option0w==False:
-                        response = generate_response(prompt, hf_email, hf_pass,model_choice = model_v)
+                        response = generate_response(prompt, hf_email, hf_pass, model_v)
                     else:
-                        response = generate_response_web(prompt, hf_email, model_choice = model_v)
+                        response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                         
                     st.write(response) 
                     st.warning("Referred Resources",icon = '🚨')
