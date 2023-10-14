@@ -419,9 +419,11 @@ def image_gen():
     
       #st.header(st.session_state['name'])
       with st.spinner("Thinking..."):
+          option13 = st.text_input('guidance_scale')
+          option14 = st.text_input("num_inference_steps")
           image_bytes = query({
               "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
-              "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1,'guidance_scale':7},
+              "parameters": {'num_inference_steps': {option14} ,'num_images_per_prompt':1,'guidance_scale':{option13}},
               "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
          
             })
