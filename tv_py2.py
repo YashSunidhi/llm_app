@@ -353,8 +353,6 @@ def image_gen():
       st.markdown('''
       ## About
       This app is an text-2-image or text/image-2-image Generative Engine:
-      
-      💡 Note: Free and Secure Access
       ''')
     
     if __name__ == '__main__':
@@ -422,7 +420,7 @@ def image_gen():
       #st.header(st.session_state['name'])
       with st.spinner("Thinking..."):
           image_bytes = query({
-              "inputs": default_prompt[0] + " , Basic, High Quality, photorealistic, 85mm portrait photography, Swiss,detailed, 16k",
+              "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic,portrait photography, Volumetric Lighting, Full Character, Swiss,detailed, street photography, dramatic lighting, Documentary-style",
               "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
               "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
          
