@@ -400,7 +400,9 @@ def image_gen():
         try:
             st.write(torpedo)
             default_prompt = [ option6 + str(" ")+ option1 + str(", ") +  option2+  str(", ")+ option3+  str(", ")+ option4+  str(", ")+ option5+ str(", ")+option7 + str(" ") +option9]
-        
+        except:
+            default_prompt = [ option6 + str(" ")+ option1 + str(", ") +  option2+  str(", ")+ option3+  str(", ")+ option4+  str(", ")+ option5+ str(", ")+option7 + str(" ") +option9]
+            
     else:
         default_prompt = ["A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise."]           
             #prompt = st.text_input('Input your prompt here')
