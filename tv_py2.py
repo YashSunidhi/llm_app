@@ -419,8 +419,8 @@ def image_gen():
     
       #st.header(st.session_state['name'])
       with st.spinner("Thinking..."):
-          option13 = st.text_input('guidance_scale')
-          option14 = st.text_input("num_inference_steps")
+          option13 = st.text_input('guidance_scale',7)
+          option14 = st.text_input("num_inference_steps",50)
           image_bytes = query({
               "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
               "parameters": {'num_inference_steps': {option14} ,'num_images_per_prompt':1,'guidance_scale':{option13}},
