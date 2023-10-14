@@ -387,8 +387,8 @@ def image_gen():
     ('Swiss','Scottish', 'French', 'Indian'
       ))
     option8 = st.text_area('Prompt for Generation Content',
-    (
-    "Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
+    ("Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
+    
     response = generate_response(option8,hf_email, hf_pass)
     if response:
         st.write(response)
