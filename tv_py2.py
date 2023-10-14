@@ -342,7 +342,7 @@ def image_gen():
         chatbot.change_conversation(id)
         chatbot.switch_llm(0)
     
-        prompt = f" Can you please provide meaningful and impressive image placeholders suitable for text to image generation from text " + str('""" ')+ {prompt_input} + str(' """')+ " Assistant: "
+        prompt = f''' Can you please provide meaningful and impressive image placeholders suitable for text to image generation from text """  {prompt_input} """. Assistant: '''
         return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
     
     
