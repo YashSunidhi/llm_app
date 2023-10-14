@@ -342,7 +342,7 @@ def image_gen():
         chatbot.change_conversation(id)
         chatbot.switch_llm(0)
     
-        prompt = f" Can you please provide meaningful and impressive image placeholders suitable for text to image generation from text " + str('""" ') {prompt_input} + str(' """') Assistant: "
+        prompt = f" Can you please provide meaningful and impressive image placeholders suitable for text to image generation from text " + str('""" ')+ {prompt_input} + str(' """') Assistant: "
         return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
     
     
@@ -406,29 +406,12 @@ def image_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
     prompt_design = st.warning(default_prompt[0],icon='🤖')
 
-    ### Experiment with Generated images
     API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
     headers = {"Authorization": "Bearer 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"}
-    
+            
     def query(payload):
-    	response = requests.post(API_URL, headers=headers, json=payload)
-    	return response.content
-    image_bytes = query({
-    	"inputs": default_prompt[0] + " , Basic, High Quality, photorealistic, 85mm portrait photography, Swiss,detailed, 8k",
-      "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':3},
-      "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
-     
-    })
-    #'denoising_end':0.8,'guidance_scale':1.5
-    # You can access the image with PIL.Image for example
-    image = Image.open(io.BytesIO(image_bytes))
-    st.markdown('''
-      ## About
-      Live text-2-image Generation:
-      
-      💡 Note: Free and Secure Access
-      ''')
-    tot1 = st.image(image)
+        response = requests.post(API_URL, headers=headers, json=payload)
+        return response.content
     on = st.toggle('Examine Generated Images')
     
     
@@ -436,6 +419,21 @@ def image_gen():
     
       #st.header(st.session_state['name'])
       with st.spinner("Thinking..."):
+          image_bytes = query({
+              "inputs": default_prompt[0] + " , Basic, High Quality, photorealistic, 85mm portrait photography, Swiss,detailed, 8k",
+              "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':3},
+              "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+         
+            })
+          image = Image.open(io.BytesIO(image_bytes))
+          st.markdown('''
+          ## About
+          Live text-2-image Generation:
+          
+          💡 Note: Free and Secure Access
+          ''')
+          tot1 = st.image(image)
+          
           time.sleep(10)
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
           with tab1:
