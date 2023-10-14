@@ -387,11 +387,12 @@ def image_gen():
     ('Swiss','Scottish', 'French', 'Indian'
       ))
     option8 = st.text_area('Prompt for Generation Content',
-    ("Create marketing content in English for patients, emphasizing the Professional tone. Draft a Newsletter that educates them about Phesgo role in cancer treatment and its potential benefits. The objective is to Increase User Engagement to those seeking Alternative Treatment options."))
-    
-    response = generate_response(option8,hf_email, hf_pass)
-    if response:
-        st.write(response)
+    (""))
+    st.button("Reset", type="primary")
+    if st.button('Generating Image Placeholders'):
+        response = generate_response(option8,hf_email, hf_pass)
+        if response:
+            st.write(response)
     option6 = st.text_area(
     'Select a Recommended Prompt and Paste here', ' ')
     
@@ -420,8 +421,8 @@ def image_gen():
       #st.header(st.session_state['name'])
       with st.spinner("Thinking..."):
           image_bytes = query({
-              "inputs": default_prompt[0] + " , Basic, High Quality, photorealistic, 85mm portrait photography, Swiss,detailed, 8k",
-              "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':3},
+              "inputs": default_prompt[0] + " , Basic, High Quality,Super high resolution, photorealistic, 85mm portrait photography, Swiss,detailed, 16k",
+              "parameters": {'num_inference_steps': 75 ,'num_images_per_prompt':1},
               "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
          
             })
