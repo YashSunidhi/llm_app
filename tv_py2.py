@@ -409,8 +409,8 @@ def image_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
     prompt_design = st.warning(default_prompt[0],icon='🤖')
 
-    API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
-    headers = {"Authorization": "Bearer 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"}
+    # API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+    # headers = {"Authorization": "Bearer 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"}
             
     def query(payload):
         response = requests.post(API_URL, headers=headers, json=payload)
@@ -443,9 +443,9 @@ def image_gen():
                 })
               image = Image.open(io.BytesIO(image_bytes))
 
-              tot1 = tab10.image(image)
+              tot1 = st.image(image)
               file = Image.open(image) 
-              tab10.download_button(
+              st.download_button(
                    "Press to Download and save",
                    file,
                    "live_gen_1.png",
@@ -462,14 +462,15 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                tot1 = tab20.image(image)
+                tot1 = st.image(image)
                 file = Image.open(image) 
-                tab20.download_button(
+                st.download_button(
                     "Press to Download and save",
                     file,
                     "live_gen_1.png",
                     "image/png",
                     key='download-image_s2' )
+                
             with tab30:
                 API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
                 headers = {"Authorization": "Bearer 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"}
@@ -480,9 +481,9 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                tot1 = tab30.image(image)
+                tot1 = st.image(image)
                 file = Image.open(image) 
-                tab30.download_button(
+                st.download_button(
                     "Press to Download and save",
                     file,
                     "live_gen_1.png",
