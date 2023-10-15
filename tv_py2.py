@@ -63,7 +63,8 @@ def text_gen():
                                                             
         with st.sidebar:
             st.title('🤗💬 Product Positioning')
-            if st.sidebar.checkbox('Select if you want to pass "Product Positioning"'):
+            pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
+            if pps:
                 option01 = st.sidebar.text_input('For - Eligible Population','None')
                 option02 = st.sidebar.text_input('Who - Target Patient Identifier','None')
                 option03 = st.sidebar.text_input('Drug - Product Category','None')
@@ -75,7 +76,8 @@ def text_gen():
 
         with st.sidebar:
             st.title('🤗💬 User Input for Base Prompt')
-            if st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"'):
+            ups = st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"')
+            if ups:
                 option0 = st.sidebar.selectbox(
                 'Content Designer Role',
                 ('pharma communication', 'scientific communication', 'marketing communication'))
@@ -119,7 +121,11 @@ def text_gen():
         
         st.title("Prompt Design Template")
         option7 = st.text_input('Input your prompt here',"")
-        default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + tot]
+        if pps:
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + tot]
+        else:
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+            
             #prompt = st.text_input('Input your prompt here')
         prompt_design = st.write(default_prompt[0])
         
