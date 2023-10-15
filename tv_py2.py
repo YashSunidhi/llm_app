@@ -443,7 +443,7 @@ def image_gen():
                 
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                result = Image.fromarray(io.BytesIO(image_bytes))
+                result = Image.fromarray(image_bytes)
         
                 tot11 = st.image(image)
                 st.download_button(
@@ -464,7 +464,7 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                result = Image.fromarray(io.BytesIO(image_bytes))
+                result = Image.fromarray(image_bytes)
                 tot12 = st.image(image)
                 st.download_button(
                     "Press to Download and save",
@@ -483,7 +483,7 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                result = Image.fromarray(io.BytesIO(image_bytes))
+                result = Image.fromarray(image_bytes)
                 tot13 = st.image(image)
                 st.download_button(
                     "Press to Download and save",
