@@ -200,7 +200,7 @@ def text_gen():
             st.write(prompt)
     
     # Generate a new response if last message is not from assistant
-    #st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
   
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
