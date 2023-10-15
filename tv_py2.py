@@ -344,7 +344,7 @@ def image_gen():
         chatbot.change_conversation(id)
         chatbot.switch_llm(0)
     
-        prompt = f''' Can you please provide very detailed description of image using artifacts like geneder, race, age, body posture, light description etc.  for meaningful and impressive image placeholders suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
+        prompt = f''' Can you provide very detailed description of images placeholders using artifacts like geneder, race, eye contact , body posture, facial expression,  light description etc.  ensuring realism suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
         return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
     
     
@@ -392,7 +392,7 @@ def image_gen():
     if st.button('Generating Image Placeholders'):
         response = generate_response(option8,hf_email, hf_pass)
         if response:
-            torpedo = st.write(response)
+            #torpedo = st.write(response)
             st.session_state.messages_1.append(response.text)
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
@@ -446,7 +446,7 @@ def image_gen():
                 headers = {"Authorization": "Bearer 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"}
                 image_bytes = query({
                     "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                    "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                    "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1},
                     "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
                 
                 })
@@ -469,7 +469,7 @@ def image_gen():
                 headers = {"Authorization": "Bearer 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"}
                 image_bytes = query({
                     "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                    "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                    "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1},
                     "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
                     
                 })
@@ -491,7 +491,7 @@ def image_gen():
                 headers = {"Authorization": "Bearer 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"}
                 image_bytes = query({
                     "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                    "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                    "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1},
                     "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
                     
                 })
