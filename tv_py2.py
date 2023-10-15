@@ -433,10 +433,7 @@ def image_gen():
       #st.header(st.session_state['name'])
         with st.spinner("Thinking..."):
             st.markdown('''
-                ## About
-                Live text-2-image Generation:
-                
-                💡 Note: Free and Secure Access
+                Live text-2-image Generation:💡 
                 ''')
             tab10, tab20, tab30 = st.tabs(['Live Generated Image 1','Live Generated Image 2','Live Generated Image 3'])
         
