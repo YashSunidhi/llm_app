@@ -166,7 +166,7 @@ def text_gen():
         
             prompt = f"{string_dialogue} {prompt_input} Assistant: "
             #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-            return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+            return chatbot.query(prompt,web_search=False)
 
         def generate_response_web(prompt_input, email, passwd, model_v):
             # Hugging Face Login
@@ -188,7 +188,7 @@ def text_gen():
         
             prompt = f"{string_dialogue} {prompt_input} Assistant: "
             #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-            return chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+            return chatbot.query(prompt,web_search=True)
         
         
         # User-provided prompt
@@ -355,7 +355,7 @@ def image_gen():
         chatbot.switch_llm(0)
     
         prompt = f''' Can you write detailed description of 5 diverse images placeholders using artifacts like geneder, race, eye contact , body posture, facial expression,  light description etc.  ensuring realism suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
-        return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return chatbot.query(prompt,web_search=False)
     
     
     
