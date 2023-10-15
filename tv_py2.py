@@ -435,7 +435,7 @@ def image_gen():
             st.markdown('''
                 Live text-2-image Generation:💡 
                 ''')
-            tab10, tab20, tab30 = st.tabs(['Live Generated Image 1','Live Generated Image 2','Live Generated Image 3'])
+            tab10, tab20, tab30, tab40 = st.tabs(['Live Generated Image 1','Live Generated Image 2','Live Generated Image 3','Live Generated Image 4'])
         
             with tab10:
 
@@ -516,7 +516,33 @@ def image_gen():
                 except:
                     st.write('Could Not Process the Image Generation')
                     pass
-          
+
+
+            with tab40:
+                try:
+                    API_URL = "https://api-inference.huggingface.co/models/sean202302/sdxl-lora"
+                    headers = {"Authorization": "Bearer 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"}
+                    image_bytes = query({
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography,closeup ",
+                        "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                        "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                        
+                    })
+                    image = Image.open(io.BytesIO(image_bytes))
+                    result = io.BytesIO()
+                    image.save(result, format="JPEG")
+                    byte_im = result.getvalue()
+                    
+                    tot13 = st.image(image)
+                    st.download_button(
+                        "Press to Download and save",
+                        byte_im,
+                        "live_gen_4.jpeg",
+                        "image/png",
+                        key='download-image_s4' )
+                except:
+                    st.write('Could Not Process the Image Generation')
+                    pass
           # #time.sleep(10)
           #   tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
           #   with tab1:
