@@ -472,7 +472,7 @@ def image_gen():
                 #     key='download-image_s2' )
                 
             with tab30:
-                API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+                API_URL = "https://api-inference.huggingface.co/models/Yntec/realistic-vision-v12"
                 headers = {"Authorization": "Bearer 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"}
                 image_bytes = query({
                     "inputs": default_prompt[0] + " photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
