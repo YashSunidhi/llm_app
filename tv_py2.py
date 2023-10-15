@@ -387,12 +387,16 @@ def image_gen():
     option8 = st.text_area('Prompt for Generation Content',
     (""))
     st.button("Submit", type="primary")
+    response_o = []
     if st.button('Generating Image Placeholders'):
         response = generate_response(option8,hf_email, hf_pass)
         if response:
             torpedo = st.write(response)
+            response_o.append(response.text)
+            
     option6 = st.text_area(
     'Select a Recommended Prompt and Paste here')
+    st.write(response_o[0])
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
     option9 = st.text_input("Insert Your feedback","")
 
