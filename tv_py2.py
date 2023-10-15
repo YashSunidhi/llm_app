@@ -63,18 +63,17 @@ def text_gen():
 
     #######
     # Get the input text from the user
-    with st.sidebar:
-        with st.expander("Web Search Inclusion (Default Not Included)"):
-            #st.title('🤗💬 Web Search Inclusion (Default Not Included')
-            option0w = st.sidebar.selectbox('Select Web Search',(False,True))
-            option0C = st.sidebar.text_area('Input context reference if any','')
-            model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
-            option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
-            model_v = model_val[option0m]
+    #with st.sidebar:
+        #st.title('🤗💬 Web Search Inclusion (Default Not Included')
+        option0w = st.sidebar.selectbox('Select Web Search',(False,True))
+        option0C = st.sidebar.text_area('Input context reference if any','')
+        model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
+        option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
+        model_v = model_val[option0m]
 
 
                                                         
-    with st.sidebar:
+    #with st.sidebar:
         st.title('🤗💬 Product Positioning')
         pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
         if pps:
@@ -87,7 +86,7 @@ def text_gen():
 
             tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
 
-    with st.sidebar:
+    #with st.sidebar:
         st.title('🤗💬 User Input for Base Prompt')
         ups = st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"')
         if ups:
