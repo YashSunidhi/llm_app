@@ -443,14 +443,15 @@ def image_gen():
                 
                 })
                 image = Image.open(io.BytesIO(image_bytes))
+                result = Image.fromarray(image)
         
                 tot11 = st.image(image)
-                # st.download_button(
-                #     "Press to Download and save",
-                #     image,
-                #     "live_gen_1.png",
-                #     "image/png",
-                #     key='download-image_s1' )
+                st.download_button(
+                    "Press to Download and save",
+                    result,
+                    "live_gen_1.png",
+                    "image/png",
+                    key='download-image_s1' )
         
             with tab20:
         
@@ -463,13 +464,14 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
+                result = Image.fromarray(image)
                 tot12 = st.image(image)
-                # st.download_button(
-                #     "Press to Download and save",
-                #     image,
-                #     "live_gen_2.png",
-                #     "image/png",
-                #     key='download-image_s2' )
+                st.download_button(
+                    "Press to Download and save",
+                    result,
+                    "live_gen_2.png",
+                    "image/png",
+                    key='download-image_s2' )
                 
             with tab30:
                 API_URL = "https://api-inference.huggingface.co/models/Yntec/realistic-vision-v12"
@@ -481,13 +483,14 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
+                result = Image.fromarray(image)
                 tot13 = st.image(image)
-                # st.download_button(
-                #     "Press to Download and save",
-                #     image,
-                #     "live_gen_3.png",
-                #     "image/png",
-                #     key='download-image_s3' )
+                st.download_button(
+                    "Press to Download and save",
+                    result,
+                    "live_gen_3.png",
+                    "image/png",
+                    key='download-image_s3' )
           
           #time.sleep(10)
             tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
