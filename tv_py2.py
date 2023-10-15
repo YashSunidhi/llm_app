@@ -433,7 +433,7 @@ def image_gen():
           tab10, tab20, tab30 = st.tabs(['Live Generated Image 1','Live Generated Image 2','Live Generated Image 3'])
 
           with tab10:
-              API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+              API_URL = "https://api-inference.huggingface.co/models/Yntec/Dreamshaper8"
               headers = {"Authorization": "Bearer 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"}
               image_bytes = query({
                   "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
@@ -446,14 +446,14 @@ def image_gen():
               tot1 = tab10.image(image)
               file = Image.open(image) 
               tab10.download_button(
-               "Press to Download and save",
-               file,
-               "live_gen_1.png",
-               "image/png",
-               key='download-image_s1' )
+                   "Press to Download and save",
+                   file,
+                   "live_gen_1.png",
+                   "image/png",
+                   key='download-image_s1' )
 
             with tab20:
-                API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+                API_URL = "https://api-inference.huggingface.co/models/Yntec/AbsoluteReality"
                 headers = {"Authorization": "Bearer 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"}
                 image_bytes = query({
                     "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
@@ -464,12 +464,12 @@ def image_gen():
                 image = Image.open(io.BytesIO(image_bytes))
                 tot1 = tab20.image(image)
                 file = Image.open(image) 
-                tab10.download_button(
-                "Press to Download and save",
-                file,
-                "live_gen_1.png",
-                "image/png",
-                key='download-image_s2' )
+                tab20.download_button(
+                    "Press to Download and save",
+                    file,
+                    "live_gen_1.png",
+                    "image/png",
+                    key='download-image_s2' )
             with tab30:
                 API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
                 headers = {"Authorization": "Bearer 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"}
@@ -482,12 +482,12 @@ def image_gen():
                 image = Image.open(io.BytesIO(image_bytes))
                 tot1 = tab30.image(image)
                 file = Image.open(image) 
-                tab10.download_button(
-                "Press to Download and save",
-                file,
-                "live_gen_1.png",
-                "image/png",
-                key='download-image_s3' )
+                tab30.download_button(
+                    "Press to Download and save",
+                    file,
+                    "live_gen_1.png",
+                    "image/png",
+                    key='download-image_s3' )
           
           #time.sleep(10)
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
