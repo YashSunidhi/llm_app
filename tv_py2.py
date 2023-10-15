@@ -344,7 +344,7 @@ def image_gen():
         chatbot.change_conversation(id)
         chatbot.switch_llm(0)
     
-        prompt = f''' Can you please provide very detailed description for meaningful and impressive image placeholders suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
+        prompt = f''' Can you please provide very detailed description of image using artifacts like geneder, race, age, body posture, light description etc.  for meaningful and impressive image placeholders suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
         return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
     
     
