@@ -324,7 +324,7 @@ def image_gen():
       st.session_state['name'] = name
     #######
     # Get the input text from the user
-    st.title("Content Driven Image Generation")
+    st.markdown("<h4 style='text-align: center; color: grey;'> Image Generation in Context to Text Generation </h4>", unsafe_allow_html=True)
     
     
     def file_selector(folder_path='.'):
@@ -386,7 +386,7 @@ def image_gen():
     'Landscapes',
     ('Swiss','Scottish', 'French', 'Indian'
       ))
-    option8 = st.text_area('Prompt for Generation Content',
+    option8 = st.text_area('Insert Either User Finalized User Instruction or Generated Outcome for Drafting Image Placeholders',
     (""))
     response_o = []
     if st.button('Generating Image Placeholders'):
