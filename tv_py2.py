@@ -386,7 +386,6 @@ def image_gen():
       ))
     option8 = st.text_area('Prompt for Generation Content',
     (""))
-    st.button("Submit", type="primary")
     response_o = []
     if st.button('Generating Image Placeholders'):
         response = generate_response(option8,hf_email, hf_pass)
