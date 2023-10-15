@@ -344,7 +344,7 @@ def image_gen():
         chatbot.change_conversation(id)
         chatbot.switch_llm(0)
     
-        prompt = f''' Can you please provide meaningful and impressive image placeholders suitable for text to image generation from text """  {prompt_input} """. Assistant: '''
+        prompt = f''' Can you please provide very detailed description for meaningful and impressive image placeholders suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
         return chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
     
     
@@ -396,7 +396,11 @@ def image_gen():
             st.session_state.messages_1.append(response.text)
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-    st.session_state.messages_1       
+    try:
+        st.markdown(st.session_state.messages_1[-1])
+    except:
+        st.write("No Image Placeholders available")
+        pass
     option6 = st.text_area(
     'Select a Recommended Prompt and Paste here')
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
@@ -428,8 +432,6 @@ def image_gen():
     
       #st.header(st.session_state['name'])
         with st.spinner("Thinking..."):
-            option13 = st.text_input('guidance_scale',7)
-            option14 = st.text_input("num_inference_steps",50)
             st.markdown('''
                 ## About
                 Live text-2-image Generation:
