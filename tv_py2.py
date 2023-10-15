@@ -438,72 +438,84 @@ def image_gen():
             tab10, tab20, tab30 = st.tabs(['Live Generated Image 1','Live Generated Image 2','Live Generated Image 3'])
         
             with tab10:
+
+                try:
         
-                API_URL = "https://api-inference.huggingface.co/models/Yntec/Dreamshaper8"
-                headers = {"Authorization": "Bearer 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"}
-                image_bytes = query({
-                    "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                    "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
-                    "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
-                
-                })
-                image = Image.open(io.BytesIO(image_bytes))
-                result = io.BytesIO()
-                image.save(result, format="JPEG")
-                byte_im = result.getvalue()
-        
-                tot11 = st.image(image)
-                st.download_button(
-                    "Press to Download and save",
-                    byte_im,
-                    "live_gen_1.jpeg",
-                    "image/png",
-                    key='download-image_s1' )
+                    API_URL = "https://api-inference.huggingface.co/models/Yntec/Dreamshaper8"
+                    headers = {"Authorization": "Bearer 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"}
+                    image_bytes = query({
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                        "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                    
+                    })
+                    image = Image.open(io.BytesIO(image_bytes))
+                    result = io.BytesIO()
+                    image.save(result, format="JPEG")
+                    byte_im = result.getvalue()
+            
+                    tot11 = st.image(image)
+                    st.download_button(
+                        "Press to Download and save",
+                        byte_im,
+                        "live_gen_1.jpeg",
+                        "image/png",
+                        key='download-image_s1' )
+                except:
+                    st.write('Could Not Process the Image Generation')
+                    pass
         
             with tab20:
-        
-                API_URL = "https://api-inference.huggingface.co/models/Yntec/AbsoluteReality"
-                headers = {"Authorization": "Bearer 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"}
-                image_bytes = query({
-                    "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                    "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
-                    "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                try:
+                    API_URL = "https://api-inference.huggingface.co/models/Yntec/AbsoluteReality"
+                    headers = {"Authorization": "Bearer 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"}
+                    image_bytes = query({
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                        "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                        
+                    })
+                    image = Image.open(io.BytesIO(image_bytes))
+                    result = io.BytesIO()
+                    image.save(result, format="JPEG")
+                    byte_im = result.getvalue()
                     
-                })
-                image = Image.open(io.BytesIO(image_bytes))
-                result = io.BytesIO()
-                image.save(result, format="JPEG")
-                byte_im = result.getvalue()
-                
-                tot12 = st.image(image)
-                st.download_button(
-                    "Press to Download and save",
-                    byte_im,
-                    "live_gen_2.jpeg",
-                    "image/png",
-                    key='download-image_s2' )
-                
+                    tot12 = st.image(image)
+                    st.download_button(
+                        "Press to Download and save",
+                        byte_im,
+                        "live_gen_2.jpeg",
+                        "image/png",
+                        key='download-image_s2' )
+                except:
+                    st.write('Could Not Process the Image Generation')
+                    pass
+                    
             with tab30:
-                API_URL = "https://api-inference.huggingface.co/models/Yntec/realistic-vision-v12"
-                headers = {"Authorization": "Bearer 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"}
-                image_bytes = query({
-                    "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                    "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
-                    "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                try:
+                    API_URL = "https://api-inference.huggingface.co/models/Yntec/realistic-vision-v12"
+                    headers = {"Authorization": "Bearer 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"}
+                    image_bytes = query({
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "parameters": {'num_inference_steps': 100 ,'num_images_per_prompt':1},
+                        "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                        
+                    })
+                    image = Image.open(io.BytesIO(image_bytes))
+                    result = io.BytesIO()
+                    image.save(result, format="JPEG")
+                    byte_im = result.getvalue()
                     
-                })
-                image = Image.open(io.BytesIO(image_bytes))
-                result = io.BytesIO()
-                image.save(result, format="JPEG")
-                byte_im = result.getvalue()
-                
-                tot13 = st.image(image)
-                st.download_button(
-                    "Press to Download and save",
-                    byte_im,
-                    "live_gen_3.jpeg",
-                    "image/png",
-                    key='download-image_s3' )
+                    tot13 = st.image(image)
+                    st.download_button(
+                        "Press to Download and save",
+                        byte_im,
+                        "live_gen_3.jpeg",
+                        "image/png",
+                        key='download-image_s3' )
+                except:
+                    st.write('Could Not Process the Image Generation')
+                    pass
           
           # #time.sleep(10)
           #   tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
