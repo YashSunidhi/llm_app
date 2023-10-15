@@ -410,7 +410,11 @@ def image_gen():
     (""))
     response_o = []
     if st.button('Generating Image Placeholders'):
-        response = generate_response(option8,hf_email, hf_pass)
+        try:
+            response = generate_response(option8,hf_email, hf_pass)
+        except:
+            st.write("Seems Like we missed Connection, Generate Again!!!")
+            pass
         if response:
             #torpedo = st.write(response)
             st.session_state.messages_1.append(response.text)
