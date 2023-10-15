@@ -318,7 +318,7 @@ def image_gen():
     if 'name' not in st.session_state:
         st.session_state['name'] = '1_image'
     if 'output' not in st.session_state:
-        st.session_state['output'] = ''
+        st.session_state['output'] = []
 
     def change_name(name):
       st.session_state['name'] = name
@@ -393,7 +393,7 @@ def image_gen():
         response = generate_response(option8,hf_email, hf_pass)
         if response:
             torpedo = st.write(response)
-            st.session_state['output'].append(response.text)
+            st.session_state['output'].append(response)
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
     st.write(st.session_state['output'])       
