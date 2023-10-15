@@ -71,11 +71,13 @@ def text_gen():
                 option05 = st.sidebar.text_input('Because - Reason to believe','None')
                 option06 = st.sidebar.text_input('So that - Emotional Benefit','None')
 
+                tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
+
         with st.sidebar:
             st.title('🤗💬 User Input for Base Prompt')
             if st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"'):
                 option0 = st.sidebar.selectbox(
-                'Contemt Designer Role',
+                'Content Designer Role',
                 ('pharma communication', 'scientific communication', 'marketing communication'))
                 option1 = st.sidebar.selectbox(
                 'Product',
@@ -115,11 +117,11 @@ def text_gen():
                 'Company',
                 ("Genentech's", "Roche's"))
         
-                st.title("Prompt Design Template")
-                option7 = st.text_input('Input your prompt here',"")
-                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7]
+            st.title("Prompt Design Template")
+            option7 = st.text_input('Input your prompt here',"")
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + tot]
                 #prompt = st.text_input('Input your prompt here')
-                prompt_design = st.write(default_prompt[0])
+            prompt_design = st.write(default_prompt[0])
         
         # Initialize chat history
         if "messages" not in st.session_state:
