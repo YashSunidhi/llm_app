@@ -60,16 +60,16 @@ def text_gen():
         #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
     
         
-    
+    with st.expander("Web Search Inclusion (Default Not Included)"):
     #######
     # Get the input text from the user
-    with st.sidebar:
-        st.title('🤗💬 Web Search Inclusion (Default Not Included')
-        option0w = st.sidebar.selectbox('Select Web Search',(False,True))
-        option0C = st.sidebar.text_area('Input context reference if any','')
-        model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
-        option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
-        model_v = model_val[option0m]
+        with st.sidebar:
+            #st.title('🤗💬 Web Search Inclusion (Default Not Included')
+            option0w = st.sidebar.selectbox('Select Web Search',(False,True))
+            option0C = st.sidebar.text_area('Input context reference if any','')
+            model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
+            option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
+            model_v = model_val[option0m]
 
 
                                                         
