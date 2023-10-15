@@ -153,8 +153,8 @@ def text_gen():
             # Create ChatBot                        
             chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
             # Create a new conversation
-            id = chatbot.new_conversation()
-            chatbot.change_conversation(id)
+            # id = chatbot.new_conversation()
+            # chatbot.change_conversation(id)
             chatbot.switch_llm(model_v)
         
             for dict_message in st.session_state.messages:
@@ -175,8 +175,8 @@ def text_gen():
             # Create ChatBot                        
             chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
             # Create a new conversation
-            id = chatbot.new_conversation()
-            chatbot.change_conversation(id)
+            # id = chatbot.new_conversation()
+            # chatbot.change_conversation(id)
             chatbot.switch_llm(model_v)
         
             for dict_message in st.session_state.messages:
