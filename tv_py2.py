@@ -396,7 +396,7 @@ def image_gen():
             st.session_state.messages_1.append(response)
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-    st.write(st.session_state.messages_1)       
+    st.session_state.messages_1       
     option6 = st.text_area(
     'Select a Recommended Prompt and Paste here')
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
