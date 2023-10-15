@@ -443,14 +443,14 @@ def image_gen():
                 
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                result = io.BytesIO(image_bytes)
+                result = io.BytesIO()
                 image.save(result, format="JPEG")
         
                 tot11 = st.image(image)
                 st.download_button(
                     "Press to Download and save",
                     image,
-                    "live_gen_1.png",
+                    "live_gen_1.jpeg",
                     "image/png",
                     key='download-image_s1' )
         
@@ -465,13 +465,13 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                result = io.BytesIO(image_bytes)
+                result = io.BytesIO()
                 image.save(result, format="JPEG")
                 tot12 = st.image(image)
                 st.download_button(
                     "Press to Download and save",
                     image,
-                    "live_gen_2.png",
+                    "live_gen_2.jpeg",
                     "image/png",
                     key='download-image_s2' )
                 
@@ -485,13 +485,13 @@ def image_gen():
                     
                 })
                 image = Image.open(io.BytesIO(image_bytes))
-                result = io.BytesIO(image_bytes)
+                result = io.BytesIO()
                 image.save(result, format="JPEG")
                 tot13 = st.image(image)
                 st.download_button(
                     "Press to Download and save",
                     image,
-                    "live_gen_3.png",
+                    "live_gen_3.jpeg",
                     "image/png",
                     key='download-image_s3' )
           
