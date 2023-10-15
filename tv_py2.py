@@ -317,6 +317,8 @@ def text_trans():
 def image_gen():
     if 'name' not in st.session_state:
         st.session_state['name'] = '1_image'
+    if 'output' not in st.session_state:
+        st.session_state['output'] = ''
 
     def change_name(name):
       st.session_state['name'] = name
@@ -391,10 +393,10 @@ def image_gen():
         response = generate_response(option8,hf_email, hf_pass)
         if response:
             torpedo = st.write(response)
-            response_o.append(response.text)
+            st.session_state['output'].append(response.text)
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-    st.write(response_o)       
+    st.write(st.session_state['output'])       
     option6 = st.text_area(
     'Select a Recommended Prompt and Paste here')
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
