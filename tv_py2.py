@@ -424,22 +424,72 @@ def image_gen():
       with st.spinner("Thinking..."):
           option13 = st.text_input('guidance_scale',7)
           option14 = st.text_input("num_inference_steps",50)
-          image_bytes = query({
-              "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
-              "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1,'guidance_scale':10},
-              "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
-         
-            })
-          image = Image.open(io.BytesIO(image_bytes))
           st.markdown('''
-          ## About
-          Live text-2-image Generation:
+              ## About
+              Live text-2-image Generation:
+              
+              💡 Note: Free and Secure Access
+              ''')
+          tab10, tab20, tab30 = st.tabs(['Live Generated Image 1','Live Generated Image 2','Live Generated Image 3'])
+
+          with tab10:
+              API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+              headers = {"Authorization": "Bearer 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"}
+              image_bytes = query({
+                  "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
+                  "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1,'guidance_scale':10},
+                  "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+             
+                })
+              image = Image.open(io.BytesIO(image_bytes))
+
+              tot1 = tab10.image(image)
+              file = Image.open(image) 
+              tab10.download_button(
+               "Press to Download and save",
+               file,
+               "live_gen_1.png",
+               "image/png",
+               key='download-image_s1' )
+
+            with tab20:
+                API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+                headers = {"Authorization": "Bearer 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"}
+                image_bytes = query({
+                    "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
+                    "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1,'guidance_scale':10},
+                    "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                    
+                })
+                image = Image.open(io.BytesIO(image_bytes))
+                tot1 = tab20.image(image)
+                file = Image.open(image) 
+                tab10.download_button(
+                "Press to Download and save",
+                file,
+                "live_gen_1.png",
+                "image/png",
+                key='download-image_s2' )
+            with tab30:
+                API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+                headers = {"Authorization": "Bearer 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"}
+                image_bytes = query({
+                    "inputs": default_prompt[0] + " Intricately Detailed, High Quality, photorealistic, portrait photography, Full Character ",
+                    "parameters": {'num_inference_steps': 70 ,'num_images_per_prompt':1,'guidance_scale':10},
+                    "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
+                    
+                })
+                image = Image.open(io.BytesIO(image_bytes))
+                tot1 = tab30.image(image)
+                file = Image.open(image) 
+                tab10.download_button(
+                "Press to Download and save",
+                file,
+                "live_gen_1.png",
+                "image/png",
+                key='download-image_s3' )
           
-          💡 Note: Free and Secure Access
-          ''')
-          tot1 = st.image(image)
-          
-          time.sleep(10)
+          #time.sleep(10)
           tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
           with tab1:
               tot1 = st.image("./images_generated/prompt_2.png")
