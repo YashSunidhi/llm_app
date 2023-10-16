@@ -436,15 +436,16 @@ def image_gen():
             response = generate_response(option8,hf_email, hf_pass)
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
-            response = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})[0]['generated_text']
-            st.write("Seems Like we missed Connection, Generate Again!!!")
+            response = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})
             pass
         if response:
             #torpedo = st.write(response)
-            if response.text:
+            try:
                 st.session_state.messages_1.append(response.text)
+            except:
+                st.write("Seems Like we missed Connection, Generate Again!!!")
             else:
-                st.session_state.messages_1.append(response)
+                st.session_state.messages_1.append(response[0]['generated_text'])
                 
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
