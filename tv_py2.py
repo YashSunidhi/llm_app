@@ -439,7 +439,7 @@ def image_gen():
     #   ))
     option8 = st.text_area('Insert Either User Finalized User Instruction or Generated Outcome for Drafting Image Placeholders',
     (""))
-    prompt = f''' Can you write detailed description as instructions in bullet points for 5 diverse images placeholders using artifacts like geneder, race, eye contact , body posture, facial expression,  light description, image background setting etc.  ensuring realism suitable for task text to image generation from context """  {option8} """. Assistant: \n\n'''
+    prompt = f''' Can you recommend detailed description as instructions in bullet points for 5 diverse images placeholders using artifacts like geneder, race, eye contact , body posture, facial expression,  light description, image background setting etc.  ensuring realism suitable for task text to image generation from context """  {option8} """. Assistant: \n\n'''
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
