@@ -34,8 +34,8 @@ if prompt := st.chat_input("What is up?"):
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
-        full_response = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3500 }})
-        st.write(full_response[0]['generated_text'])
+        full_response = query_text({"inputs": (prompt + ". Assistant: \n\n "),"parameters": {'max_new_tokens': 3500 }})
+        st.write(full_response[0]['generated_text'].split('Assistant:')[1])
         #message_placeholder.markdown(full_response)#['generated_text'])
     # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response[0]['generated_text']})
