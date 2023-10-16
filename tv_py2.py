@@ -212,20 +212,22 @@ def text_gen():
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
-                try:
-                    if option0w==False:
-                        try:
-                            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
-                            response = output[0]['generated_text'].split('Assistant:')[1]
-                        except:
-                            st.write("API Service Down")
-                        else:
-                            response = generate_response(prompt, hf_email, hf_pass, model_v)
-                    else:
-                        response = generate_response_web(prompt, hf_email,hf_pass, model_v)
-                except:
-                    st.write("Seems Like API is down, Please examine the outcome")
-                    pass
+                output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
+                response = output[0]['generated_text'].split('Assistant:')[1]
+                # try:
+                #     if option0w==False:
+                #         try:
+                #             output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
+                #             response = output[0]['generated_text'].split('Assistant:')[1]
+                #         except:
+                #             st.write("API Service Down")
+                #         else:
+                #             response = generate_response(prompt, hf_email, hf_pass, model_v)
+                #     else:
+                #         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
+                # except:
+                #     st.write("Seems Like API is down, Please examine the outcome")
+                #     pass
                     
                 st.write(response) 
                 st.warning("Referred Resources",icon = '🚨')
