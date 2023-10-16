@@ -215,8 +215,8 @@ def text_gen():
                 try:
                     if option0w==False:
                         try:
-                            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
-                            response = output[0]['generated_text']
+                            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
+                            response = output[0]['generated_text'].split('Assistant:')[1]
                         except:
                             st.write("API Service Down")
                         else:
@@ -433,8 +433,8 @@ def image_gen():
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
-            output = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})
-            response = output[0]['generated_text']
+            output = query_text({"inputs": (option8 +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
+            response = output[0]['generated_text'].split('Assistant:')[1]
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
         else:
