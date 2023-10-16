@@ -220,8 +220,12 @@ def text_gen():
                 except:
                     st.write("Seems Like API is down, Please examine the outcome")
                 else:
-                    output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
-                    response = output[0]['generated_text']
+                    try:
+                        output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
+                        response = output[0]['generated_text']
+                    except:
+                        st.write("API Service Down")
+                        pass
                     
                 st.write(response) 
                 st.warning("Referred Resources",icon = '🚨')
