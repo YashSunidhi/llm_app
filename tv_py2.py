@@ -223,8 +223,7 @@ def text_gen():
                         message = {"role": "assistant", "content": response}
                         #st.session_state.messages.append(message)
                     except:
-                        st.write("API Service Down")
-                    else:
+                        st.write("API Service Down, Lets try another API")
                         response = generate_response(prompt, hf_email, hf_pass, model_v)
                         st.write(response)
                         message = {"role": "assistant", "content": response}
@@ -447,7 +446,6 @@ def image_gen():
             response = output[0]['generated_text'].split('Assistant:')[1]
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
-        else:
             try:
                  response = generate_response(option8,hf_email, hf_pass)
             except:
