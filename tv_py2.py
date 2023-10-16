@@ -214,18 +214,18 @@ def text_gen():
             with st.spinner("Thinking..."):
                 try:
                     if option0w==False:
+                        try:
+                            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
+                            response = output[0]['generated_text']
+                        except:
+                            st.write("API Service Down")
+                        else:
                         response = generate_response(prompt, hf_email, hf_pass, model_v)
                     else:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                 except:
                     st.write("Seems Like API is down, Please examine the outcome")
-                else:
-                    try:
-                        output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
-                        response = output[0]['generated_text']
-                    except:
-                        st.write("API Service Down")
-                        pass
+                    pass
                     
                 st.write(response) 
                 st.warning("Referred Resources",icon = '🚨')
@@ -433,11 +433,14 @@ def image_gen():
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
-            response = generate_response(option8,hf_email, hf_pass)
+            response = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
-            response = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})
-            pass
+        else:
+            try:
+                 response = generate_response(option8,hf_email, hf_pass)
+            except:
+                pass
         if response:
             #torpedo = st.write(response)
             try:
