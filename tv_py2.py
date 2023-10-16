@@ -444,11 +444,11 @@ def image_gen():
         if response:
             #torpedo = st.write(response)
             try:
-                st.session_state.messages_1.append(response.text)
+                st.session_state.messages_1.append(response[0]['generated_text'])
             except:
                 st.write("Seems Like we missed Connection, Generate Again!!!")
             else:
-                st.session_state.messages_1.append(response[0]['generated_text'])
+                st.session_state.messages_1.append(response.text)
                 
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
