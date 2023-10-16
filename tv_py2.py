@@ -433,7 +433,8 @@ def image_gen():
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
-            response = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})
+            output = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})
+            response = output[0]['generated_text']
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
         else:
@@ -444,7 +445,7 @@ def image_gen():
         if response:
             #torpedo = st.write(response)
             try:
-                st.session_state.messages_1.append(response[0]['generated_text'])
+                st.session_state.messages_1.append(response)
             except:
                 st.write("Seems Like we missed Connection, Generate Again!!!")
             else:
