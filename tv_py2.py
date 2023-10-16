@@ -201,14 +201,26 @@ def text_gen():
     
     # Generate a new response if last message is not from assistant
     #st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+
+    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+    headers = {"Authorization": "Bearer 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"}
+    
+    def query(payload):
+    	response = requests.post(API_URL, headers=headers, json=payload)
+    	return response.json()
   
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
-                if option0w==False:
-                    response = generate_response(prompt, hf_email, hf_pass, model_v)
-                else:
-                    response = generate_response_web(prompt, hf_email,hf_pass, model_v)
+                try:
+                    if option0w==False:
+                        response = generate_response(prompt, hf_email, hf_pass, model_v)
+                    else:
+                        response = generate_response_web(prompt, hf_email,hf_pass, model_v)
+                except:
+                    st.write("Seems Like API is down, Please carefully examine the outcome")
+                    response = query({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})[0]['generated_text']
+                    pass
                     
                 st.write(response) 
                 st.warning("Referred Resources",icon = '🚨')
@@ -357,7 +369,12 @@ def image_gen():
     
         prompt = f''' Can you write detailed description of 5 diverse images placeholders using artifacts like geneder, race, eye contact , body posture, facial expression,  light description etc.  ensuring realism suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
         return chatbot.query(prompt,web_search=False)
+    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+    headers = {"Authorization": "Bearer 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"}
     
+    def query(payload):
+    	response = requests.post(API_URL, headers=headers, json=payload)
+    	return response.json()
     
     
     # Sidebar contents
@@ -413,11 +430,17 @@ def image_gen():
         try:
             response = generate_response(option8,hf_email, hf_pass)
         except:
+            st.write("Seems Like API is down, Please carefully examine the outcome")
+            response = query({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})[0]['generated_text']
             st.write("Seems Like we missed Connection, Generate Again!!!")
             pass
         if response:
             #torpedo = st.write(response)
-            st.session_state.messages_1.append(response.text)
+            if response.text:
+                st.session_state.messages_1.append(response.text)
+            else:
+                st.session_state.messages_1.append(response)
+                
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
     try:
