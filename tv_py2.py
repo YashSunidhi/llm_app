@@ -214,34 +214,34 @@ def text_gen():
             with st.spinner("Thinking..."):
                 # output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
                 # response = output[0]['generated_text'].split('Assistant:')[1]
-                try:
-                    if option0w==False:
-                        try:
-                            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
-                            response = output[0]['generated_text'].split('Assistant:')[1]
-                            st.write(response)
-                            message = {"role": "assistant", "content": response}
-                            #st.session_state.messages.append(message)
-                        except:
-                            st.write("API Service Down")
-                        else:
-                            response = generate_response(prompt, hf_email, hf_pass, model_v)
-                            st.write(response)
-                            message = {"role": "assistant", "content": response}
-                            #st.session_state.messages.append(message)
-                    else:
-                        response = generate_response_web(prompt, hf_email,hf_pass, model_v)
+                #try:
+                if option0w==False:
+                    try:
+                        output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
+                        response = output[0]['generated_text'].split('Assistant:')[1]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
                         #st.session_state.messages.append(message)
-                        st.warning("Referred Resources",icon = '🚨')
-                        count = 0
-                        for source in response.web_search_sources:
-                            count = count+1
-                            st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-                except:
-                    st.write("Seems Like API is down, Please examine the outcome")
-                    pass
+                    except:
+                        st.write("API Service Down")
+                    else:
+                        response = generate_response(prompt, hf_email, hf_pass, model_v)
+                        st.write(response)
+                        message = {"role": "assistant", "content": response}
+                        #st.session_state.messages.append(message)
+                else:
+                    response = generate_response_web(prompt, hf_email,hf_pass, model_v)
+                    st.write(response)
+                    message = {"role": "assistant", "content": response}
+                    #st.session_state.messages.append(message)
+                    st.warning("Referred Resources",icon = '🚨')
+                    count = 0
+                    for source in response.web_search_sources:
+                        count = count+1
+                        st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+                # except:
+                #     st.write("Seems Like API is down, Please examine the outcome")
+                #     pass
 
         # message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
@@ -443,7 +443,7 @@ def image_gen():
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
-            output = query_text({"inputs": (option8 +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
+            output = query_text({"inputs": (option8 +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
             response = output[0]['generated_text'].split('Assistant:')[1]
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
@@ -452,14 +452,15 @@ def image_gen():
                  response = generate_response(option8,hf_email, hf_pass)
             except:
                 pass
-        if response:
-            #torpedo = st.write(response)
-            try:
-                st.session_state.messages_1.append(response)
-            except:
-                st.write("Seems Like we missed Connection, Generate Again!!!")
-            else:
-                st.session_state.messages_1.append(response.text)
+        st.session_state.messages_1.append(response)
+        # if response:
+        #     #torpedo = st.write(response)
+        #     try:
+        #         st.session_state.messages_1.append(response)
+        #     except:
+        #         st.write("Seems Like we missed Connection, Generate Again!!!")
+        #     else:
+        #         st.session_state.messages_1.append(response.text)
                 
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
