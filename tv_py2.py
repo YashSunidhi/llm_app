@@ -439,10 +439,11 @@ def image_gen():
     #   ))
     option8 = st.text_area('Insert Either User Finalized User Instruction or Generated Outcome for Drafting Image Placeholders',
     (""))
+    prompt = f''' Can you write detailed description of 5 diverse images placeholders using artifacts like geneder, race, eye contact , body posture, facial expression,  light description etc.  ensuring realism suitable for text to image generation from context """  {option8} """. Assistant: '''
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
-            output = query_text({"inputs": (option8 +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
+            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
             response = output[0]['generated_text'].split('Assistant:')[1]
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
