@@ -218,10 +218,10 @@ def text_gen():
                     else:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                 except:
-                    st.write("Seems Like API is down, Please carefully examine the outcome")
+                    st.write("Seems Like API is down, Please examine the outcome")
+                else:
                     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
                     response = output[0]['generated_text']
-                    pass
                     
                 st.write(response) 
                 st.warning("Referred Resources",icon = '🚨')
