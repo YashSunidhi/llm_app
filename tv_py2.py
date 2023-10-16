@@ -205,7 +205,7 @@ def text_gen():
     API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
     headers = {"Authorization": "Bearer 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"}
     
-    def query(payload):
+    def query_text(payload):
     	response = requests.post(API_URL, headers=headers, json=payload)
     	return response.json()
   
@@ -219,7 +219,8 @@ def text_gen():
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                 except:
                     st.write("Seems Like API is down, Please carefully examine the outcome")
-                    response = query({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})[0]['generated_text']
+                    output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3000 }})
+                    response = output[0]['generated_text']
                     pass
                     
                 st.write(response) 
@@ -372,7 +373,7 @@ def image_gen():
     API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
     headers = {"Authorization": "Bearer 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"}
     
-    def query(payload):
+    def query_text(payload):
     	response = requests.post(API_URL, headers=headers, json=payload)
     	return response.json()
     
@@ -431,7 +432,7 @@ def image_gen():
             response = generate_response(option8,hf_email, hf_pass)
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
-            response = query({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})[0]['generated_text']
+            response = query_text({"inputs": (option8),"parameters": {'max_new_tokens': 3000 }})[0]['generated_text']
             st.write("Seems Like we missed Connection, Generate Again!!!")
             pass
         if response:
