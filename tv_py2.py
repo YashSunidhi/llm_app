@@ -219,15 +219,21 @@ def text_gen():
                         try:
                             output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
                             response = output[0]['generated_text'].split('Assistant:')[1]
-                            st.write(response) 
+                            st.write(response)
+                            message = {"role": "assistant", "content": response}
+                            st.session_state.messages.append(message)
                         except:
                             st.write("API Service Down")
                         else:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
-                            st.write(response) 
+                            st.write(response)
+                            message = {"role": "assistant", "content": response}
+                            st.session_state.messages.append(message)
                     else:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
-                        st.write(response) 
+                        st.write(response)
+                        message = {"role": "assistant", "content": response}
+                        st.session_state.messages.append(message)
                         st.warning("Referred Resources",icon = '🚨')
                         count = 0
                         for source in response.web_search_sources:
@@ -237,8 +243,8 @@ def text_gen():
                     st.write("Seems Like API is down, Please examine the outcome")
                     pass
 
-        message = {"role": "assistant", "content": response}
-        st.session_state.messages.append(message)
+        # message = {"role": "assistant", "content": response}
+        # st.session_state.messages.append(message)
 
         #st.write(st.session_state.messages[-1]['content'])
 
