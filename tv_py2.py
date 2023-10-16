@@ -221,19 +221,19 @@ def text_gen():
                             response = output[0]['generated_text'].split('Assistant:')[1]
                             st.write(response)
                             message = {"role": "assistant", "content": response}
-                            st.session_state.messages.append(message)
+                            #st.session_state.messages.append(message)
                         except:
                             st.write("API Service Down")
                         else:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
                             st.write(response)
                             message = {"role": "assistant", "content": response}
-                            st.session_state.messages.append(message)
+                            #st.session_state.messages.append(message)
                     else:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                         st.write(response)
                         message = {"role": "assistant", "content": response}
-                        st.session_state.messages.append(message)
+                        #st.session_state.messages.append(message)
                         st.warning("Referred Resources",icon = '🚨')
                         count = 0
                         for source in response.web_search_sources:
@@ -244,7 +244,7 @@ def text_gen():
                     pass
 
         # message = {"role": "assistant", "content": response}
-        # st.session_state.messages.append(message)
+        st.session_state.messages.append(message)
 
         #st.write(st.session_state.messages[-1]['content'])
 
