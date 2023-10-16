@@ -220,7 +220,7 @@ def text_gen():
                         except:
                             st.write("API Service Down")
                         else:
-                        response = generate_response(prompt, hf_email, hf_pass, model_v)
+                            response = generate_response(prompt, hf_email, hf_pass, model_v)
                     else:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                 except:
