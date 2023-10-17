@@ -23,8 +23,8 @@ st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content 
 def text_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
     hf_email = 'zurich.suyash@gmail.com'
-    hf_pass = 'Roche@2107'
-    sign = Login(email='zurich.suyash@gmail.com', passwd='Roche@2107')
+    hf_pass = 'Herceptin@2107'
+    sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
     cookies = sign.login()
     
     # Save cookies to the local directory
