@@ -77,12 +77,12 @@ def text_gen():
         st.title('🤗💬 Product Positioning')
         pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
         if pps:
-            option01 = st.sidebar.text_input('For - Eligible Population','None')
-            option02 = st.sidebar.text_input('Who - Target Patient Identifier','None')
-            option03 = st.sidebar.text_input('Drug - Product Category','None')
-            option04 = st.sidebar.text_input('That Uniquely - Rational differentiator','None')
-            option05 = st.sidebar.text_input('Because - Reason to believe','None')
-            option06 = st.sidebar.text_input('So that - Emotional Benefit','None')
+            option01 = st.sidebar.text_area('For - Eligible Population','treatment-naive and experienced C5i-eligible PNH patients')
+            option02 = st.sidebar.text_area('Who - Target Patient Identifier','value treatment autonomy and convenience')
+            option03 = st.sidebar.text_area('Drug - Product Category','next-generation subcutaneous (SC) C5i')
+            option04 = st.sidebar.text_area('That Uniquely - Rational differentiator','reducing patient burden through simple q4w SC injections, either administered at home or in a clinical setting')
+            option05 = st.sidebar.text_area('Because - Reason to believe','match the proven efficacy and safety of the trusted C5i Standard of Care (SoC) while introducing a novel dose interval-extending recycling mechanism')
+            option06 = st.sidebar.text_area('So that - Emotional Benefit','patients to regain control over their lives by managing their PNH effectively')
 
             tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
 
