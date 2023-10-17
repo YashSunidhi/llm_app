@@ -168,8 +168,8 @@ def text_gen():
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
         #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        out = chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        return out
+        out_no_web = chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return out_no_web
 
     def generate_response_web(prompt_input, email, passwd, model_v):
         # Hugging Face Login
@@ -191,8 +191,8 @@ def text_gen():
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
         #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        out = chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        return out
+        out_web = chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return out_web
     
     
     # User-provided prompt
@@ -222,16 +222,16 @@ def text_gen():
                         print('I am working on it...')
                         output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
                         response = output[0]['generated_text'].split('Assistant:')[1]
-                        #st.write(response)
+                        st.write(response)
                         message = {"role": "assistant", "content": response}
                         st.session_state.messages.append(message)
-                        st.write(st.session_state.messages[-1]['content'])
+                        #st.write(st.session_state.messages[-1]['content'])
                         if not output:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
                             st.write(response)
                             message = {"role": "assistant", "content": response}
                             st.session_state.messages.append(message)
-                            st.write(st.session_state.messages[-1]['content'])
+                            #st.write(st.session_state.messages[-1]['content'])
                     except:
                         st.write("API Service Down, Lets try another API")
                         
@@ -239,10 +239,9 @@ def text_gen():
                 else:
                     try:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
-                        #st.write(response)
+                        st.write(response)
                         message = {"role": "assistant", "content": response}
                         st.session_state.messages.append(message)
-                        st.write(st.session_state.messages[-1]['content'])
                         st.warning("Referred Resources",icon = '🚨')
                         count = 0
                         for source in response.web_search_sources:
@@ -251,11 +250,6 @@ def text_gen():
                     except:
                         st.write("Seems Like API is down, Please reach out to AABI Team")
                         pass
-
-        # message = {"role": "assistant", "content": response}
-        #st.session_state.messages.append(message)
-
-        #st.write(st.session_state.messages[-1]['content'])
 
     df = pd.DataFrame(st.session_state.messages)
         
