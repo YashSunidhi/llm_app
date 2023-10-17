@@ -420,6 +420,10 @@ def image_gen():
     option4 = st.sidebar.selectbox(
     'High Quality Iteration Model 4',
     (110,50,75,100,125))
+
+    option5 = st.sidebar.selectbox(
+    'High Quality Iteration Model 5',
+    (110,50,75,100,125))
     # option2 = st.sidebar.selectbox(
     # 'Character Portrait',
     # ('High Quality', 'Volumetric Lighting'))
@@ -617,7 +621,7 @@ def image_gen():
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
                         "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
-                        "parameters": {'num_inference_steps': (option4) ,'num_images_per_prompt':1},
+                        "parameters": {'num_inference_steps': (option5) ,'num_images_per_prompt':1},
                         "negative_prompt":['ugly', 'deformed', 'disfigured', 'poor details', 'bad anatomy','deformed fingers','poorly Rendered face','poorly drawn face','poor facial details','poorly drawn hands','poorly rendered hands','low resolution','Images cut out at the top, left, right, bottom.','bad composition','mutated body parts','blurry image','disfigured','oversaturated','bad anatomy','deformed body features','extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated','bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck', 'username', 'watermark', 'signature']
                         
                     })
@@ -630,9 +634,9 @@ def image_gen():
                     st.download_button(
                         "Press to Download and save",
                         byte_im,
-                        "live_gen_4.jpeg",
+                        "live_gen_5.jpeg",
                         "image/png",
-                        key='download-image_s4' )
+                        key='download-image_s5' )
                 except:
                     st.write('Could Not Process the Image Generation')
                     pass
