@@ -222,11 +222,13 @@ def text_gen():
                         st.write(response)
                         message = {"role": "assistant", "content": response}
                         #st.session_state.messages.append(message)
+                        if not output:
+                            response = generate_response(prompt, hf_email, hf_pass, model_v)
+                            st.write(response)
+                            message = {"role": "assistant", "content": response}
                     except:
                         st.write("API Service Down, Lets try another API")
-                        response = generate_response(prompt, hf_email, hf_pass, model_v)
-                        st.write(response)
-                        message = {"role": "assistant", "content": response}
+                        
                         #st.session_state.messages.append(message)
                 else:
                     response = generate_response_web(prompt, hf_email,hf_pass, model_v)
