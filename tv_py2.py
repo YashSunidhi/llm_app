@@ -223,15 +223,10 @@ def text_gen():
                         output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
                         response = output[0]['generated_text'].split('Assistant:')[1]
                         st.write(response)
-                        message = {"role": "assistant", "content": response}
-                        st.session_state.messages.append(message)
                         #st.write(st.session_state.messages[-1]['content'])
                         if not output:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
                             st.write(response)
-                            message = {"role": "assistant", "content": response}
-                            st.session_state.messages.append(message)
-                            #st.write(st.session_state.messages[-1]['content'])
                     except:
                         st.write("API Service Down, Lets try another API")
                         
@@ -240,8 +235,6 @@ def text_gen():
                     try:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
                         st.write(response)
-                        message = {"role": "assistant", "content": response}
-                        st.session_state.messages.append(message)
                         st.warning("Referred Resources",icon = '🚨')
                         count = 0
                         for source in response.web_search_sources:
@@ -250,6 +243,9 @@ def text_gen():
                     except:
                         st.write("Seems Like API is down, Please reach out to AABI Team")
                         pass
+
+        message = {"role": "assistant", "content": response}
+        st.session_state.messages.append(message)
 
     df = pd.DataFrame(st.session_state.messages)
         
