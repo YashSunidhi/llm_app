@@ -11,7 +11,7 @@ sentence_transformers
 faiss-cpu
 ctransformers
 streamlit-chat
-hugchat==0.3.1
+hugchat==0.3.3
 #hugchat
 streamlit_extras
 hugchat-api
