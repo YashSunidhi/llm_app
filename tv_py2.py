@@ -222,12 +222,12 @@ def text_gen():
                         print('I am working on it...')
                         output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
                         response = output[0]['generated_text'].split('Assistant:')[1]
-                        st.write(response)
+                        #st.write(response)
                         message = {"role": "assistant", "content": response}
                         #st.session_state.messages.append(message)
                         if not output:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
-                            st.write(response)
+                            #st.write(response)
                             message = {"role": "assistant", "content": response}
                     except:
                         st.write("API Service Down, Lets try another API")
@@ -236,7 +236,7 @@ def text_gen():
                 else:
                     try:
                         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
-                        st.write(response)
+                        #st.write(response)
                         message = {"role": "assistant", "content": response}
                         #st.session_state.messages.append(message)
                         st.warning("Referred Resources",icon = '🚨')
