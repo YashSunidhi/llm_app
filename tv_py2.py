@@ -168,7 +168,8 @@ def text_gen():
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
         #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        return chatbot.query(prompt,web_search=False)
+        response = chatbot.query(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return response
 
     def generate_response_web(prompt_input, email, passwd, model_v):
         # Hugging Face Login
@@ -190,7 +191,8 @@ def text_gen():
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
         #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        return chatbot.query(prompt,web_search=True)
+        response = chatbot.query(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return response
     
     
     # User-provided prompt
@@ -232,18 +234,19 @@ def text_gen():
                         
                         #st.session_state.messages.append(message)
                 else:
-                    response = generate_response_web(prompt, hf_email,hf_pass, model_v)
-                    st.write(response)
-                    message = {"role": "assistant", "content": response}
-                    #st.session_state.messages.append(message)
-                    st.warning("Referred Resources",icon = '🚨')
-                    count = 0
-                    for source in response.web_search_sources:
-                        count = count+1
-                        st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-                # except:
-                #     st.write("Seems Like API is down, Please examine the outcome")
-                #     pass
+                    try:
+                        response = generate_response_web(prompt, hf_email,hf_pass, model_v)
+                        st.write(response)
+                        message = {"role": "assistant", "content": response}
+                        #st.session_state.messages.append(message)
+                        st.warning("Referred Resources",icon = '🚨')
+                        count = 0
+                        for source in response.web_search_sources:
+                            count = count+1
+                            st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+                    except:
+                        st.write("Seems Like API is down, Please reach out to AABI Team")
+                        pass
 
         # message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
