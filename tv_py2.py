@@ -594,7 +594,7 @@ def image_gen():
 
             with tab40:
                 try:
-                    API_URL = "https://api-inference.huggingface.co/models/Gauri54damle/sdxl-lora-model"
+                    API_URL = "https://api-inference.huggingface.co/models/sean202302/sdxl-lora"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
                         "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
