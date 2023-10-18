@@ -217,14 +217,12 @@ def text_gen():
                             response = generate_response(prompt, hf_email, hf_pass)
                             st.write(response)
                         elif option0m == 'Fast Inference Model':
-                            st.write('I am working on it...')
                             API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
                             headers = {"Authorization": "Bearer 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"}
                             output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
                             response = output[0]['generated_text'].split('Assistant:')[1]
                             st.write(response)
-                            #message = {"role": "assistant", "content": response}
-                            st.write("API Service Down, Outcome from an alternate API")
+     
                     else:
                         response = generate_response_web(prompt, hf_email,hf_pass)
                         st.write(response)
