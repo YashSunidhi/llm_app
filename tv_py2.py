@@ -214,7 +214,7 @@ def text_gen():
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 # if option0w==False:
-                response = generate_response(prompt, hf_email, hf_pass, model_v)
+                response = generate_response(prompt, hf_email, hf_pass)
                 st.write(response)
                     #message = {"role": "assistant", "content": response}
                 #     try:
