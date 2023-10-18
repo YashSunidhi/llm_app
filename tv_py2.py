@@ -226,7 +226,7 @@ def text_gen():
                 #try:
                 if option0w==False:
                     try:
-                        print('I am working on it...')
+                        st.write('I am working on it...')
                         #try:
                         API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
                         headers = {"Authorization": "Bearer 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"}
@@ -242,7 +242,7 @@ def text_gen():
                         #     st.write(response)
                         #     message = {"role": "assistant", "content": response}
                         #st.write(st.session_state.messages[-1]['content'])
-                        if not response:
+                        if output['error']:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
                             st.write(response)
                             message = {"role": "assistant", "content": response}
