@@ -1,4 +1,4 @@
-trubrics[streamlit]==1.6.0
+streamlit
 transformers
 accelerate 
 bitsandbytes 
