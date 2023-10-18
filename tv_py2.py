@@ -14,6 +14,8 @@ from PIL import Image
 import requests
 import io
 from PIL import Image
+import warnings 
+warnings.filterwarnings('ignore')
 
 # App title
 st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
