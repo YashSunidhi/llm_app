@@ -67,7 +67,8 @@ def text_gen():
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
         option0w = st.sidebar.selectbox('Select Web Search',(False,True))
         option0C = st.sidebar.text_area('Input context reference if any','')
-        model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
+        #model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
+        model_val = {'Base Model':0,'Large Model':2}
         option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
         model_v = model_val[option0m]
 
