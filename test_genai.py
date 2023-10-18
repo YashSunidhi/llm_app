@@ -21,14 +21,17 @@ st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content 
 #st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
 def prompt_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
-    hf_email = 'zurich.suyash@gmail.com'
-    hf_pass = 'Herceptin@2107'
-    sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
-    cookies = sign.login()
-    
-    # Save cookies to the local directory
-    cookie_path_dir = "./cookies_snapshot"
-    sign.saveCookiesToDir(cookie_path_dir)
+    try:
+        hf_email = 'zurich.suyash@gmail.com'
+        hf_pass = 'Herceptin@2107'
+        sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
+        cookies = sign.login()
+        
+        # Save cookies to the local directory
+        cookie_path_dir = "./cookies_snapshot"
+        sign.saveCookiesToDir(cookie_path_dir)
+    except:
+        pass
     #st.set_page_config(layout="wide")
 
     if "messages_p" not in st.session_state:
@@ -197,14 +200,17 @@ def prompt_gen():
 
 def text_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
-    hf_email = 'zurich.suyash@gmail.com'
-    hf_pass = 'Herceptin@2107'
-    sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
-    cookies = sign.login()
-    
-    # Save cookies to the local directory
-    cookie_path_dir = "./cookies_snapshot"
-    sign.saveCookiesToDir(cookie_path_dir)
+    try:
+        hf_email = 'zurich.suyash@gmail.com'
+        hf_pass = 'Herceptin@2107'
+        sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
+        cookies = sign.login()
+        
+        # Save cookies to the local directory
+        cookie_path_dir = "./cookies_snapshot"
+        sign.saveCookiesToDir(cookie_path_dir)
+    except:
+        pass
     #st.set_page_config(layout="wide")
 
     # Initialize chat history
