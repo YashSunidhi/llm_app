@@ -693,7 +693,7 @@ def image_gen():
                     API_URL = "https://api-inference.huggingface.co/models/stablediffusionapi/realistic-vision-v40"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
-                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography, Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K ",
                         "parameters": {'num_inference_steps': (option1) ,'num_images_per_prompt':1},
                         "negative_prompt":['deformed iris', 'deformed pupils', 'semi-realistic', 'cgi', '3d', 'render', 'sketch', 'cartoon', 'drawing', 'anime', 'text', 'close up', 'cropped', 'out of frame', 'worst quality', 'low quality', 'jpeg artifacts', 'ugly', 'duplicate', 'morbid', 'mutilated', 'extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated', 'bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck']
                     
@@ -719,7 +719,7 @@ def image_gen():
                     API_URL = "https://api-inference.huggingface.co/models/Yntec/AbsoluteReality"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
-                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography, Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K ",
                         "parameters": {'num_inference_steps': (option2) ,'num_images_per_prompt':1},
                         "negative_prompt":['deformed iris', 'deformed pupils', 'semi-realistic', 'cgi', '3d', 'render', 'sketch', 'cartoon', 'drawing', 'anime', 'text', 'close up', 'cropped', 'out of frame', 'worst quality', 'low quality', 'jpeg artifacts', 'ugly', 'duplicate', 'morbid', 'mutilated', 'extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated', 'bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck']
                         
@@ -745,7 +745,7 @@ def image_gen():
                     API_URL = "https://api-inference.huggingface.co/models/Yntec/realistic-vision-v12"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
-                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography, Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K ",
                         "parameters": {'num_inference_steps': (option3) ,'num_images_per_prompt':1},
                         "negative_prompt":['deformed iris', 'deformed pupils', 'semi-realistic', 'cgi', '3d', 'render', 'sketch', 'cartoon', 'drawing', 'anime', 'text', 'close up', 'cropped', 'out of frame', 'worst quality', 'low quality', 'jpeg artifacts', 'ugly', 'duplicate', 'morbid', 'mutilated', 'extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated', 'bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck']
                         
@@ -772,7 +772,7 @@ def image_gen():
                     API_URL = "https://api-inference.huggingface.co/models/Gauri54damle/sdxl-lora-model"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
-                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography,  Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K",
                         "parameters": {'num_inference_steps': (option4) ,'num_images_per_prompt':1},
                         "negative_prompt":['deformed iris', 'deformed pupils', 'semi-realistic', 'cgi', '3d', 'render', 'sketch', 'cartoon', 'drawing', 'anime', 'text', 'close up', 'cropped', 'out of frame', 'worst quality', 'low quality', 'jpeg artifacts', 'ugly', 'duplicate', 'morbid', 'mutilated', 'extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated', 'bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck']
                       
@@ -798,7 +798,7 @@ def image_gen():
                     API_URL = "https://api-inference.huggingface.co/models/Yntec/CyberRealistic"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
-                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
+                        "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography,  Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K ",
                         "parameters": {'num_inference_steps': (option5) ,'num_images_per_prompt':1},
                         "negative_prompt":['deformed iris', 'deformed pupils', 'semi-realistic', 'cgi', '3d', 'render', 'sketch', 'cartoon', 'drawing', 'anime', 'text', 'close up', 'cropped', 'out of frame', 'worst quality', 'low quality', 'jpeg artifacts', 'ugly', 'duplicate', 'morbid', 'mutilated', 'extra fingers', 'mutated hands', 'poorly drawn hands', 'poorly drawn face', 'mutation', 'deformed', 'blurry', 'dehydrated', 'bad anatomy', 'bad proportions', 'extra limbs', 'cloned face', 'disfigured', 'gross proportions', 'malformed limbs', 'missing arms', 'missing legs', 'extra arms', 'extra legs', 'fused fingers', 'too many fingers', 'long neck']
                         
