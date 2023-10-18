@@ -775,7 +775,7 @@ def image_gen():
 
             with tab40:
                 try:
-                    API_URL = "https://api-inference.huggingface.co/models/Gauri54damle/sdxl-lora-model"
+                    API_URL = "https://api-inference.huggingface.co/models/stablediffusionapi/realistic-vision-v51"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
                         "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography,  Canon EOS R3, nikon, f/1.4, ISO 200, 1/160s, 8K, RAW, unedited, symmetrical balance, in-frame, 8K",
