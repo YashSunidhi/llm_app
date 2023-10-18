@@ -180,7 +180,7 @@ def prompt_gen():
     
   
 
-    df = pd.DataFrame(st.session_state.messages)
+    df = pd.DataFrame(st.session_state.messages_p)
         
     def convert_df(df):
         return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
