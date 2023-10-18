@@ -931,7 +931,7 @@ def final_out():
     
     
 page_names_to_funcs = {
-    "Prompt Design & Generation": prompt_gen,
+    #"Prompt Design & Generation": prompt_gen,
     "Content Generation": text_gen,
     "Content Translation": text_trans,
     "Image Generation": image_gen,
