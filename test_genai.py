@@ -165,16 +165,16 @@ def prompt_gen():
     prompt = f''' As a smart AI Assistant, can you you generate 5 rephrases outcome from this text """  {prompt_design} """. Assistant: \n\n'''
    
     if st.button('Generating Image Placeholders'):
-    try:
-        output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5000 }})
-        response = output[0]['generated_text'].split('Assistant:')[1]
-    except:
-        st.write("Seems Like API is down, Please carefully examine the outcome")
         try:
-             response = generate_response(prompt_design,hf_email, hf_pass)
+            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5000 }})
+            response = output[0]['generated_text'].split('Assistant:')[1]
         except:
-            pass
-    st.session_state.messages_p.append(response)
+            st.write("Seems Like API is down, Please carefully examine the outcome")
+            try:
+                 response = generate_response(prompt_design,hf_email, hf_pass)
+            except:
+                pass
+        st.session_state.messages_p.append(response)
 
     
     
