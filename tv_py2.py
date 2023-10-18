@@ -34,10 +34,6 @@ def text_gen():
     # Save cookies to the local directory
     cookie_path_dir = "./cookies_snapshot"
     sign.saveCookiesToDir(cookie_path_dir)
-    # except:
-    #     pass
-
-    #st.set_page_config(layout="wide")
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -53,7 +49,7 @@ def text_gen():
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
         # Function for generating LLM response
-    def generate_response(prompt_input, email, passwd, model_v):
+    def generate_response(prompt_input, email, passwd):
         # Hugging Face Login
         sign = Login(email, passwd)
         cookies = sign.login()
@@ -62,7 +58,7 @@ def text_gen():
         # Create a new conversation
         # id = chatbot.new_conversation()
         # chatbot.change_conversation(id)
-        chatbot.switch_llm(model_v)
+        #chatbot.switch_llm(model_v)
     
         for dict_message in st.session_state.messages:
             string_dialogue = "You are a helpful assistant."
