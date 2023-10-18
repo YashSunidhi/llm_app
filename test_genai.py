@@ -47,105 +47,105 @@ def text_gen():
     
     
     # Sidebar contents
-    with st.sidebar:
-        st.title('🤗💬 AABI Chat Assistant')
-        st.markdown('''
-        ## About
-        This app is an LLM-powered Generative Engine:
-        
-        💡 Note: Free and Secure Access
-        ''')
-        # add_vertical_space(5)
-        # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
-        #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
+    #with st.sidebar:
+    st.sidebar.title('🤗💬 AABI Chat Assistant')
+    st.sidebar.markdown('''
+    ## About
+    This app is an LLM-powered Generative Engine:
     
+    💡 Note: Free and Secure Access
+    ''')
+    # add_vertical_space(5)
+    # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
+    #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
+
+    
+
+#######
+# Get the input text from the user
+#with st.sidebar:
+    #st.title('🤗💬 Web Search Inclusion (Default Not Included')
+    option0w = st.sidebar.selectbox('Select Web Search',(False,True))
+    option0C = st.sidebar.text_area('Input context reference if any','')
+    #model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
+    model_val = {'Base Model':0,'Large Model':2}
+    option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
+    model_v = model_val[option0m]
+
+
+                                                    
+#with st.sidebar:
+    st.sidebar.title('🤗💬 Product Positioning')
+    pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
+    if pps:
+        option01 = st.sidebar.text_area('For - Eligible Population','treatment-naive and experienced C5i-eligible PNH patients')
+        option02 = st.sidebar.text_area('Who - Target Patient Identifier','value treatment autonomy and convenience')
+        option03 = st.sidebar.text_area('Drug - Product Category','next-generation subcutaneous (SC) C5i')
+        option04 = st.sidebar.text_area('That Uniquely - Rational differentiator','reducing patient burden through simple q4w SC injections, either administered at home or in a clinical setting')
+        option05 = st.sidebar.text_area('Because - Reason to believe','match the proven efficacy and safety of the trusted C5i Standard of Care (SoC) while introducing a novel dose interval-extending recycling mechanism')
+        option06 = st.sidebar.text_area('So that - Emotional Benefit','patients to regain control over their lives by managing their PNH effectively')
+
+        tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
+
+#with st.sidebar:
+    st.sidebar.title('🤗💬 User Input for Base Prompt')
+    ups = st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"')
+    if ups:
+        option0 = st.sidebar.selectbox(
+        'Content Designer Role',
+        ('pharma communication', 'scientific communication', 'marketing communication'))
+        option1 = st.sidebar.selectbox(
+        'Product',
+        (' Phesgo ', ' Tecentriq ',' Ocrevus ',' Polivy ',' Crovalimab ',' Vabysmo '))
+        option2 = st.sidebar.selectbox(
+        'Target Audience',
+        ('HCP', 'Patients', 'Patients and their Families'))
         
-
-    #######
-    # Get the input text from the user
-    #with st.sidebar:
-        #st.title('🤗💬 Web Search Inclusion (Default Not Included')
-        option0w = st.sidebar.selectbox('Select Web Search',(False,True))
-        option0C = st.sidebar.text_area('Input context reference if any','')
-        #model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
-        model_val = {'Base Model':0,'Large Model':2}
-        option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
-        model_v = model_val[option0m]
-
-
-                                                        
-    #with st.sidebar:
-        st.title('🤗💬 Product Positioning')
-        pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
-        if pps:
-            option01 = st.sidebar.text_area('For - Eligible Population','treatment-naive and experienced C5i-eligible PNH patients')
-            option02 = st.sidebar.text_area('Who - Target Patient Identifier','value treatment autonomy and convenience')
-            option03 = st.sidebar.text_area('Drug - Product Category','next-generation subcutaneous (SC) C5i')
-            option04 = st.sidebar.text_area('That Uniquely - Rational differentiator','reducing patient burden through simple q4w SC injections, either administered at home or in a clinical setting')
-            option05 = st.sidebar.text_area('Because - Reason to believe','match the proven efficacy and safety of the trusted C5i Standard of Care (SoC) while introducing a novel dose interval-extending recycling mechanism')
-            option06 = st.sidebar.text_area('So that - Emotional Benefit','patients to regain control over their lives by managing their PNH effectively')
-
-            tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
-
-    #with st.sidebar:
-        st.title('🤗💬 User Input for Base Prompt')
-        ups = st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"')
-        if ups:
-            option0 = st.sidebar.selectbox(
-            'Content Designer Role',
-            ('pharma communication', 'scientific communication', 'marketing communication'))
-            option1 = st.sidebar.selectbox(
-            'Product',
-            (' Phesgo ', ' Tecentriq ',' Ocrevus ',' Polivy ',' Crovalimab ',' Vabysmo '))
-            option2 = st.sidebar.selectbox(
-            'Target Audience',
-            ('HCP', 'Patients', 'Patients and their Families'))
-            
-            option3 = st.sidebar.selectbox(
-            'Tone of Generation',
-            ('Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
+        option3 = st.sidebar.selectbox(
+        'Tone of Generation',
+        ('Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
+        ))
+        
+        option4 = st.sidebar.selectbox(
+        'Content Type',
+        ('content','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
             ))
-            
-            option4 = st.sidebar.selectbox(
-            'Content Type',
-            ('content','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
-                ))
-            option5 = st.sidebar.selectbox(
-            'Objective',
-            ('Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
-                ))
-            
-            option6 = st.sidebar.selectbox(
-            'Output Language',
-            ('','in French', 'in Spanish', 'in German', 
-                'in Italian'))
-            
-            option8 = st.sidebar.selectbox(
-            'Target Audience Expectation',
-            ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
-    
-            option11 = st.sidebar.selectbox(
-            'Indication',
-            ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
-    
-            option12 = st.sidebar.selectbox(
-            'Company',
-            ("Genentech's", "Roche's"))
-            st.title("Prompt Design Template")
-            option7 = st.text_input('Input your prompt here',"")
+        option5 = st.sidebar.selectbox(
+        'Objective',
+        ('Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
+            ))
+        
+        option6 = st.sidebar.selectbox(
+        'Output Language',
+        ('','in French', 'in Spanish', 'in German', 
+            'in Italian'))
+        
+        option8 = st.sidebar.selectbox(
+        'Target Audience Expectation',
+        ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
 
-            if option0C:
-                if pps:
-                    default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ') + str(' """ ')+ option0C + str(' """ ')]
-                else:
-                    default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7+ str('""" ') +option0C + str('""" ')]
-            elif pps:
-                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ')]
-                #prompt = st.text_input('Input your prompt here')
+        option11 = st.sidebar.selectbox(
+        'Indication',
+        ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
+
+        option12 = st.sidebar.selectbox(
+        'Company',
+        ("Genentech's", "Roche's"))
+        st.title("Prompt Design Template")
+        option7 = st.text_input('Input your prompt here',"")
+
+        if option0C:
+            if pps:
+                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ') + str(' """ ')+ option0C + str(' """ ')]
             else:
-                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
+                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7+ str('""" ') +option0C + str('""" ')]
+        elif pps:
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ')]
+            #prompt = st.text_input('Input your prompt here')
+        else:
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
 
-            prompt_design = st.write(default_prompt[0])
+        prompt_design = st.write(default_prompt[0])
     
 
     
