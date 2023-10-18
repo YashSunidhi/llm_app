@@ -121,10 +121,8 @@ def text_gen():
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
         option0w = st.sidebar.selectbox('Select Web Search',(False,True))
         option0C = st.sidebar.text_area('Input context reference if any','')
-        #model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
-        model_val = {'Base Model':0,'Large Model':2}
-        option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
-        model_v = model_val[option0m]
+        option0m = st.sidebar.selectbox('Select Model',('Base Inference Model','Fast Inference Model'))
+      
 
 
                                                         
@@ -213,22 +211,21 @@ def text_gen():
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
-                if option0w==False:
-                    try:
-                        response = generate_response(prompt, hf_email, hf_pass)
-                        st.write(response)
-                    except:
-                        st.write('I am working on it...')
-                        API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-                        headers = {"Authorization": "Bearer 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"}
-                        output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
-                        response = output[0]['generated_text'].split('Assistant:')[1]
-                        st.write(response)
-                        #message = {"role": "assistant", "content": response}
-                        st.write("API Service Down, Outcome from an alternate API")
-                        pass
-                else:
-                    try:
+                try:
+                    if option0w==False:
+                        if option0m == 'Base Inference Model':
+                            response = generate_response(prompt, hf_email, hf_pass)
+                            st.write(response)
+                        elif option0m == 'Fast Inference Model':
+                            st.write('I am working on it...')
+                            API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                            headers = {"Authorization": "Bearer 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"}
+                            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
+                            response = output[0]['generated_text'].split('Assistant:')[1]
+                            st.write(response)
+                            #message = {"role": "assistant", "content": response}
+                            st.write("API Service Down, Outcome from an alternate API")
+                    else:
                         response = generate_response_web(prompt, hf_email,hf_pass)
                         st.write(response)
                         message = {"role": "assistant", "content": response}
@@ -237,26 +234,26 @@ def text_gen():
                         for source in response.web_search_sources:
                             count = count+1
                             st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-                    except:
-                        st.write("Seems Like API is down, Please reach out to AABI Team")
-                        pass
+                except:
+                    st.write("Seems Like API is down, Please reach out to AABI Team")
+                    pass
 
         message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
 
-    df = pd.DataFrame(st.session_state.messages)
-        
-    def convert_df(df):
-        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
-
-    csv = convert_df(df)
-    st.download_button(
-       "Press to Download and save",
-       csv,
-       "file.txt",
-       "text/csv",
-       key='download-txt'
-    )
+        df = pd.DataFrame(st.session_state.messages)
+            
+        def convert_df(df):
+            return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+    
+        csv = convert_df(df)
+        st.download_button(
+           "Press to Download and save",
+           csv,
+           "file.txt",
+           "text/csv",
+           key='download-txt'
+        )
 
 
 
