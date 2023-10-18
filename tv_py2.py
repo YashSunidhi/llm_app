@@ -69,7 +69,7 @@ def text_gen():
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
         #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        out_no_web = chatbot.chat(prompt,web_search=False)#,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        out_no_web = chatbot.chat(prompt,web_search=False,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
         return out_no_web
 
     def generate_response_web(prompt_input, email, passwd):
@@ -92,7 +92,7 @@ def text_gen():
     
         prompt = f"{string_dialogue} {prompt_input} Assistant: "
         #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        out_web = chatbot.chat(prompt,web_search=True) #,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        out_web = chatbot.chat(prompt,web_search=True,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
         return out_web
 
     def query_text(payload):
