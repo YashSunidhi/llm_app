@@ -224,6 +224,9 @@ def text_gen():
                 #try:
                 if option0w==False:
                     try:
+                        response = generate_response(prompt, hf_email, hf_pass, model_v)
+                        st.write(response)
+                        message = {"role": "assistant", "content": response}
                         print('I am working on it...')
                         try:
                             API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
