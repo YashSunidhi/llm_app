@@ -214,30 +214,19 @@ def text_gen():
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 if option0w==False:
-                    response = generate_response(prompt, hf_email, hf_pass)
-                    st.write(response)
-                    #message = {"role": "assistant", "content": response}
-                #     try:
-                #         st.write('I am working on it...')
-                #         #try:
-                #         API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-                #         headers = {"Authorization": "Bearer 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"}
-                #         output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
-                #         response = output[0]['generated_text'].split('Assistant:')[1]
-                #         st.write(response)
-                #         message = {"role": "assistant", "content": response}
-                #         try:
-                #             if list(output.keys())[0]=='error':
-                #                 response = generate_response(prompt, hf_email, hf_pass, model_v)
-                #                 st.write(response)
-                #                 message = {"role": "assistant", "content": response}
-                        
-                #         except:
-                #             st.write("API Service Down, Lets try another API")
-                            
-                #             #st.session_state.messages.append(message)
-                #     except:
-                #         pass
+                    try:
+                        response = generate_response(prompt, hf_email, hf_pass)
+                        st.write(response)
+                    except:
+                        st.write('I am working on it...')
+                        API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                        headers = {"Authorization": "Bearer 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"}
+                        output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
+                        response = output[0]['generated_text'].split('Assistant:')[1]
+                        st.write(response)
+                        #message = {"role": "assistant", "content": response}
+                        st.write("API Service Down, Outcome from an alternate API")
+                        pass
                 else:
                     try:
                         response = generate_response_web(prompt, hf_email,hf_pass)
