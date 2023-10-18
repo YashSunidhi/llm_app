@@ -263,6 +263,7 @@ def text_gen():
             except:
                 pass
     except:
+        st.write(" Refresh Web Page of APP")
         pass
 
 
