@@ -19,6 +19,180 @@ from PIL import Image
 st.set_page_config(page_title="Roche Creative Generation", layout = "wide")
 st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content Drafing Suite </h6>", unsafe_allow_html=True)
 #st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
+def prompt_gen():
+    st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
+    hf_email = 'zurich.suyash@gmail.com'
+    hf_pass = 'Herceptin@2107'
+    sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
+    cookies = sign.login()
+    
+    # Save cookies to the local directory
+    cookie_path_dir = "./cookies_snapshot"
+    sign.saveCookiesToDir(cookie_path_dir)
+    #st.set_page_config(layout="wide")
+
+    if "messages_p" not in st.session_state:
+        st.session_state.messages_p = []
+    
+    # def clear_chat_history():
+    #     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    # st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+
+    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+    headers = {"Authorization": "Bearer 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"}
+    
+    def query_text(payload):
+    	response = requests.post(API_URL, headers=headers, json=payload)
+    	return response.json()
+
+    hf_email = 'zurich.suyash@gmail.com'
+    hf_pass = 'Herceptin@2107'
+    def generate_response(prompt_input, email, passwd):
+        # Hugging Face Login
+        sign = Login(email, passwd)
+        cookies = sign.login()
+        # Create ChatBot                        
+        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+        # Create a new conversation
+        id = chatbot.new_conversation()
+        chatbot.change_conversation(id)
+        chatbot.switch_llm(0)
+    
+        prompt = f''' As a smart AI Assistant, can you you generate 5 rephrases outcome from this text """  {prompt_input} """. Assistant: '''
+        return chatbot.query(prompt,web_search=False)
+    
+    
+    # Sidebar contents
+    #with st.sidebar:
+    st.sidebar.title('🤗💬 AABI Chat Assistant')
+    st.sidebar.markdown('''
+    ## About
+    This app is an LLM-powered Generative Engine:
+    
+    💡 Note: Free and Secure Access
+    ''')
+    # add_vertical_space(5)
+    # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
+    #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
+
+    
+
+#######
+# Get the input text from the user
+#with st.sidebar:
+    #st.title('🤗💬 Web Search Inclusion (Default Not Included')
+    # option0w = st.sidebar.selectbox('Select Web Search',(False,True))
+    option0C = st.sidebar.text_area('Input context reference if any','')
+    #model_val = {'Base Model':0,'Large Model':2,'Small Model':3}
+    # model_val = {'Base Model':0,'Large Model':2}
+    # option0m = st.sidebar.selectbox('Select Model',('Base Model','Large Model','Small Model'))
+    # model_v = model_val[option0m]
+
+
+                                                    
+#with st.sidebar:
+    st.sidebar.title('🤗💬 Product Positioning')
+    pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
+    if pps:
+        option01 = st.sidebar.text_area('For - Eligible Population','treatment-naive and experienced C5i-eligible PNH patients')
+        option02 = st.sidebar.text_area('Who - Target Patient Identifier','value treatment autonomy and convenience')
+        option03 = st.sidebar.text_area('Drug - Product Category','next-generation subcutaneous (SC) C5i')
+        option04 = st.sidebar.text_area('That Uniquely - Rational differentiator','reducing patient burden through simple q4w SC injections, either administered at home or in a clinical setting')
+        option05 = st.sidebar.text_area('Because - Reason to believe','match the proven efficacy and safety of the trusted C5i Standard of Care (SoC) while introducing a novel dose interval-extending recycling mechanism')
+        option06 = st.sidebar.text_area('So that - Emotional Benefit','patients to regain control over their lives by managing their PNH effectively')
+
+        tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
+
+#with st.sidebar:
+    st.sidebar.title('🤗💬 User Input for Base Prompt')
+    ups = st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"')
+    if ups:
+        option0 = st.sidebar.selectbox(
+        'Content Designer Role',
+        ('pharma communication', 'scientific communication', 'marketing communication'))
+        option1 = st.sidebar.selectbox(
+        'Product',
+        (' Phesgo ', ' Tecentriq ',' Ocrevus ',' Polivy ',' Crovalimab ',' Vabysmo '))
+        option2 = st.sidebar.selectbox(
+        'Target Audience',
+        ('HCP', 'Patients', 'Patients and their Families'))
+        
+        option3 = st.sidebar.selectbox(
+        'Tone of Generation',
+        ('Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
+        ))
+        
+        option4 = st.sidebar.selectbox(
+        'Content Type',
+        ('content','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
+            ))
+        option5 = st.sidebar.selectbox(
+        'Objective',
+        ('Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
+            ))
+        
+        option6 = st.sidebar.selectbox(
+        'Output Language',
+        ('','in French', 'in Spanish', 'in German', 
+            'in Italian'))
+        
+        option8 = st.sidebar.selectbox(
+        'Target Audience Expectation',
+        ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
+
+        option11 = st.sidebar.selectbox(
+        'Indication',
+        ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
+
+        option12 = st.sidebar.selectbox(
+        'Company',
+        ("Genentech's", "Roche's"))
+        st.title("Prompt Design Template")
+        option7 = st.text_input('Input your prompt here',"")
+
+        if option0C:
+            if pps:
+                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ') + str(' """ ')+ option0C + str(' """ ')]
+            else:
+                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7+ str('""" ') +option0C + str('""" ')]
+        elif pps:
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ')]
+            #prompt = st.text_input('Input your prompt here')
+        else:
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
+
+        prompt_design = st.write(default_prompt[0])
+    prompt = f''' As a smart AI Assistant, can you you generate 5 rephrases outcome from this text """  {prompt_design} """. Assistant: \n\n'''
+   
+    if st.button('Generating Image Placeholders'):
+    try:
+        output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5000 }})
+        response = output[0]['generated_text'].split('Assistant:')[1]
+    except:
+        st.write("Seems Like API is down, Please carefully examine the outcome")
+        try:
+             response = generate_response(prompt_design,hf_email, hf_pass)
+        except:
+            pass
+    st.session_state.messages_p.append(response)
+
+    
+    
+  
+
+    df = pd.DataFrame(st.session_state.messages)
+        
+    def convert_df(df):
+        return df.to_csv(sep='\t', index=False)#index=False).encode('utf-8')
+
+    csv = convert_df(df)
+    st.download_button(
+       "Press to Download and save",
+       csv,
+       "file.txt",
+       "text/csv",
+       key='download-txt'
+    )
 
 def text_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
@@ -372,7 +546,7 @@ def image_gen():
       selected_filename = st.sidebar.selectbox('Select a file', filenames)
       return os.path.join(folder_path, selected_filename)
     hf_email = 'zurich.suyash@gmail.com'
-    hf_pass = 'Roche@2107'
+    hf_pass = 'Herceptin@2107'
     def generate_response(prompt_input, email, passwd):
         # Hugging Face Login
         sign = Login(email, passwd)
@@ -756,6 +930,7 @@ def final_out():
     
     
 page_names_to_funcs = {
+    "Prompt Design & Generation": prompt_gen,
     "Content Generation": text_gen,
     "Content Translation": text_trans,
     "Image Generation": image_gen,
