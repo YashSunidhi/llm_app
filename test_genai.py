@@ -71,15 +71,12 @@ def prompt_gen():
     
     💡 Note: Free and Secure Access
     ''')
-    # add_vertical_space(5)
-    # st.write('Made with ❤️ by [Data Professor](https://youtube.com/dataprofessor)')
-    #[OpenAssistant/oasst-sft-6-llama-30b-xor](https://huggingface.co/OpenAssistant/oasst-sft-6-llama-30b-xor) LLM model
 
     
 
 #######
 # Get the input text from the user
-#with st.sidebar:
+
     #st.title('🤗💬 Web Search Inclusion (Default Not Included')
     # option0w = st.sidebar.selectbox('Select Web Search',(False,True))
     option0C = st.sidebar.text_area('Input context reference if any','')
@@ -90,7 +87,7 @@ def prompt_gen():
 
 
                                                     
-#with st.sidebar:
+
     st.sidebar.title('🤗💬 Product Positioning')
     pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
     if pps:
@@ -103,7 +100,6 @@ def prompt_gen():
 
         tot = "In line with our product positioning strategy, which targets "+ option01 + ",particularly those who " +option02+", we will highlight drug as a" + option03 + ". This product uniquely distinguishes itself by " + option04+ ". The rationale behind this positioning is the product's ability to " +option05+". This, in turn, offers the emotional benefit of allowing " + option06
 
-#with st.sidebar:
     st.sidebar.title('🤗💬 User Input for Base Prompt')
     ups = st.sidebar.checkbox('Select to use "User Input for Base Prompt Design"')
     if ups:
@@ -162,11 +158,11 @@ def prompt_gen():
             default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
     
         prompt_design = st.write(default_prompt[0])
-        prompt = f''' As a smart AI Assistant, can you you generate 5 rephrases outcome from this text """  {prompt_design} """. Assistant: \n\n'''
+        prompt = f''' Can you generate 5 rephrased outcome from this text """  {prompt_design} """. Assistant: \n\n'''
        
-        if st.button('Generating Image Placeholders'):
+        if st.button('Generating Prompt/Instruction from User Input'):
             try:
-                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5000 }})
+                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3500 }})
                 response = output[0]['generated_text'].split('Assistant:')[1]
             except:
                 st.write("Seems Like API is down, Please carefully examine the outcome")
