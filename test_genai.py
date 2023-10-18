@@ -171,6 +171,11 @@ def prompt_gen():
                 except:
                     pass
             st.session_state.messages_p.append(response)
+    try:
+        st.markdown(st.session_state.messages_p[-1])
+    except:
+        st.write("No Prompt Placeholders available")
+        pass
 
     
     
