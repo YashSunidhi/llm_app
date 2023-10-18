@@ -224,26 +224,23 @@ def text_gen():
                 #try:
                 if option0w==False:
                     try:
-                        response = generate_response(prompt, hf_email, hf_pass, model_v)
+                        print('I am working on it...')
+                        #try:
+                        API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                        headers = {"Authorization": "Bearer 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"}
+                        output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
+                        response = output[0]['generated_text'].split('Assistant:')[1]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
-                        print('I am working on it...')
-                        try:
-                            API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-                            headers = {"Authorization": "Bearer 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"}
-                            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
-                            response = output[0]['generated_text'].split('Assistant:')[1]
-                            st.write(response)
-                            message = {"role": "assistant", "content": response}
-                        except:
-                            API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct"
-                            headers = {"Authorization": "Bearer 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"}
-                            output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
-                            response = output[0]['generated_text'].split('Assistant:')[1]
-                            st.write(response)
-                            message = {"role": "assistant", "content": response}
+                        # except:
+                        #     API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct"
+                        #     headers = {"Authorization": "Bearer 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"}
+                        #     output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3500 }})
+                        #     response = output[0]['generated_text'].split('Assistant:')[1]
+                        #     st.write(response)
+                        #     message = {"role": "assistant", "content": response}
                         #st.write(st.session_state.messages[-1]['content'])
-                        if not output:
+                        if not response:
                             response = generate_response(prompt, hf_email, hf_pass, model_v)
                             st.write(response)
                             message = {"role": "assistant", "content": response}
