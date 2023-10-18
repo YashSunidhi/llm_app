@@ -221,10 +221,10 @@ def text_gen():
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
-                # output = query_text({"inputs": (prompt +". Assistant: \n\n"),"parameters": {'max_new_tokens': 3000 }})
-                # response = output[0]['generated_text'].split('Assistant:')[1]
-                #try:
                 if option0w==False:
+                    response = generate_response(prompt, hf_email, hf_pass, model_v)
+                    st.write(response)
+                    #message = {"role": "assistant", "content": response}
                     try:
                         st.write('I am working on it...')
                         #try:
@@ -260,7 +260,7 @@ def text_gen():
                         st.write("Seems Like API is down, Please reach out to AABI Team")
                         pass
 
-        #message = {"role": "assistant", "content": response}
+        message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
 
     df = pd.DataFrame(st.session_state.messages)
