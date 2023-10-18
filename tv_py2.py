@@ -372,7 +372,7 @@ def image_gen():
       selected_filename = st.sidebar.selectbox('Select a file', filenames)
       return os.path.join(folder_path, selected_filename)
     hf_email = 'zurich.suyash@gmail.com'
-    hf_pass = 'Roche@2107'
+    hf_pass = 'Herceptin@2107'
     def generate_response(prompt_input, email, passwd):
         # Hugging Face Login
         sign = Login(email, passwd)
