@@ -24,7 +24,8 @@ st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content 
 
 def text_gen():
     st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
-    # try:
+    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+    headers = {"Authorization": "Bearer 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"}
     hf_email = 'zurich.suyash@gmail.com'
     hf_pass = 'Herceptin@2107'
     sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
@@ -50,6 +51,57 @@ def text_gen():
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+
+        # Function for generating LLM response
+    def generate_response(prompt_input, email, passwd, model_v):
+        # Hugging Face Login
+        sign = Login(email, passwd)
+        cookies = sign.login()
+        # Create ChatBot                        
+        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+        # Create a new conversation
+        # id = chatbot.new_conversation()
+        # chatbot.change_conversation(id)
+        chatbot.switch_llm(model_v)
+    
+        for dict_message in st.session_state.messages:
+            string_dialogue = "You are a helpful assistant."
+            if dict_message["role"] == "user":
+                string_dialogue += "User: " + dict_message["content"] + "\n\n"
+            else:
+                string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
+    
+        prompt = f"{string_dialogue} {prompt_input} Assistant: "
+        #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        out_no_web = chatbot.chat(prompt,web_search=False)#,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return out_no_web
+
+    def generate_response_web(prompt_input, email, passwd, model_v):
+        # Hugging Face Login
+        sign = Login(email, passwd)
+        cookies = sign.login()
+        # Create ChatBot                        
+        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+        # Create a new conversation
+        # id = chatbot.new_conversation()
+        # chatbot.change_conversation(id)
+        chatbot.switch_llm(model_v)
+    
+        for dict_message in st.session_state.messages:
+            string_dialogue = "You are a helpful assistant."
+            if dict_message["role"] == "user":
+                string_dialogue += "User: " + dict_message["content"] + "\n\n"
+            else:
+                string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
+    
+        prompt = f"{string_dialogue} {prompt_input} Assistant: "
+        #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        out_web = chatbot.chat(prompt,web_search=True) #,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
+        return out_web
+
+    def query_text(payload):
+    	response = requests.post(API_URL, headers=headers, json=payload)
+    	return response.json()
     
     
     # Sidebar contents
@@ -153,55 +205,6 @@ def text_gen():
 
             prompt_design = st.write(default_prompt[0])
     
-
-    
-    
-    # Function for generating LLM response
-    def generate_response(prompt_input, email, passwd, model_v):
-        # Hugging Face Login
-        sign = Login(email, passwd)
-        cookies = sign.login()
-        # Create ChatBot                        
-        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-        # Create a new conversation
-        # id = chatbot.new_conversation()
-        # chatbot.change_conversation(id)
-        chatbot.switch_llm(model_v)
-    
-        for dict_message in st.session_state.messages:
-            string_dialogue = "You are a helpful assistant."
-            if dict_message["role"] == "user":
-                string_dialogue += "User: " + dict_message["content"] + "\n\n"
-            else:
-                string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    
-        prompt = f"{string_dialogue} {prompt_input} Assistant: "
-        #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        out_no_web = chatbot.chat(prompt,web_search=False)#,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        return out_no_web
-
-    def generate_response_web(prompt_input, email, passwd, model_v):
-        # Hugging Face Login
-        sign = Login(email, passwd)
-        cookies = sign.login()
-        # Create ChatBot                        
-        chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-        # Create a new conversation
-        # id = chatbot.new_conversation()
-        # chatbot.change_conversation(id)
-        chatbot.switch_llm(model_v)
-    
-        for dict_message in st.session_state.messages:
-            string_dialogue = "You are a helpful assistant."
-            if dict_message["role"] == "user":
-                string_dialogue += "User: " + dict_message["content"] + "\n\n"
-            else:
-                string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    
-        prompt = f"{string_dialogue} {prompt_input} Assistant: "
-        #response = chatbot.query(prompt,web_search=webs,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        out_web = chatbot.chat(prompt,web_search=True) #,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
-        return out_web
     
     
     # User-provided prompt
@@ -209,16 +212,7 @@ def text_gen():
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.write(prompt)
-    
-    # Generate a new response if last message is not from assistant
-    #st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
 
-    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-    headers = {"Authorization": "Bearer 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"}
-    
-    def query_text(payload):
-    	response = requests.post(API_URL, headers=headers, json=payload)
-    	return response.json()
   
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
