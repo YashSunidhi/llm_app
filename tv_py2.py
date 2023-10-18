@@ -72,7 +72,7 @@ def text_gen():
         out_no_web = chatbot.chat(prompt,web_search=False)#,truncate = 4096,max_new_tokens= 4096,return_full_text=True,use_cache=True)
         return out_no_web
 
-    def generate_response_web(prompt_input, email, passwd, model_v):
+    def generate_response_web(prompt_input, email, passwd):
         # Hugging Face Login
         sign = Login(email, passwd)
         cookies = sign.login()
@@ -81,7 +81,7 @@ def text_gen():
         # Create a new conversation
         # id = chatbot.new_conversation()
         # chatbot.change_conversation(id)
-        chatbot.switch_llm(model_v)
+        # chatbot.switch_llm(model_v)
     
         for dict_message in st.session_state.messages:
             string_dialogue = "You are a helpful assistant."
@@ -213,9 +213,9 @@ def text_gen():
     if st.session_state.messages[-1]["role"] != "assistant":
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
-                # if option0w==False:
-                response = generate_response(prompt, hf_email, hf_pass)
-                st.write(response)
+                if option0w==False:
+                    response = generate_response(prompt, hf_email, hf_pass)
+                    st.write(response)
                     #message = {"role": "assistant", "content": response}
                 #     try:
                 #         st.write('I am working on it...')
@@ -238,19 +238,19 @@ def text_gen():
                 #             #st.session_state.messages.append(message)
                 #     except:
                 #         pass
-                # else:
-                #     try:
-                #         response = generate_response_web(prompt, hf_email,hf_pass, model_v)
-                #         st.write(response)
-                #         message = {"role": "assistant", "content": response}
-                #         st.warning("Referred Resources",icon = '🚨')
-                #         count = 0
-                #         for source in response.web_search_sources:
-                #             count = count+1
-                #             st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-                #     except:
-                #         st.write("Seems Like API is down, Please reach out to AABI Team")
-                #         pass
+                else:
+                    try:
+                        response = generate_response_web(prompt, hf_email,hf_pass)
+                        st.write(response)
+                        message = {"role": "assistant", "content": response}
+                        st.warning("Referred Resources",icon = '🚨')
+                        count = 0
+                        for source in response.web_search_sources:
+                            count = count+1
+                            st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+                    except:
+                        st.write("Seems Like API is down, Please reach out to AABI Team")
+                        pass
 
         message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
