@@ -515,7 +515,8 @@ def image_gen():
 
                 try:
         
-                    API_URL = "https://api-inference.huggingface.co/models/Yntec/Dreamshaper8"
+                    #API_URL = "https://api-inference.huggingface.co/models/Yntec/Dreamshaper8"
+                    API_URL = "https://api-inference.huggingface.co/models/stablediffusionapi/realistic-vision-v51"
                     headers = {"Authorization": "Bearer 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"}
                     image_bytes = query({
                         "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
