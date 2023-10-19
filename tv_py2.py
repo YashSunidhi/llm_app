@@ -226,7 +226,7 @@ def text_gen():
                                         string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
                                 prompt = f"{string_dialogue} {prompt} Assistant: "
                                 for API_URL in  ["https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1","https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-hf"]:
-                                    API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-hf"
+                                    API_URL = API_URL
                                     headers = {"Authorization": "Bearer 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"}
                                     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3500 }})
                                     response = output[0]['generated_text'].split('Assistant:')[1]
