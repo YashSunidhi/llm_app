@@ -228,13 +228,13 @@ def text_gen():
                                 try:
                                     API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
                                     headers = {"Authorization": "Bearer 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"}
-                                    output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3500,'do_sample':True }})
+                                    output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
                                     response = output[0]['generated_text'].split('Assistant:')[1]
                                     st.write(response)
                                 except:
                                     API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-alpha"
                                     headers = {"Authorization": "Bearer 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"}
-                                    output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3500,'do_sample':True }})
+                                    output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
                                     response = output[0]['generated_text'].split('Assistant:')[1]
                                     st.write(response)
                                     
