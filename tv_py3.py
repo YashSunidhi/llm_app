@@ -216,7 +216,7 @@ def text_gen():
                     try:
                         if option0ll == 'Offline':
                             time.sleep(7)
-                            dv = pd.read_csv('content_output.csv)
+                            dv = pd.read_csv('content_output.csv')
                             response = dv['0'][1]
                             st.write(response)
                         elif option0w==False:
