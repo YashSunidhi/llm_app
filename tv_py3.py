@@ -219,10 +219,12 @@ def text_gen():
                         dv = pd.read_csv('content_output.csv')
                         response = dv['0'][1]
                         st.write(response)
+                        message = {"role": "assistant", "content": response}
                     elif option0w==False:
                         if option0m == 'Base Inference Model':
                             response = generate_response(prompt, hf_email, hf_pass)
                             st.write(response)
+                            message = {"role": "assistant", "content": response}
                         elif option0m == 'Fast Inference Model':
                             for dict_message in st.session_state.messages:
                                 string_dialogue = "You are a helpful assistant."
@@ -237,12 +239,14 @@ def text_gen():
                                 output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
                                 response = output[0]['generated_text'].split('Assistant:')[1]
                                 st.write(response)
+                                message = {"role": "assistant", "content": response}
                             except:
                                 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
                                 headers = {"Authorization": "Bearer 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"}
                                 output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
                                 response = output[0]['generated_text'].split('Assistant:')[1]
                                 st.write(response)
+                                message = {"role": "assistant", "content": response}
                                 
      
                     else:
@@ -258,7 +262,7 @@ def text_gen():
                     st.write("Seems Like API is down, Please reach out to AABI Team")
                     pass
 
-        message = {"role": "assistant", "content": response}
+        #message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
         try:
             df = pd.DataFrame(st.session_state.messages)
