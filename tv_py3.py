@@ -320,7 +320,62 @@ def text_trans():
                 text = st.text_input(
                     "Text to analyze",read_data
                     )
-        if uploaded_file is None:
+                tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
+                with tab1:
+                    # Use any translator you like, in this example GoogleTranslator
+                    #translated = GoogleTranslator(source='auto', target='french').translate(text)
+                    st.markdown(text)
+                    st.download_button(
+                       "Press to Download and save",
+                       text,
+                       "file_eng.txt",
+                       "text/csv",
+                       key='download-txt_e'
+                    )
+                with tab2:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='french').translate(text)
+                    st.markdown(translated)
+                    st.download_button(
+                       "Press to Download and save",
+                       translated,
+                       "file_french.txt",
+                       "text/csv",
+                       key='download-txt_f'
+                    )                    
+                with tab3:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='german').translate(text)
+                    st.markdown(translated)
+                    st.download_button(
+                       "Press to Download and save",
+                       translated,
+                       "file_german.txt",
+                       "text/csv",
+                       key='download-txt_g')               
+                
+                
+                with tab4:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='italian').translate(text)
+                    st.markdown(translated)
+                    st.download_button(
+                       "Press to Download and save",
+                       translated,
+                       "file_italian.txt",
+                       "text/csv",
+                       key='download-txt_i'  )
+                with tab5:
+                    # Use any translator you like, in this example GoogleTranslator
+                    translated = GoogleTranslator(source='auto', target='spanish').translate(text)
+                    st.markdown(translated)
+                    st.download_button(
+                       "Press to Download and save",
+                       translated,
+                       "file_spanish.txt",
+                       "text/csv",
+                       key='download-txt_s' )
+        else:
             time.sleep(7)
             dv = pd.read_csv('content_output1.csv')
             text = dv['Outcome'][0]
@@ -379,7 +434,7 @@ def text_trans():
                    "file_spanish.txt",
                    "text/csv",
                    key='download-txt_s' )
-            pass
+
             
 def image_gen():
     if 'name' not in st.session_state:
