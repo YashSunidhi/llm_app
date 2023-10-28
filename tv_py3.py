@@ -289,9 +289,9 @@ def text_gen():
 
 def text_trans():
     st.markdown("<h3 style='text-align: center; color: grey;'> Translation In EU5 Languages </h3>", unsafe_allow_html=True)
-    option0 = st.sidebar.selectbox(
-        'Select a Language of Interest',
-        ('French', 'German', 'Spanish', 'Italian','Portugense'))
+    # option0 = st.sidebar.selectbox(
+    #     'Select a Language of Interest',
+    #     ('French', 'German', 'Spanish', 'Italian','Portugense'))
     with st.sidebar:
         st.title('🤗💬 AABI Content Translator')
         st.markdown('''
@@ -307,18 +307,23 @@ def text_trans():
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
         #st.write("filename:", uploaded_file.name)
-        if uploaded_file:
-            #st.write(uploaded_file)
-            if uploaded_file.type=='text/plain':
-                from io import StringIO
-                stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
-                read_data=stringio.read()
-                #st.write(read_data)
-                read_data = read_data.split('assistant')[-1]
-
-                text = st.text_input(
-                    "Text to analyze",read_data
-                    )
+        try:
+            if uploaded_file:
+                #st.write(uploaded_file)
+                if uploaded_file.type=='text/plain':
+                    from io import StringIO
+                    stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
+                    read_data=stringio.read()
+                    #st.write(read_data)
+                    read_data = read_data.split('assistant')[-1]
+    
+                    text = st.text_input(
+                        "Text to analyze",read_data
+                        )
+        except:
+            time.sleep(7)
+            dv = pd.read_csv('content_output1.csv')
+            text = dv['Outcome'][0]
                 tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
                 with tab1:
                     # Use any translator you like, in this example GoogleTranslator
@@ -374,6 +379,7 @@ def text_trans():
                        "file_spanish.txt",
                        "text/csv",
                        key='download-txt_s' )
+            pass
             
 def image_gen():
     if 'name' not in st.session_state:
