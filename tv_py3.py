@@ -25,8 +25,8 @@ st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content 
 def text_gen():
     try:
         st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
-        API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-        headers = {"Authorization": "Bearer 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"}
+        # API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+        # headers = {"Authorization": "Bearer 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"}
         hf_email = 'zurich.suyash@gmail.com'
         hf_pass = 'Herceptin@2107'
         sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
@@ -120,6 +120,7 @@ def text_gen():
         # Get the input text from the user
         #with st.sidebar:
             #st.title('🤗💬 Web Search Inclusion (Default Not Included')
+            option0ll = st.sidebar.selectbox('Mode of execution',('Offline','Online'))
             option0w = st.sidebar.selectbox('Select Web Search',(False,True))
             option0C = st.sidebar.text_area('Input context reference if any','')
             option0m = st.sidebar.selectbox('Select Model',('Base Inference Model','Fast Inference Model'))
@@ -213,7 +214,11 @@ def text_gen():
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
                     try:
-                        if option0w==False:
+                        if option0ll == 'Offline':
+                            time.sleep(7)
+                            response = 
+                            st.write(response)
+                        elif option0w==False:
                             if option0m == 'Base Inference Model':
                                 response = generate_response(prompt, hf_email, hf_pass)
                                 st.write(response)
@@ -226,13 +231,13 @@ def text_gen():
                                         string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
                                 prompt = f"{string_dialogue} {prompt} Assistant: "
                                 try:
-                                    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                                    API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
                                     headers = {"Authorization": "Bearer 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"}
                                     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
                                     response = output[0]['generated_text'].split('Assistant:')[1]
                                     st.write(response)
                                 except:
-                                    API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-alpha"
+                                    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
                                     headers = {"Authorization": "Bearer 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"}
                                     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
                                     response = output[0]['generated_text'].split('Assistant:')[1]
