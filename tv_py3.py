@@ -308,7 +308,7 @@ def text_trans():
         bytes_data = uploaded_file.read()
         #st.write("filename:", uploaded_file.name)
  
-        if uploaded_file:
+        if uploaded_file is not None:
             #st.write(uploaded_file)
             if uploaded_file.type=='text/plain':
                 from io import StringIO
