@@ -320,7 +320,7 @@ def text_trans():
                 text = st.text_input(
                     "Text to analyze",read_data
                     )
-        if not uploaded_file:
+        if uploaded_file is None:
             time.sleep(7)
             dv = pd.read_csv('content_output1.csv')
             text = dv['Outcome'][0]
