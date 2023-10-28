@@ -217,7 +217,7 @@ def text_gen():
                 try:
                     if option0ll == 'Offline':
                         time.sleep(7)
-                        dv = pd.read_csv('content_output.csv')
+                        dv = pd.read_csv('content_output1.csv')
                         response = dv['Outcome'][0]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
