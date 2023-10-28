@@ -25,12 +25,13 @@ st.markdown("<h6 style='text-align: center; color: black;'> Intelligent Content 
 def text_gen():
     #try:
     st.markdown("<h3 style='text-align: center; color: grey;'> Instruction Based Promotional Content Generation </h3>", unsafe_allow_html=True)
-    # API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-    # headers = {"Authorization": "Bearer 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"}
-    hf_email = 'zurich.suyash@gmail.com'
-    hf_pass = 'Herceptin@2107'
-    sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
-    cookies = sign.login()
+    try:
+        hf_email = 'zurich.suyash@gmail.com'
+        hf_pass = 'Herceptin@2107'
+        sign = Login(email='zurich.suyash@gmail.com', passwd='Herceptin@2107')
+        cookies = sign.login()
+    except:
+        pass
     
     # Save cookies to the local directory
     cookie_path_dir = "./cookies_snapshot"
