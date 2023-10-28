@@ -307,20 +307,20 @@ def text_trans():
     for uploaded_file in uploaded_files:
         bytes_data = uploaded_file.read()
         #st.write("filename:", uploaded_file.name)
-        try:
-            if uploaded_file:
-                #st.write(uploaded_file)
-                if uploaded_file.type=='text/plain':
-                    from io import StringIO
-                    stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
-                    read_data=stringio.read()
-                    #st.write(read_data)
-                    read_data = read_data.split('assistant')[-1]
-    
-                    text = st.text_input(
-                        "Text to analyze",read_data
-                        )
-        except:
+ 
+        if uploaded_file:
+            #st.write(uploaded_file)
+            if uploaded_file.type=='text/plain':
+                from io import StringIO
+                stringio=StringIO(uploaded_file.getvalue().decode('utf-8'))
+                read_data=stringio.read()
+                #st.write(read_data)
+                read_data = read_data.split('assistant')[-1]
+
+                text = st.text_input(
+                    "Text to analyze",read_data
+                    )
+        if not uploaded_file:
             time.sleep(7)
             dv = pd.read_csv('content_output1.csv')
             text = dv['Outcome'][0]
