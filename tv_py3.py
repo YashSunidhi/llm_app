@@ -324,7 +324,7 @@ def text_trans():
             time.sleep(7)
             dv = pd.read_csv('content_output1.csv')
             text = dv['Outcome'][0]
-                tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
+            tab1, tab2, tab3, tab4, tab5 = st.tabs(['Original','French','German','Italian','Spanish'])
                 with tab1:
                     # Use any translator you like, in this example GoogleTranslator
                     #translated = GoogleTranslator(source='auto', target='french').translate(text)
