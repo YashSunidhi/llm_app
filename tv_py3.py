@@ -725,7 +725,7 @@ def image_gen():
                         pass
             else:
                 time.sleep(7)
-                if prompt_design == "A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.,":
+                if option6 == "A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.":
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no5.jpg")
