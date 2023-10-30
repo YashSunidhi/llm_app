@@ -486,6 +486,7 @@ def image_gen():
           filename = file_selector(folder_path=folder_path)
           st.sidebar.write('You selected `%s` ' % filename)
     option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
+    optionr = st.sidebar.selectbox('Tune to Geopgraphy of Interest',('Base','France','India','China','Mexico','Saudi Arabia'))
     option1 = st.sidebar.selectbox(
     'High Quality Iteration Model 1',
     (110,50,75,100,125))
@@ -725,7 +726,7 @@ def image_gen():
                         pass
             else:
                 time.sleep(7)
-                if option6 == "A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise.":
+                if optionr == "Base":
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no5.jpg")
@@ -761,7 +762,7 @@ def image_gen():
                                         mime="image/png"
                                     )
    
-                else:
+                elif optionr == 'French':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no33.jpg")
@@ -797,8 +798,148 @@ def image_gen():
                                         mime="image/png"
                                     )
     
+                elif optionr == 'Indian':
+                    tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+                    with tab1:
+                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                        if tot11:
+                            with open("./images_generated/no33.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.jpeg",
+                                        mime="image/jpeg"
+                                    )
+                    with tab2:
+                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                        if tot22:
+                            with open("./images_generated/no44.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                    with tab3:
+                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                        if tot33:
+                            with open("./images_generated/no555.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                elif optionr == 'Chinese':
+                    tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+                    with tab1:
+                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                        if tot11:
+                            with open("./images_generated/no33.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.jpeg",
+                                        mime="image/jpeg"
+                                    )
+                    with tab2:
+                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                        if tot22:
+                            with open("./images_generated/no44.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                    with tab3:
+                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                        if tot33:
+                            with open("./images_generated/no555.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )       
 
-        
+                elif optionr == 'Mexican':
+                    tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+                    with tab1:
+                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                        if tot11:
+                            with open("./images_generated/no33.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.jpeg",
+                                        mime="image/jpeg"
+                                    )
+                    with tab2:
+                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                        if tot22:
+                            with open("./images_generated/no44.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                    with tab3:
+                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                        if tot33:
+                            with open("./images_generated/no555.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+
+                else:
+                    tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+                    with tab1:
+                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                        if tot11:
+                            with open("./images_generated/no33.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.jpeg",
+                                        mime="image/jpeg"
+                                    )
+                    with tab2:
+                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                        if tot22:
+                            with open("./images_generated/no44.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                    with tab3:
+                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                        if tot33:
+                            with open("./images_generated/no555.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
         
     on1 = st.toggle('Examine Generated Infographics')
     
