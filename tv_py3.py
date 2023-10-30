@@ -539,7 +539,7 @@ def image_gen():
         time.sleep(7)
         dv = pd.read_csv('content_output1.csv')
         text = dv['Image_Outcome'][0] 
-        st.markdown(text)
+        st.write(text)
     else:
         try:
             st.markdown(st.session_state.messages_1[-1])
