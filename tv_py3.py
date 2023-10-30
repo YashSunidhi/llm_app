@@ -546,7 +546,7 @@ def image_gen():
                 st.write("No Image Placeholders available")
                 pass
             
-    if result is not None:      
+    if result[0] is not None:      
         dv = pd.read_csv('content_output1.csv')
         text = dv['Image_Outcome'][0]
         st.markdown(text)
