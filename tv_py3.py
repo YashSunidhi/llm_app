@@ -461,12 +461,12 @@ def image_gen():
     
         prompt = f''' Can you write detailed paragraph for 5 images placeholders using artifacts description like number of person, location, geneder, race, eye contact, body posture, facial expression, light description  ensuring realism in instruction suitable for text to image generation from context """  {prompt_input} """. Assistant: '''
         return chatbot.query(prompt,web_search=False)
-    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-    headers = {"Authorization": "Bearer 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"}
+    # API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+    # headers = {"Authorization": "Bearer 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"}
     
-    def query_text(payload):
-    	response = requests.post(API_URL, headers=headers, json=payload)
-    	return response.json()
+    # def query_text(payload):
+    # 	response = requests.post(API_URL, headers=headers, json=payload)
+    # 	return response.json()
     
     
     # Sidebar contents
@@ -485,20 +485,19 @@ def image_gen():
               folder_path = st.text_input('Enter folder path', '.')
           filename = file_selector(folder_path=folder_path)
           st.sidebar.write('You selected `%s` ' % filename)
-    
+    option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
     option1 = st.sidebar.selectbox(
     'High Quality Iteration Model 1',
     (110,50,75,100,125))
     option2 = st.sidebar.selectbox(
     'High Quality Iteration Model 2',
-    (110,50,75,100,125))
+    (50,110,75,100,125))
     option3 = st.sidebar.selectbox(
     'High Quality Iteration Model 3',
-    (110,50,75,100,125))
+    (50,110,75,100,125))
     option4 = st.sidebar.selectbox(
     'High Quality Iteration Model 4',
     (110,50,75,100,125))
-
     option5 = st.sidebar.selectbox(
     'High Quality Iteration Model 5',
     (110,50,75,100,125))
@@ -525,8 +524,24 @@ def image_gen():
     response_o = []
     if st.button('Generating Image Placeholders'):
         try:
-            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 3500 }})
-            response = output[0]['generated_text'].split('Assistant:')[1]
+            try:
+                API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+                headers = {"Authorization": "Bearer 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"}
+                
+                def query_text(payload):
+                	response = requests.post(API_URL, headers=headers, json=payload)
+                	return response.json()
+                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
+                response = output[0]['generated_text'].split('Assistant:')[1]
+            except:
+                API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                headers = {"Authorization": "Bearer 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"}
+                
+                def query_text(payload):
+                    response = requests.post(API_URL, headers=headers, json=payload)
+                    return response.json()
+                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
+                response = output[0]['generated_text'].split('Assistant:')[1]
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
             try:
@@ -534,14 +549,6 @@ def image_gen():
             except:
                 pass
         st.session_state.messages_1.append(response)
-        # if response:
-        #     #torpedo = st.write(response)
-        #     try:
-        #         st.session_state.messages_1.append(response)
-        #     except:
-        #         st.write("Seems Like we missed Connection, Generate Again!!!")
-        #     else:
-        #         st.session_state.messages_1.append(response.text)
                 
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
