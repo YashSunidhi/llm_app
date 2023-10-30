@@ -547,9 +547,9 @@ def image_gen():
                 pass
             
             
-        dv = pd.read_csv('content_output1.csv')
-        text = dv['Image_Outcome'][0]
-        st.markdown(text)
+    dv = pd.read_csv('content_output1.csv')
+    text = dv['Image_Outcome'][0]
+    st.markdown(text)
 
 
     option6 = st.text_area(
