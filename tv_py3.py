@@ -801,10 +801,10 @@ def image_gen():
                 elif optionr == 'Indian':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
-                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot1 = st.image("./images_generated/no_ind_3.jpg")
                         tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
                         if tot11:
-                            with open("./images_generated/no33.jpg", "rb") as file:
+                            with open("./images_generated/no_ind_3.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -812,10 +812,10 @@ def image_gen():
                                         mime="image/jpeg"
                                     )
                     with tab2:
-                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot2 = st.image("./images_generated/no_ind_4.jpg")
                         tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
                         if tot22:
-                            with open("./images_generated/no44.jpg", "rb") as file:
+                            with open("./images_generated/no_ind_5.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -823,10 +823,10 @@ def image_gen():
                                         mime="image/png"
                                     )
                     with tab3:
-                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot3 = st.image("./images_generated/no_ind_5.jpg")
                         tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
                         if tot33:
-                            with open("./images_generated/no555.jpg", "rb") as file:
+                            with open("./images_generated/no_ind_5.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -836,10 +836,10 @@ def image_gen():
                 elif optionr == 'Chinese':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
-                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot1 = st.image("./images_generated/no_chn_3.jpg")
                         tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
                         if tot11:
-                            with open("./images_generated/no33.jpg", "rb") as file:
+                            with open("./images_generated/no_chn_3.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -847,10 +847,10 @@ def image_gen():
                                         mime="image/jpeg"
                                     )
                     with tab2:
-                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot2 = st.image("./images_generated/no_chn_4.jpg")
                         tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
                         if tot22:
-                            with open("./images_generated/no44.jpg", "rb") as file:
+                            with open("./images_generated/no_chn_5.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -858,10 +858,10 @@ def image_gen():
                                         mime="image/png"
                                     )
                     with tab3:
-                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot3 = st.image("./images_generated/no_chn_5.jpg")
                         tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
                         if tot33:
-                            with open("./images_generated/no555.jpg", "rb") as file:
+                            with open("./images_generated/no_chn_5.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -872,10 +872,10 @@ def image_gen():
                 elif optionr == 'Mexican':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
-                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot1 = st.image("./images_generated/no_mex_3.jpg")
                         tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
                         if tot11:
-                            with open("./images_generated/no33.jpg", "rb") as file:
+                            with open("./images_generated/no_mex_3.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -883,10 +883,10 @@ def image_gen():
                                         mime="image/jpeg"
                                     )
                     with tab2:
-                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot2 = st.image("./images_generated/no_mex_4.jpg")
                         tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
                         if tot22:
-                            with open("./images_generated/no44.jpg", "rb") as file:
+                            with open("./images_generated/no_mex_4.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -894,10 +894,10 @@ def image_gen():
                                         mime="image/png"
                                     )
                     with tab3:
-                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot3 = st.image("./images_generated/no_mex_5.jpg")
                         tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
                         if tot33:
-                            with open("./images_generated/no555.jpg", "rb") as file:
+                            with open("./images_generated/no_mex_5.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -908,10 +908,10 @@ def image_gen():
                 else:
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
-                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot1 = st.image("./images_generated/no_sau_3.jpg")
                         tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
                         if tot11:
-                            with open("./images_generated/no33.jpg", "rb") as file:
+                            with open("./images_generated/no_sau_3.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -919,10 +919,10 @@ def image_gen():
                                         mime="image/jpeg"
                                     )
                     with tab2:
-                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot2 = st.image("./images_generated/no_sau_4.jpg")
                         tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
                         if tot22:
-                            with open("./images_generated/no44.jpg", "rb") as file:
+                            with open("./images_generated/no_sau_4.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
@@ -930,10 +930,10 @@ def image_gen():
                                         mime="image/png"
                                     )
                     with tab3:
-                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot3 = st.image("./images_generated/no_sau_5.jpg")
                         tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
                         if tot33:
-                            with open("./images_generated/no555.jpg", "rb") as file:
+                            with open("./images_generated/no_sau_5.jpg", "rb") as file:
                                 btn = st.download_button(
                                         label="Download image",
                                         data=file,
