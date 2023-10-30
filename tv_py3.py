@@ -123,6 +123,8 @@ def text_gen():
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
         option0C = st.sidebar.text_area('Input context reference if any','')
         option0m = st.sidebar.selectbox('Select Model',('Fast Inference Model','Base Inference Model'))
+        option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
+        option0w = st.sidebar.selectbox('Select Web Search',(False,True))
       
                                                         
         st.title('🤗💬 User Input for Base Prompt')
@@ -170,8 +172,9 @@ def text_gen():
             ("Genentech's", "Roche's"))
             st.title("Prompt Design Template")
             option7 = st.text_input('Input your prompt here',"")
-            option0ll = st.sidebar.selectbox('Mode of execution',('Offline','Online'))
-            option0w = st.sidebar.selectbox('Select Web Search',(False,True))
+
+            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
+            prompt_design = st.write(default_prompt[0])
 
         st.title('🤗💬 Product Positioning')
         pps = st.sidebar.checkbox('Select if you want to pass "Product Positioning"')
@@ -187,17 +190,15 @@ def text_gen():
 
             if option0C:
                 if pps:
-                    default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ') + str(' """ ')+ option0C + str(' """ ')]
+                    default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ') + str(' """ ')+ option0C + str(' """ ')]
+                    prompt_design = st.write(default_prompt[0])
                 else:
-                    default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7+ str('""" ') +option0C + str('""" ')]
+                    default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7+ str('""" ') +option0C + str('""" ')]
+                    prompt_design = st.write(default_prompt[0])
             elif pps:
-                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ')]
-                #prompt = st.text_input('Input your prompt here')
-            else:
-                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using tone of " + option11 + " in less than 3000 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. While generating outcome, please consider recent facts from year 2022 and 2023. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
-    
-            prompt_design = st.write(default_prompt[0])
-    
+                default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 + str('""" ')+tot + str(' """ ')]
+                prompt_design = st.write(default_prompt[0])
+
     
     
     # User-provided prompt
