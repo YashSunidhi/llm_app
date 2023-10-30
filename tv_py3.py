@@ -505,14 +505,14 @@ def image_gen():
     option8 = st.text_area('Insert Either User Finalized User Instruction or Generated Outcome for Drafting Image Placeholders',
     (""))
     prompt = f''' Can you write detailed paragraph for 5 images placeholders using artifacts description like number of person, location, geneder, race, eye contact, body posture, facial expression, light description  ensuring realism in instruction suitable for text to image generation from context """  {option8} """. Assistant: \n\n'''
-    result = ""
+    result = []
     if st.button('Generating Image Placeholders'):
         if option0ll == 'Base':
             time.sleep(7)
             dv = pd.read_csv('content_output1.csv')
             text = dv['Image_Outcome'][0]
             st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-            result = st.write(text)
+            result.append(text) #= st.write(text)
         else:
             try:
                 API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
@@ -546,10 +546,10 @@ def image_gen():
                 st.write("No Image Placeholders available")
                 pass
             
-            
-    # dv = pd.read_csv('content_output1.csv')
-    # text = dv['Image_Outcome'][0]
-    st.markdown(result)
+    if result is not None:      
+        dv = pd.read_csv('content_output1.csv')
+        text = dv['Image_Outcome'][0]
+        st.markdown(text)
 
 
     option6 = st.text_area(
