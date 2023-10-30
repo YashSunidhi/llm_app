@@ -725,52 +725,80 @@ def image_gen():
                         pass
             else:
                 time.sleep(7)
-                tab1, tab2, tab3, tab4 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3','Generated Image 4'])
-                with tab1:
-                    tot1 = st.image("./images_generated/prompt_2.png")
-                    tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
-                    if tot11:
-                        with open("./images_generated/prompt_2.png", "rb") as file:
-                            btn = st.download_button(
-                                    label="Download image",
-                                    data=file,
-                                    file_name="flower.jpeg",
-                                    mime="image/jpeg"
-                                )
-                with tab2:
-                    tot2 = st.image("./images_generated/prompt_5.png")
-                    tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
-                    if tot22:
-                        with open("./images_generated/prompt_5.png", "rb") as file:
-                            btn = st.download_button(
-                                    label="Download image",
-                                    data=file,
-                                    file_name="flower.png",
-                                    mime="image/png"
-                                )
-                with tab3:
-                    tot3 = st.image("./images_generated/prompt_4.png")
-                    tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
-                    if tot33:
-                        with open("./images_generated/prompt_4.png", "rb") as file:
-                            btn = st.download_button(
-                                    label="Download image",
-                                    data=file,
-                                    file_name="flower.png",
-                                    mime="image/png"
-                                )
+                if prompt_design == "A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise."
+                    tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+                    with tab1:
+                        tot1 = st.image("./images_generated/no33.jpg")
+                        tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                        if tot11:
+                            with open("./images_generated/no33.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.jpeg",
+                                        mime="image/jpeg"
+                                    )
+                    with tab2:
+                        tot2 = st.image("./images_generated/no44.jpg")
+                        tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                        if tot22:
+                            with open("./images_generated/no44.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                    with tab3:
+                        tot3 = st.image("./images_generated/no555.jpg")
+                        tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                        if tot33:
+                            with open("./images_generated/no555.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+   
+                else:
+                    tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+                    with tab1:
+                        tot1 = st.image("./images_generated/no5.jpg")
+                        tot11 = st.button('Select Image 1', on_click=change_name, args=['1_image'])
+                        if tot11:
+                            with open("./images_generated/no5.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.jpeg",
+                                        mime="image/jpeg"
+                                    )
+                    with tab2:
+                        tot2 = st.image("./images_generated/no4.jpg")
+                        tot22 = st.button('Select Image 2', on_click=change_name, args=['2_image'])
+                        if tot22:
+                            with open("./images_generated/no4.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+                    with tab3:
+                        tot3 = st.image("./images_generated/no55.jpg")
+                        tot33 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
+                        if tot33:
+                            with open("./images_generated/no55.jpg", "rb") as file:
+                                btn = st.download_button(
+                                        label="Download image",
+                                        data=file,
+                                        file_name="flower.png",
+                                        mime="image/png"
+                                    )
+    
 
-                with tab4:
-                    tot4 = st.image("./images_generated/image4.png")
-                    tot44 = st.button('Select Image 4', on_click=change_name, args=['4_image'])
-                    if tot44:
-                        with open("./images_generated/image4.png", "rb") as file:
-                            btn = st.download_button(
-                                    label="Download image",
-                                    data=file,
-                                    file_name="flower.png",
-                                    mime="image/png"
-                                )
+        
         
     on1 = st.toggle('Examine Generated Infographics')
     
