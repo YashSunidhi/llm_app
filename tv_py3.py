@@ -512,7 +512,7 @@ def image_gen():
             dv = pd.read_csv('content_output1.csv')
             text = dv['Image_Outcome'][0]
             st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-            result= test
+            result= text
             #st.write(text)
         else:
             try:
