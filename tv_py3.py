@@ -501,47 +501,30 @@ def image_gen():
     option5 = st.sidebar.selectbox(
     'High Quality Iteration Model 5',
     (110,50,75,100,125))
-    # option2 = st.sidebar.selectbox(
-    # 'Character Portrait',
-    # ('High Quality', 'Volumetric Lighting'))
-    
-    # option3 = st.sidebar.selectbox(
-    # 'Tone of Generation',
-    # ('photorealistic','hyper realism', 'highly detailed',
-    # ))
-    
-    # option4 = st.sidebar.selectbox(
-    # 'Photography',
-    # ('85mm portrait photography', 'award winning','full shot photograph','intense close-ups'
-    #   ))
-    # option5 = st.sidebar.selectbox(
-    # 'Landscapes',
-    # ('Swiss','Scottish', 'French', 'Indian'
-    #   ))
+
     option8 = st.text_area('Insert Either User Finalized User Instruction or Generated Outcome for Drafting Image Placeholders',
     (""))
     prompt = f''' Can you write detailed paragraph for 5 images placeholders using artifacts description like number of person, location, geneder, race, eye contact, body posture, facial expression, light description  ensuring realism in instruction suitable for text to image generation from context """  {option8} """. Assistant: \n\n'''
-    response_o = []
+
     if st.button('Generating Image Placeholders'):
         try:
-            try:
-                API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
-                headers = {"Authorization": "Bearer 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"}
+            API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+            headers = {"Authorization": "Bearer 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"}
+            
+            def query_text(payload):
+                response = requests.post(API_URL, headers=headers, json=payload)
+                return response.json()
+            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
+            response = output[0]['generated_text'].split('Assistant:')[1]
+            # except:
+            #     API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+            #     headers = {"Authorization": "Bearer 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"}
                 
-                def query_text(payload):
-                	response = requests.post(API_URL, headers=headers, json=payload)
-                	return response.json()
-                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
-                response = output[0]['generated_text'].split('Assistant:')[1]
-            except:
-                API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-                headers = {"Authorization": "Bearer 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"}
-                
-                def query_text(payload):
-                    response = requests.post(API_URL, headers=headers, json=payload)
-                    return response.json()
-                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
-                response = output[0]['generated_text'].split('Assistant:')[1]
+            #     def query_text(payload):
+            #         response = requests.post(API_URL, headers=headers, json=payload)
+            #         return response.json()
+            #     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
+            #     response = output[0]['generated_text'].split('Assistant:')[1]
         except:
             st.write("Seems Like API is down, Please carefully examine the outcome")
             try:
@@ -552,11 +535,17 @@ def image_gen():
                 
 
     st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-    try:
-        st.markdown(st.session_state.messages_1[-1])
-    except:
-        st.write("No Image Placeholders available")
-        pass
+    if option0ll == 'Base':
+        time.sleep(7)
+        dv = pd.read_csv('content_output1.csv')
+        text = dv['Image_Outcome'][0] 
+        st.markdown(text)
+    else:
+        try:
+            st.markdown(st.session_state.messages_1[-1])
+        except:
+            st.write("No Image Placeholders available")
+            pass
     option6 = st.text_area(
     'Select one of the Recommended Image Placeholder and Paste here')
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
