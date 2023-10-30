@@ -512,7 +512,7 @@ def image_gen():
             dv = pd.read_csv('content_output1.csv')
             text = dv['Image_Outcome'][0]
             st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-            st.write(text)
+            #st.write(text)
         else:
             try:
                 API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
@@ -545,12 +545,11 @@ def image_gen():
             except:
                 st.write("No Image Placeholders available")
                 pass
-        st.write(text)
-                
-
-        
-
-
+        try:
+            st.write(text)
+        except:
+            st.markdown(st.session_state.messages_1[-1])
+            pass
 
     option6 = st.text_area(
     'Select one of the Recommended Image Placeholder and Paste here')
