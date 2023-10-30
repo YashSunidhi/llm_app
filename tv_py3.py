@@ -545,6 +545,7 @@ def image_gen():
             except:
                 st.write("No Image Placeholders available")
                 pass
+        st.write(text)
                 
 
         
