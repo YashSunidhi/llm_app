@@ -570,7 +570,7 @@ def image_gen():
         default_prompt = ["A photograph of a doctor or healthcare professional in a clinical setting, looking compassionate and confident while interacting with a patient. This image should convey a sense of trust and expertise."]           
             #prompt = st.text_input('Input your prompt here')
     st.markdown("<h3 style='text-align: center; color: grey;'> Final Instruction for Image Generation </h3>", unsafe_allow_html=True)
-    prompt_design = st.warning(default_prompt[0],icon='🤖')
+    prompt_design = st.warning('These are AI Generated images, These images are not corrected for any biases than model has learned from training process.',icon='🤖')
 
     # API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
     # headers = {"Authorization": "Bearer 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"}
