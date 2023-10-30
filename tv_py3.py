@@ -762,7 +762,7 @@ def image_gen():
                                         mime="image/png"
                                     )
    
-                elif optionr == 'French':
+                elif optionr == 'France':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no33.jpg")
@@ -798,7 +798,7 @@ def image_gen():
                                         mime="image/png"
                                     )
     
-                elif optionr == 'Indian':
+                elif optionr == 'India':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no_ind_3.jpg")
@@ -833,7 +833,7 @@ def image_gen():
                                         file_name="flower.png",
                                         mime="image/png"
                                     )
-                elif optionr == 'Chinese':
+                elif optionr == 'China':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no_chn_3.jpg")
@@ -869,7 +869,7 @@ def image_gen():
                                         mime="image/png"
                                     )       
 
-                elif optionr == 'Mexican':
+                elif optionr == 'Mexico':
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no_mex_3.jpg")
