@@ -505,8 +505,8 @@ def image_gen():
     option8 = st.text_area('Insert Either User Finalized User Instruction or Generated Outcome for Drafting Image Placeholders',
     (""))
     prompt = f''' Can you write detailed paragraph for 5 images placeholders using artifacts description like number of person, location, geneder, race, eye contact, body posture, facial expression, light description  ensuring realism in instruction suitable for text to image generation from context """  {option8} """. Assistant: \n\n'''
-    result = ""
-    if st.button('Generating Image Placeholders'):
+    result = st.button('Generating Image Placeholders')
+    if result:
         if option0ll == 'Base':
             time.sleep(7)
             dv = pd.read_csv('content_output1.csv')
