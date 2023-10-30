@@ -760,10 +760,10 @@ def image_gen():
                                 )
 
                 with tab4:
-                    tot4 = st.image("./images_generated/image_4.png")
+                    tot4 = st.image("./images_generated/image4.png")
                     tot44 = st.button('Select Image 3', on_click=change_name, args=['3_image'])
                     if tot44:
-                        with open("./images_generated/prompt_4.png", "rb") as file:
+                        with open("./images_generated/image4.png", "rb") as file:
                             btn = st.download_button(
                                     label="Download image",
                                     data=file,
