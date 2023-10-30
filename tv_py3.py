@@ -545,11 +545,12 @@ def image_gen():
             except:
                 st.write("No Image Placeholders available")
                 pass
-        try:
-            st.write(text)
-        except:
-            st.markdown(st.session_state.messages_1[-1])
-            pass
+            
+            
+        dv = pd.read_csv('content_output1.csv')
+        text = dv['Image_Outcome'][0]
+        st.write(text)
+
 
     option6 = st.text_area(
     'Select one of the Recommended Image Placeholder and Paste here')
