@@ -512,7 +512,7 @@ def image_gen():
             dv = pd.read_csv('content_output1.csv')
             text = dv['Image_Outcome'][0]
             st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-            result= text
+            st.session_state.messages_1.append(text)
             #st.write(text)
         else:
             try:
@@ -541,16 +541,16 @@ def image_gen():
                     pass
             st.session_state.messages_1.append(response)
             st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-            try:
-                st.markdown(st.session_state.messages_1[-1])
-            except:
-                st.write("No Image Placeholders available")
-                pass
+        try:
+            st.markdown(st.session_state.messages_1[-1])
+        except:
+            st.write("No Image Placeholders available")
+            pass
             
-    if result is not None:      
-        dv = pd.read_csv('content_output1.csv')
-        text = dv['Image_Outcome'][0]
-        st.markdown(text)
+    # if result is not None:      
+    #     dv = pd.read_csv('content_output1.csv')
+    #     text = dv['Image_Outcome'][0]
+    #     st.markdown(text)
 
 
     option6 = st.text_area(
