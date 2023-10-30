@@ -507,45 +507,50 @@ def image_gen():
     prompt = f''' Can you write detailed paragraph for 5 images placeholders using artifacts description like number of person, location, geneder, race, eye contact, body posture, facial expression, light description  ensuring realism in instruction suitable for text to image generation from context """  {option8} """. Assistant: \n\n'''
 
     if st.button('Generating Image Placeholders'):
-        try:
-            API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
-            headers = {"Authorization": "Bearer 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"}
-            
-            def query_text(payload):
-                response = requests.post(API_URL, headers=headers, json=payload)
-                return response.json()
-            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
-            response = output[0]['generated_text'].split('Assistant:')[1]
-            # except:
-            #     API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-            #     headers = {"Authorization": "Bearer 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"}
-                
-            #     def query_text(payload):
-            #         response = requests.post(API_URL, headers=headers, json=payload)
-            #         return response.json()
-            #     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
-            #     response = output[0]['generated_text'].split('Assistant:')[1]
-        except:
-            st.write("Seems Like API is down, Please carefully examine the outcome")
+        if option0ll == 'Base':
+            time.sleep(7)
+            dv = pd.read_csv('content_output1.csv')
+            text = dv['Image_Outcome'][0]
+            st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
+            st.write(text)
+        else:
             try:
-                 response = generate_response(option8,hf_email, hf_pass)
+                API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+                headers = {"Authorization": "Bearer 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"}
+                
+                def query_text(payload):
+                    response = requests.post(API_URL, headers=headers, json=payload)
+                    return response.json()
+                output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
+                response = output[0]['generated_text'].split('Assistant:')[1]
+                # except:
+                #     API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                #     headers = {"Authorization": "Bearer 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"}
+                    
+                #     def query_text(payload):
+                #         response = requests.post(API_URL, headers=headers, json=payload)
+                #         return response.json()
+                #     output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 1500 }})
+                #     response = output[0]['generated_text'].split('Assistant:')[1]
             except:
+                st.write("Seems Like API is down, Please carefully examine the outcome")
+                try:
+                     response = generate_response(option8,hf_email, hf_pass)
+                except:
+                    pass
+            st.session_state.messages_1.append(response)
+            st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
+            try:
+                st.markdown(st.session_state.messages_1[-1])
+            except:
+                st.write("No Image Placeholders available")
                 pass
-        st.session_state.messages_1.append(response)
                 
 
-    st.markdown("<h6 style='text-align: center; color: grey;'> Generated Image Placeholders from Finalized Text Generation Prompt </h6>", unsafe_allow_html=True)
-    if option0ll == 'Base':
-        time.sleep(7)
-        dv = pd.read_csv('content_output1.csv')
-        text = dv['Image_Outcome'][0] 
-        st.write(text)
-    else:
-        try:
-            st.markdown(st.session_state.messages_1[-1])
-        except:
-            st.write("No Image Placeholders available")
-            pass
+        
+
+
+
     option6 = st.text_area(
     'Select one of the Recommended Image Placeholder and Paste here')
     option7 = st.selectbox('Recommended feedback here',("","Create a very high quality image. "," Try emphasizing on facial expression."))
