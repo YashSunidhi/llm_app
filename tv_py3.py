@@ -486,7 +486,7 @@ def image_gen():
           filename = file_selector(folder_path=folder_path)
           st.sidebar.write('You selected `%s` ' % filename)
     option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
-    optionr = st.sidebar.selectbox('Tune to Geopgraphy of Interest',('Base','France','India','China','Mexico','Saudi Arabia'))
+    optionr = st.sidebar.selectbox('Tune to Geopgraphy of Interest',('Default','France','India','China','Mexico','Saudi Arabia'))
     option1 = st.sidebar.selectbox(
     'High Quality Iteration Model 1',
     (110,50,75,100,125))
@@ -726,7 +726,7 @@ def image_gen():
                         pass
             else:
                 time.sleep(7)
-                if optionr == "Base":
+                if optionr == "Default":
                     tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
                     with tab1:
                         tot1 = st.image("./images_generated/no5.jpg")
