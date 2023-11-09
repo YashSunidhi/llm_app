@@ -985,6 +985,52 @@ def image_gen():
                               file_name="flower.png",
                               mime="image/png"
                           )
+
+
+    on1 = st.toggle('Examine Logos Generation based on Known Images')
+    
+    if on1:
+      st.warning('These Logos are generated for design ideation. It should not be used for any content creation.',icon="⚠️")
+      with st.spinner("Thinking..."):
+          time.sleep(10)
+    
+          #st.header(st.session_state['name'])
+          tab1, tab2, tab3 = st.tabs(['Generated Image 1','Generated Image 2','Generated Image 3'])
+          with tab1:
+              tot4 = st.image("./images_generated/info_1.png")
+              tot44 = st.button('Select Image 4', on_click=change_name, args=['4_image'])
+              if tot44:
+                  with open("./images_generated/info_1.png", "rb") as file:
+                      btn = st.download_button(
+                              label="Download image",
+                              data=file,
+                              file_name="flower.png",
+                              mime="image/png"
+                          )
+          with tab2:
+              tot5 = st.image("./images_generated/info_2.png")
+              tot55 = st.button('Select Image 5', on_click=change_name, args=['5_image'])
+                          #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
+              if tot55:
+                  with open("./images_generated/info_2.png", "rb") as file:
+                      btn = st.download_button(
+                              label="Download image",
+                              data=file,
+                              file_name="flower.png",
+                              mime="image/png"
+                          )
+          with tab3:
+              tot6 = st.image("./images_generated/info_3.png")
+              tot66 = st.button('Select Image 6', on_click=change_name, args=['6_image'])
+              #im = Image.open("/Users/mishrs39/Downloads/auto_tag_chat_app/images_generated/info_3.png")
+              if tot66:
+                  with open("./images_generated/info_3.png", "rb") as file:
+                      btn = st.download_button(
+                              label="Download image",
+                              data=file,
+                              file_name="flower.png",
+                              mime="image/png"
+                          )
 def final_out():
     st.markdown("<h3 style='text-align: center; color: grey;'> Integration of Generated Text and Image for final outcome </h3>", unsafe_allow_html=True)
     st.warning('Text and Images are arranged in order',icon="⚠️")
