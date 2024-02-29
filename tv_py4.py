@@ -142,7 +142,7 @@ def text_gen():
             
             option3 = st.sidebar.selectbox(
             'Tone of Generation',
-            ('Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
+            ('','Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
             ))
             
             option4 = st.sidebar.selectbox(
@@ -151,7 +151,7 @@ def text_gen():
                 ))
             option5 = st.sidebar.selectbox(
             'Objective',
-            ('Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
+            ('','Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
                 ))
             
             option6 = st.sidebar.selectbox(
@@ -161,7 +161,7 @@ def text_gen():
             
             option8 = st.sidebar.selectbox(
             'Target Audience Expectation',
-            ('Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
+            ('','Alternative Treatment', 'Ease of Access', 'Higher Safety', 'Higher Efficacy', 'Quality of life', 'Lower Price'))
     
             option11 = st.sidebar.selectbox(
             'Indication',
