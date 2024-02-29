@@ -174,7 +174,7 @@ def text_gen():
             option7 = st.text_input('Input your prompt here',"")
 
             #default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
-            default_prompt = "As a pharma communication expert, write a comprehensive email about Phesgo (Roche's Drug for Breast cancer) to address this issue raised by HCP/doctors with an objective to improve adoption""" Drug costs remain a barrier to Phesgo use and Safety concerns over fixed SC dosing vs weight-based IV dosing""" "
+            default_prompt = "As a pharma communication expert, write a comprehensive email about Phesgo (Roche's Drug for Breast cancer) to address this issue raised by HCP/doctors with an objective to improve adoption ''' Drug costs remain a barrier to Phesgo use and Safety concerns over fixed SC dosing vs weight-based IV dosing ''' "
             prompt_design = st.write(default_prompt[0])
 
         st.title('🤗💬 Product Positioning')
