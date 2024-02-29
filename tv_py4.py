@@ -151,7 +151,7 @@ def text_gen():
                 ))
             option5 = st.sidebar.selectbox(
             'Objective',
-            ('','Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
+            ('To improve adoption','Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
                 ))
             
             option6 = st.sidebar.selectbox(
