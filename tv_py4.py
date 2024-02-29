@@ -165,11 +165,11 @@ def text_gen():
     
             option11 = st.sidebar.selectbox(
             'Indication',
-            ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
+            ('Breast Cancer', 'Multiple Sclerosis', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
     
             option12 = st.sidebar.selectbox(
             'Company',
-            ("Genentech's", "Roche's"))
+            ("Roche's", "Genentech's"))
             st.title("Prompt Design Template")
             option7 = st.text_input('Input your prompt here',"")
 
