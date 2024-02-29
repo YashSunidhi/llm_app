@@ -121,7 +121,7 @@ def text_gen():
     # Get the input text from the user
     #with st.sidebar:
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
-        option0C = st.sidebar.text_area('Input context reference if any','')
+        option0C = st.sidebar.text_area('Input context reference if any','Drug costs remain a barrier to Phesgo use and Safety concerns over fixed SC dosing vs weight-based IV dosing')
         option0m = st.sidebar.selectbox('Select Model',('Fast Inference Model','Base Inference Model'))
         option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
         option0w = st.sidebar.selectbox('Select Web Search',(False,True))
@@ -173,7 +173,8 @@ def text_gen():
             st.title("Prompt Design Template")
             option7 = st.text_input('Input your prompt here',"")
 
-            default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
+            #default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
+            default_prompt = "As a pharma communication expert, write a comprehensive email about Phesgo (Roche's Drug for Breast cancer) to address this issue raised by HCP/doctors with an objective to improve adoption""" Drug costs remain a barrier to Phesgo use and Safety concerns over fixed SC dosing vs weight-based IV dosing""" "
             prompt_design = st.write(default_prompt[0])
 
         st.title('🤗💬 Product Positioning')
@@ -214,7 +215,7 @@ def text_gen():
                 try:
                     if option0ll == 'Base':
                         time.sleep(7)
-                        dv = pd.read_csv('content_output1.csv')
+                        dv = pd.read_csv('content_output_Phesgo.csv')
                         response = dv['Outcome'][0]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
