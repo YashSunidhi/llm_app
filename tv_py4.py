@@ -202,66 +202,66 @@ def text_gen():
 
     
     
-    # # User-provided prompt
-    # if prompt := st.chat_input(disabled=not (hf_email and hf_pass)):
-    #     st.session_state.messages.append({"role": "user", "content": prompt})
-    #     with st.chat_message("user"):
-    #         st.write(prompt)
+    # User-provided prompt
+    if prompt := st.chat_input(disabled=not (hf_email and hf_pass)):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.write(prompt)
 
   
-    # if st.session_state.messages[-1]["role"] != "assistant":
-    #     with st.chat_message("assistant"):
-    #         with st.spinner("Thinking..."):
-    #             try:
-    #                 if option0ll == 'Base':
-    #                     time.sleep(7)
-    #                     dv = pd.read_csv('content_output_Ocrevus - OC.csv')
-    #                     response = dv['Outcome'][0]
-    #                     st.write(response)
-    #                     message = {"role": "assistant", "content": response}
-    #                 elif option0w==False:
-    #                     if option0m == 'Base Inference Model':
-    #                         response = generate_response(prompt, hf_email, hf_pass)
-    #                         st.write(response)
-    #                         message = {"role": "assistant", "content": response}
-    #                     elif option0m == 'Fast Inference Model':
-    #                         for dict_message in st.session_state.messages:
-    #                             string_dialogue = "You are a helpful assistant."
-    #                             if dict_message["role"] == "user":
-    #                                 string_dialogue += "User: " + dict_message["content"] + "\n\n"
-    #                             else:
-    #                                 string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    #                         prompt = f"{string_dialogue} {prompt} Assistant: "
-    #                         try:
-    #                             API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
-    #                             headers = {"Authorization": "Bearer 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"}
-    #                             output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
-    #                             response = output[0]['generated_text'].split('Assistant:')[1]
-    #                             st.write(response)
-    #                             message = {"role": "assistant", "content": response}
-    #                         except:
-    #                             API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-    #                             headers = {"Authorization": "Bearer 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"}
-    #                             output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
-    #                             response = output[0]['generated_text'].split('Assistant:')[1]
-    #                             st.write(response)
-    #                             message = {"role": "assistant", "content": response}
-                                
-     
-    #                 else:
-    #                     response = generate_response_web(prompt, hf_email,hf_pass)
-    #                     st.write(response)
-    #                     message = {"role": "assistant", "content": response}
-    #                     st.warning("Referred Resources",icon = '🚨')
-    #                     count = 0
-    #                     for source in response.web_search_sources:
-    #                         count = count+1
-    #                         st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
-    #             except:
-    #                 st.write("Seems Like API is down, Please reach out to AABI Team")
-    #                 pass
+    if st.session_state.messages[-1]["role"] != "assistant":
+        with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
+                #try:
+                if option0ll == 'Base':
+                    time.sleep(7)
+                    dv = pd.read_csv('content_output_Ocrevus - OC.csv')
+                    response = dv['Outcome'][0]
+                    st.write(response)
+                    message = {"role": "assistant", "content": response}
+                elif option0w==False:
+                    if option0m == 'Base Inference Model':
+                        response = generate_response(prompt, hf_email, hf_pass)
+                        st.write(response)
+                        message = {"role": "assistant", "content": response}
+                    elif option0m == 'Fast Inference Model':
+                        for dict_message in st.session_state.messages:
+                            string_dialogue = "You are a helpful assistant."
+                            if dict_message["role"] == "user":
+                                string_dialogue += "User: " + dict_message["content"] + "\n\n"
+                            else:
+                                string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
+                        prompt = f"{string_dialogue} {prompt} Assistant: "
+                        try:
+                            API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+                            headers = {"Authorization": "Bearer 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"}
+                            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
+                            response = output[0]['generated_text'].split('Assistant:')[1]
+                            st.write(response)
+                            message = {"role": "assistant", "content": response}
+                        except:
+                            API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+                            headers = {"Authorization": "Bearer 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"}
+                            output = query_text({"inputs": (prompt),"parameters": {'max_new_tokens': 5500 }})
+                            response = output[0]['generated_text'].split('Assistant:')[1]
+                            st.write(response)
+                            message = {"role": "assistant", "content": response}
+                            
+ 
+                else:
+                    response = generate_response_web(prompt, hf_email,hf_pass)
+                    st.write(response)
+                    message = {"role": "assistant", "content": response}
+                    st.warning("Referred Resources",icon = '🚨')
+                    count = 0
+                    for source in response.web_search_sources:
+                        count = count+1
+                        st.write(str(count)+ str(": "), source.title, source.link,source.hostname)
+                #except:
+                st.write("Seems Like API is down, Please reach out to AABI Team")
+                #pass
 
-        #message = {"role": "assistant", "content": response}
+        message = {"role": "assistant", "content": response}
         st.session_state.messages.append(message)
         try:
             df = pd.DataFrame(st.session_state.messages)
