@@ -121,7 +121,7 @@ def text_gen():
     # Get the input text from the user
     #with st.sidebar:
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
-        option0C = st.sidebar.text_area('Input context reference if any','.')
+        #option0C = st.sidebar.text_area('Input context reference if any','.')
         option0m = st.sidebar.selectbox('Select Model',('Fast Inference Model','Base Inference Model'))
         option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
         option0w = st.sidebar.selectbox('Select Web Search',(False,True))
