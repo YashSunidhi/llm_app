@@ -177,7 +177,7 @@ def text_gen():
             if option1=='Ocrevus':
                 default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
             elif option1=='Phesgo':
-                default_prompt = ["As an Pharma Communication Expert, Write a engaging email in more than 1000 words to HCPs, aboust Phesgo inregards to address concern in regards to Cost Barriers and Safety concern. Please include specific concern+ option0C]
+                default_prompt = ["As an Pharma Communication Expert, Write a engaging email in more than 1000 words to HCPs, aboust Phesgo inregards to address concern in regards to Cost Barriers and Safety concern. Please include specific concern from " + option0C]
                 
             prompt_design = st.write(default_prompt[0])
 
