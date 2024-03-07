@@ -135,7 +135,7 @@ def text_gen():
             ('pharma communication', 'scientific communication', 'marketing communication'))
             option1 = st.sidebar.selectbox(
             'Product',
-            ('Ocrevus', ' Tecentriq ',' Phesgo ',' Polivy ',' Crovalimab ',' Vabysmo '))
+            ('Ocrevus', ' Tecentriq ','Phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
             option2 = st.sidebar.selectbox(
             'Target Audience',
             ('HCP', 'Patients', 'Patients and their Families'))
@@ -174,7 +174,11 @@ def text_gen():
             option7 = st.text_input('Input your prompt here',"")
             #option0C = st.sidebar.text_area('Input context reference if any','.')
             #default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
-            default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
+            if option1=='Ocrevus':
+                default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
+            elif option1=='Phesgo':
+                default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
+                
             prompt_design = st.write(default_prompt[0])
 
         st.title('🤗💬 Product Positioning')
@@ -215,7 +219,10 @@ def text_gen():
                 try:
                     if option0ll == 'Base':
                         time.sleep(7)
-                        dv = pd.read_csv('content_output_Ocrevus.csv')
+                        if option1=='Ocrevus':
+                            dv = pd.read_csv('content_output_Ocrevus.csv')
+                        elif option1=='Phesgo':
+                            dv = pd.read_csv('content_output_Phesgo.csv')
                         response = dv['Outcome'][0]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
