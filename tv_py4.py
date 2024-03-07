@@ -215,7 +215,7 @@ def text_gen():
                 #try:
                 if option0ll == 'Base':
                     time.sleep(7)
-                    dv = pd.read_csv('content_output_Ocrevus - OC.csv')
+                    dv = pd.read_csv('content_output_Ocrevus.csv')
                     response = dv['Outcome'][0]
                     st.write(response)
                     message = {"role": "assistant", "content": response}
