@@ -135,23 +135,23 @@ def text_gen():
             ('pharma communication', 'scientific communication', 'marketing communication'))
             option1 = st.sidebar.selectbox(
             'Product',
-            (' Phesgo ', ' Tecentriq ',' Ocrevus ',' Polivy ',' Crovalimab ',' Vabysmo '))
+            (' Ocrevus ', ' Tecentriq ',' Phesgo ',' Polivy ',' Crovalimab ',' Vabysmo '))
             option2 = st.sidebar.selectbox(
             'Target Audience',
             ('HCP', 'Patients', 'Patients and their Families'))
             
             option3 = st.sidebar.selectbox(
             'Tone of Generation',
-            ('','Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
+            ('Engaging','Professional','Empathetic', 'Informative', 'Patient-centered','Ethical', 'Engaging','Trustworthy', 'Compassionate and Reassuring'
             ))
             
             option4 = st.sidebar.selectbox(
             'Content Type',
-            ('content','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
+            ('Email','scientific newsletter',' newsletter','scientific Email','email', 'executive summary','scientific blog post','blog post', 
                 ))
             option5 = st.sidebar.selectbox(
             'Objective',
-            ('To improve adoption','Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
+            ('','To improve adoption','Differentiate with Standard of Care (SoC)','Increase User Engagement','Generate Interest', 'Share Product Update', 'Increase Product Adoption', ' Provide Hope and Information'
                 ))
             
             option6 = st.sidebar.selectbox(
@@ -165,7 +165,7 @@ def text_gen():
     
             option11 = st.sidebar.selectbox(
             'Indication',
-            ('Breast Cancer', 'Multiple Sclerosis', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
+            ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
     
             option12 = st.sidebar.selectbox(
             'Company',
@@ -174,7 +174,7 @@ def text_gen():
             option7 = st.text_input('Input your prompt here',"")
 
             #default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
-            default_prompt = ["As a pharma communication expert, write a comprehensive email about Phesgo (Roche's Drug for Breast cancer) to address this issue raised by HCP/doctors with an objective to improve adoption ''' Drug costs remain a barrier to Phesgo use and Safety concerns over fixed SC dosing vs weight-based IV dosing ''' "]
+            default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are mitigating risks. Please include Patient quotes within context to draft response from Internal and External Insights: +option0C "]
             prompt_design = st.write(default_prompt[0])
 
         st.title('🤗💬 Product Positioning')
@@ -215,7 +215,7 @@ def text_gen():
                 try:
                     if option0ll == 'Base':
                         time.sleep(7)
-                        dv = pd.read_csv('content_output_Phesgo.csv')
+                        dv = pd.read_csv('content_output_Ocrevus - OC.csv')
                         response = dv['Outcome'][0]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
