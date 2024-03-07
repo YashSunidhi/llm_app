@@ -121,7 +121,7 @@ def text_gen():
     # Get the input text from the user
     #with st.sidebar:
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
-        option0C = st.sidebar.text_area('Input context reference if any','.')
+        option0C = st.sidebar.text_area('Input context reference if any','Drug costs are also a barrier to Phesgo use and Safety concerns over fixed SC dosing vs weight-based IV dosing.')
         option0m = st.sidebar.selectbox('Select Model',('Fast Inference Model','Base Inference Model'))
         option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
         option0w = st.sidebar.selectbox('Select Web Search',(False,True))
@@ -177,7 +177,7 @@ def text_gen():
             if option1=='Ocrevus':
                 default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
             elif option1=='Phesgo':
-                default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
+                default_prompt = ["As an Pharma Communication Expert, Write a engaging email in more than 1000 words to HCPs, aboust Phesgo inregards to address concern in regards to Cost Barriers and Safety concern. Please include specific concern+ option0C]
                 
             prompt_design = st.write(default_prompt[0])
 
