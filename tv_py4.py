@@ -121,7 +121,7 @@ def text_gen():
     # Get the input text from the user
     #with st.sidebar:
         #st.title('🤗💬 Web Search Inclusion (Default Not Included')
-        #option0C = st.sidebar.text_area('Input context reference if any','.')
+        option0C = st.sidebar.text_area('Input context reference if any','.')
         option0m = st.sidebar.selectbox('Select Model',('Fast Inference Model','Base Inference Model'))
         option0ll = st.sidebar.selectbox('Mode of execution',('Base','Active'))
         option0w = st.sidebar.selectbox('Select Web Search',(False,True))
@@ -172,7 +172,7 @@ def text_gen():
             ("Roche's", "Genentech's"))
             st.title("Prompt Design Template")
             option7 = st.text_input('Input your prompt here',"")
-            option0C = st.sidebar.text_area('Input context reference if any','.')
+            #option0C = st.sidebar.text_area('Input context reference if any','.')
             #default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
             default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are mitigating risks. Please include Patient quotes within context to draft response from Internal and External Insights:"]
             prompt_design = st.write(default_prompt[0])
