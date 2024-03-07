@@ -132,7 +132,7 @@ def text_gen():
         if ups:
             option0 = st.sidebar.selectbox(
             'Content Designer Role',
-            ('pharma communication', 'scientific communication', 'marketing communication'))
+            ('global communication','pharma communication', 'scientific communication', 'marketing communication'))
             option1 = st.sidebar.selectbox(
             'Product',
             ('Ocrevus', ' Tecentriq ','Phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
