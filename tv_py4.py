@@ -139,12 +139,14 @@ def text_gen():
 
             if option1=='ocrevus':
                 dp = pd.read_csv('input_text.csv')
-                _text = dp[dp['drug']=='ocrevus']['input']
+                _text = dp[dp['drug']=='ocrevus']['input'].reset_index(drop=True)[0]
+                option0C = st.sidebar.text_area('Input context reference if any',_text)
             elif option1=='phesgo':
                 dp = pd.read_csv('input_text.csv')
-                _text = dp[dp['drug']=='phesgo']['input']
+                _text = dp[dp['drug']=='phesgo']['input'].reset_index(drop=True)[0]
+                option0C = st.sidebar.text_area('Input context reference if any',_text)
 
-            option0C = st.sidebar.text_area('Input context reference if any',_text)
+            #option0C = st.sidebar.text_area('Input context reference if any',_text)
             option2 = st.sidebar.selectbox(
             'Target Audience',
             ('HCP', 'Patients', 'Patients and their Families'))
@@ -183,9 +185,9 @@ def text_gen():
             option7 = st.text_input('Input your prompt here',"")
             #option0C = st.sidebar.text_area('Input context reference if any','.')
             #default_prompt = ["As a " + option0 +" expert, Write a " +option4 +" using information of " + option11 + " in less than 1500 words for HCP/ doctors highlighting about " + option12 + option1+ "role in treatment and its potential benefits in terms of mechanism of action, safety, efficacy and clinical trials (trial name, trial objective ,trial dosing /formulation and trial outcome). Use an " +option3+ " tone. The objective is to " + option5 + " to those seeking "+ option8+" options. " + option7 ]
-            if option1=='Ocrevus':
-                default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Internal Insight . Along with web search, Please use context to draft response from ''' External Insight ''' " + option0C]
-            elif option1=='Phesgo':
+            if option1=='ocrevus':
+                default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge of Insight . Along with web search, Please use context to draft response from captured insights " + option0C]
+            elif option1=='phesgo':
                 default_prompt = ["As an Pharma Communication Expert, Write a engaging email in more than 1000 words to HCPs, aboust Phesgo inregards to address concern of Cost Barriers and Safety issues. Please include specific concern from " + option0C]
                 
             prompt_design = st.write(default_prompt[0])
