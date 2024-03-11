@@ -135,7 +135,16 @@ def text_gen():
             ('global communication','pharma communication', 'scientific communication', 'marketing communication'))
             option1 = st.sidebar.selectbox(
             'Product',
-            ('Ocrevus', ' Tecentriq ','Phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
+            ('ocrevus', ' Tecentriq ','phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
+
+            if option1=='ocrevus':
+                dp = pd.read_csv('input_text.csv')
+                _text = dp[dp['drug']=='ocrevus']['input']
+            elif option1=='phesgo':
+                dp = pd.read_csv('input_text.csv')
+                _text = dp[dp['drug']=='phesgo']['input']
+
+            option0C = st.sidebar.text_area('Input context reference if any',_text)
             option2 = st.sidebar.selectbox(
             'Target Audience',
             ('HCP', 'Patients', 'Patients and their Families'))
@@ -219,9 +228,9 @@ def text_gen():
                 try:
                     if option0ll == 'Base':
                         time.sleep(7)
-                        if option1=='Ocrevus':
+                        if option1=='ocrevus':
                             dv = pd.read_csv('content_output_Ocrevus.csv')
-                        elif option1=='Phesgo':
+                        elif option1=='phesgo':
                             dv = pd.read_csv('content_output_Phesgo.csv')
                         response = dv['Outcome'][0]
                         st.write(response)
