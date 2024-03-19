@@ -15,6 +15,8 @@ import requests
 import io
 from PIL import Image
 import warnings 
+import streamlit as st
+from streamlit_pdf_viewer import pdf_viewer
 warnings.filterwarnings('ignore')
 
 # App title
@@ -240,7 +242,12 @@ def text_gen():
                             dv = pd.read_csv('content_output_Ocrevus.csv')
                         elif option1=='phesgo':
                             dv = pd.read_csv('content_output_Phesgo.csv')
-                        response = dv['Outcome'][0]
+                        elif option1=='evrysdi':
+                            dv = pdf_viewer("evrysdi.pdf")
+                        try:
+                            response = dv['Outcome'][0]
+                        except:
+                            response = dv
                         st.write(response)
                         message = {"role": "assistant", "content": response}
                     elif option0w==False:
