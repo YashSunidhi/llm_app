@@ -135,7 +135,7 @@ def text_gen():
             ('global communication','pharma communication', 'scientific communication', 'marketing communication'))
             option1 = st.sidebar.selectbox(
             'Product',
-            ('ocrevus', ' Tecentriq ','phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
+            ('ocrevus', 'evrysdi','phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
 
             if option1=='ocrevus':
                 dp = pd.read_csv('input_text.csv')
@@ -144,6 +144,10 @@ def text_gen():
             elif option1=='phesgo':
                 dp = pd.read_csv('input_text.csv')
                 _text = dp[dp['drug']=='phesgo']['input'].reset_index(drop=True)[0]
+                option0C = st.sidebar.text_area('Input context reference if any',_text)
+            elif option1=='evrysdi':
+                dp = pd.read_csv('input_text.csv')
+                _text = dp[dp['drug']=='evrysdi']['input'].reset_index(drop=True)[0]
                 option0C = st.sidebar.text_area('Input context reference if any',_text)
 
             #option0C = st.sidebar.text_area('Input context reference if any',_text)
@@ -189,6 +193,8 @@ def text_gen():
                 default_prompt = ["As an Global Communication Expert of Brand Team Ocrevus, Write a well structured and engaging email in 1000 words to HCPs, Neurologists to share an update of Insights from Market Research about Ocrevus vs Kesimpta and how we are addressing challenge identified from it. Along with web search, Please use context to draft response from captured insights " + option0C]
             elif option1=='phesgo':
                 default_prompt = ["As an Pharma Communication Expert, Write a engaging email in more than 1000 words to HCPs, aboust Phesgo inregards to address concern of Cost Barriers and Safety issues. Please include specific concern from " + option0C]
+            elif option1=='evrysdi':
+                default_prompt = ["As Global Communication Expert of Brand Team Evrysdi, Write a well structured and engaging email in 1000 words to HCPs to share an update of Insights from Market Research about Evrysdi on how we are addressing challenge safety concerns . Along with web search, Please use context to draft response from " + option0C]
                 
             prompt_design = st.write(default_prompt[0])
 
