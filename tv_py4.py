@@ -240,13 +240,12 @@ def text_gen():
                         time.sleep(7)
                         if option1=='ocrevus':
                             dv = pd.read_csv('content_output_Ocrevus.csv')
+                            response = dv['Outcome'][0]
                         elif option1=='phesgo':
                             dv = pd.read_csv('content_output_Phesgo.csv')
+                            response = dv['Outcome'][0]
                         elif option1=='evrysdi':
                             dv = pdf_viewer("evrysdi.pdf")
-                        try:
-                            response = dv['Outcome'][0]
-                        except:
                             response = dv
                         st.write(response)
                         message = {"role": "assistant", "content": response}
