@@ -245,7 +245,7 @@ def text_gen():
                             dv = pd.read_csv('content_output_Phesgo.csv')
                             response = dv['Outcome'][0]
                         elif option1=='evrysdi':
-                            dv = pd.read_excel("content_output_Ervysdi .xlsx")
+                            dv = pd.read_excel("content_output_Ervysdi.xlsx")
                             response = dv['Outcome'][0]
                         st.write(response)
                         message = {"role": "assistant", "content": response}
