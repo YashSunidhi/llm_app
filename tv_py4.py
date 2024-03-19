@@ -138,15 +138,15 @@ def text_gen():
             ('ocrevus', 'evrysdi','phesgo',' Polivy ',' Crovalimab ',' Vabysmo '))
 
             if option1=='ocrevus':
-                dp = pd.read_csv('input_text.csv')
+                dp = pd.read_csv('input_text1.csv')
                 _text = dp[dp['drug']=='ocrevus']['input'].reset_index(drop=True)[0]
                 option0C = st.sidebar.text_area('Input context reference if any',_text)
             elif option1=='phesgo':
-                dp = pd.read_csv('input_text.csv')
+                dp = pd.read_csv('input_text1.csv')
                 _text = dp[dp['drug']=='phesgo']['input'].reset_index(drop=True)[0]
                 option0C = st.sidebar.text_area('Input context reference if any',_text)
             elif option1=='evrysdi':
-                dp = pd.read_csv('input_text.csv')
+                dp = pd.read_csv('input_text1.csv')
                 _text = dp[dp['drug']=='evrysdi']['input'].reset_index(drop=True)[0]
                 option0C = st.sidebar.text_area('Input context reference if any',_text)
 
