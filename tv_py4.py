@@ -182,7 +182,7 @@ def text_gen():
     
             option11 = st.sidebar.selectbox(
             'Indication',
-            ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)'))
+            ('Multiple Sclerosis', 'Breast Cancer', 'Lung Cancer', 'Paroxysmal Nocturnal Hemoglobinuria (PNH)','SMA'))
     
             option12 = st.sidebar.selectbox(
             'Company',
