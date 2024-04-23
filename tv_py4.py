@@ -628,7 +628,7 @@ def image_gen():
             
                         #API_URL = "https://api-inference.huggingface.co/models/Yntec/Dreamshaper8"
                         API_URL = "https://api-inference.huggingface.co/models/stablediffusionapi/realistic-vision-v51"
-                        headers = {"Authorization": "Bearer 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"}
+                        headers = {"Authorization": "Bearer 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"}
                         image_bytes = query({
                             "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
                             "parameters": {'num_inference_steps': (option1) ,'num_images_per_prompt':1},
@@ -654,7 +654,7 @@ def image_gen():
                 with tab20:
                     try:
                         API_URL = "https://api-inference.huggingface.co/models/Yntec/AbsoluteReality"
-                        headers = {"Authorization": "Bearer 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"}
+                        headers = {"Authorization": "Bearer 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"}
                         image_bytes = query({
                             "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
                             "parameters": {'num_inference_steps': (option2) ,'num_images_per_prompt':1},
@@ -680,7 +680,7 @@ def image_gen():
                 with tab30:
                     try:
                         API_URL = "https://api-inference.huggingface.co/models/Yntec/realistic-vision-v12"
-                        headers = {"Authorization": "Bearer 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"}
+                        headers = {"Authorization": "Bearer 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"}
                         image_bytes = query({
                             "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
                             "parameters": {'num_inference_steps': (option3) ,'num_images_per_prompt':1},
@@ -707,7 +707,7 @@ def image_gen():
                 with tab40:
                     try:
                         API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
-                        headers = {"Authorization": "Bearer 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"}
+                        headers = {"Authorization": "Bearer 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"}
                         image_bytes = query({
                             "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
                             "parameters": {'num_inference_steps': (option4) ,'num_images_per_prompt':1},
@@ -733,7 +733,7 @@ def image_gen():
                 with tab50:
                     try:
                         API_URL = "https://api-inference.huggingface.co/models/Yntec/CyberRealistic"
-                        headers = {"Authorization": "Bearer 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"}
+                        headers = {"Authorization": "Bearer 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"}
                         image_bytes = query({
                             "inputs": default_prompt[0] + " high resolution photograph, realistic skin texture, photorealistic, hyper realism, highly detailed, 85mm portrait photography ",
                             "parameters": {'num_inference_steps': (option5) ,'num_images_per_prompt':1},
